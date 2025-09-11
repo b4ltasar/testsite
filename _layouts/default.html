@@ -1,95 +1,180 @@
-<!DOCTYPE html>
-<html lang="da">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ page.title | default: site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}"/>
+/* =========================
+   Base
+   ========================= */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+img, video { display: block; max-width: 100%; }
 
-  <!-- Prevent theme flash: read localStorage *before* CSS -->
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem("nw-theme");
-        var theme = saved || "light";            // default: light
-        document.documentElement.setAttribute("data-theme", theme);
-      } catch (e) {}
-    })();
-  </script>
+/* Layout helpers */
+.container { width: min(1200px, 92vw); margin-inline: auto; }
+.section { padding: 56px 0; }
+.stack > * + * { margin-top: 12px; }
 
-  <link rel="icon" href="{{ '/images/favicon.png' | relative_url }}" />
-  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}" />
-</head>
-<body>
+/* =========================
+   Header
+   ========================= */
+.header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--border); }
+.header-inner { display: flex; align-items: center; gap: 16px; padding: 14px 0; }
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-inner container">
-      <a class="brand" href="{{ '/' | relative_url }}" aria-label="NEARWEEK">
-        <!-- Two sources; CSS hides the irrelevant one based on theme -->
-        <img class="brand-logo brand-logo--light" src="{{ '/images/_Logo_horisontal_black.png' | relative_url }}" />
-        <img class="brand-logo brand-logo--dark"  src="{{ '/images/_Logo_horisontal_white.png' | relative_url }}" />
-      </a>
+.brand { display: inline-flex; align-items: center; gap: 8px; }
+.brand-logo { height: 24px; display: block; }
+.brand-logo--dark  { display: none; }                  /* swap logo i dark */
+html[data-theme="dark"] .brand-logo--light { display: none; }
+html[data-theme="dark"] .brand-logo--dark  { display: block; }
 
-      <nav class="nav" aria-label="Primary">
-        <a href="#newsletter">NEWSLETTER</a>
-        <a href="#blog">BLOG</a>
-        <a href="#community">COMMUNITY</a>
-      </nav>
+.nav { margin-left: auto; display: flex; gap: 24px; align-items: center; }
+.nav a { opacity: .9; transition: transform .15s ease, opacity .15s ease; }
+.nav a:hover { opacity: 1; transform: scale(1.2); }
 
-      <!-- tiny theme dot -->
-      <button id="theme-dot" class="dot" aria-label="Toggle dark mode"></button>
+/* Minimal dark-mode "dot" */
+.dot{
+  width: 14px; height: 14px; border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.02) inset;
+  display: inline-block; cursor: pointer; margin-left: 6px;
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+}
+.dot.on{ background: var(--text); border-color: var(--text); }
+.dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dot:hover{ transform: scale(1.15); }
 
-      <!-- hamburger for tablet/mobile -->
-      <button id="burger" class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+/* Burger (tablet/mobile) */
+.burger { display: none; width: 34px; height: 30px; position: relative; }
+.burger span{
+  position:absolute; left:4px; right:4px; height:2px; background: var(--text);
+  transform-origin: 8px 1px; transition: transform .2s ease, opacity .2s ease;
+}
+.burger span:nth-child(1){ top:8px; }
+.burger span:nth-child(2){ top:14px; }
+.burger span:nth-child(3){ top:20px; }
 
-  <!-- Drawer -->
-  <aside id="drawer" class="drawer" aria-hidden="true">
-    <div class="drawer-panel">
-      <div class="drawer-head">
-        <a class="brand" href="{{ '/' | relative_url }}" aria-label="NEARWEEK">
-          <img class="brand-logo brand-logo--light" src="{{ '/images/_Logo_horisontal_black.png' | relative_url }}"/>
-          <img class="brand-logo brand-logo--dark"  src="{{ '/images/_Logo_horisontal_white.png' | relative_url }}"/>
-        </a>
-        <button id="drawer-close" class="drawer-close" aria-label="Close menu">×</button>
-      </div>
-      <nav class="drawer-nav">
-        <a href="#newsletter">NEWSLETTER</a>
-        <a href="#blog">BLOG</a>
-        <a href="#community">COMMUNITY</a>
-      </nav>
+@media (max-width: 900px){
+  .nav{ display:none; }                 /* skjul desktop-nav */
+  .burger{ display:inline-block; margin-left:auto; }
+}
 
-      <div class="drawer-tools">
-        <span>Theme</span>
-        <button id="theme-dot-drawer" class="dot"></button>
-      </div>
-    </div>
-    <div class="drawer-backdrop" tabindex="-1"></div>
-  </aside>
+/* =========================
+   Drawer (mobile nav)
+   ========================= */
+.drawer { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
 
-  <main id="main">
-    {{ content }}
-  </main>
+/* Panel parkeres off-screen og glider ind */
+.drawer-panel{
+  position:absolute; top:0; bottom:0; right:-340px; width:320px;
+  background: var(--bg);                       /* tema-variabler styrer farve */
+  border-left:1px solid var(--border);
+  display:flex; flex-direction:column; gap:16px; padding:16px;
+  transition:right .2s ease;
+}
+/* Farve-override hvis du vil have helt hvide/sorte paneler */
+html[data-theme="light"] .drawer-panel{ background:#fff; }
+html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <a class="brand" href="{{ '/' | relative_url }}" aria-label="NEARWEEK">
-        <img class="brand-logo brand-logo--light" src="{{ '/images/_Logo_horisontal_black.png' | relative_url }}"/>
-        <img class="brand-logo brand-logo--dark"  src="{{ '/images/_Logo_horisontal_white.png' | relative_url }}"/>
-      </a>
-      <nav class="nav">
-        <a href="#newsletter">NEWSLETTER</a>
-        <a href="#blog">BLOG</a>
-        <a href="#community">COMMUNITY</a>
-      </nav>
-      <small>© {{ "now" | date: "%Y" }}, NEARWEEK. All rights reserved.</small>
-    </div>
-  </footer>
+.drawer-backdrop{
+  position:absolute; inset:0; background:rgba(0,0,0,.25);
+  opacity:0; visibility:hidden;
+  transition:opacity .2s ease, visibility 0s .2s;
+}
+.drawer[aria-hidden="false"]{ pointer-events:auto; }
+.drawer[aria-hidden="false"] .drawer-panel{ right:0; }
+.drawer[aria-hidden="false"] .drawer-backdrop{ opacity:1; visibility:visible; transition-delay:0s; }
 
-  <script src="{{ '/assets/main.js' | relative_url }}" defer></script>
-</body>
-</html>
+.drawer-head{ display:flex; align-items:center; justify-content:space-between; }
+.drawer-close{ font-size:26px; line-height:1; background:none; border:0; color:var(--text); cursor:pointer; }
+.drawer-nav{ display:grid; gap:14px; }
+.drawer-nav a{ font-weight:600; }
+.drawer-tools{ display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:8px; border-top:1px solid var(--border); }
+
+/* =========================
+   Hero
+   ========================= */
+.h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.15; font-weight: 800; }
+
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:48px; align-items:center;
+  padding:40px 0 24px;
+}
+.hero-card{
+  position:relative; aspect-ratio:4/3;
+  border:1px solid var(--border); border-radius:14px; overflow:hidden;
+  background:var(--card);
+  box-shadow:0 8px 30px rgba(0,0,0,.06);
+}
+.hero-card video, .hero-card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns:1fr; gap:28px; }
+}
+
+/* =========================
+   Cards marquee (uendelig rul)
+   ========================= */
+.cards-marquee{ overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); }
+.cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; }
+.cards-marquee:hover .cards-track{ animation-play-state:paused; }   /* stop ved hover */
+@keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+.mcard{
+  flex:0 0 340px; background:var(--card); border:1px solid var(--border);
+  border-radius:14px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.06);
+}
+.mcard-media{ position:relative; aspect-ratio:16/9; overflow:hidden; background:#111; }
+.mcard-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.02); }
+.mcard-body{ padding:12px 14px 14px; }
+.mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
+.mcard-text{ color:var(--muted); font-size:14px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .cards-track{ animation: none; }
+}
+
+/* =========================
+   CTA
+   ========================= */
+.cta{ text-align:center; padding:80px 0; }
+.cta .big{ font-size: clamp(28px, 6vw, 56px); font-weight: 900; letter-spacing:.02em; margin: 0 0 12px; }
+.cta .sub{ color:var(--muted); margin: 0 0 28px; }
+.cta-button{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:18px 28px; border-radius:8px;
+  background: transparent; color: var(--text);
+  border: 2px solid var(--text);
+  font-weight:700; letter-spacing:.02em;
+  transition: transform .2s ease, filter .2s ease;
+}
+.cta-button:hover{ transform: scale(1.05); filter: brightness(1.1); }
+.since{ margin-top:16px; color:var(--muted); font-size:12px; }
+
+/* =========================
+   Footer
+   ========================= */
+.footer{ border-top:1px solid var(--border); margin-top:56px; }
+.footer-inner{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px; padding:24px 0 40px; }
+.footer .nav{ justify-self:end; }
+.footer .nav a:hover{ transform: scale(1.2); }
+.footer small{ color:var(--muted); grid-column:1 / -1; }
+.brand-logo--footer{ height:28px; }
+
+@media (max-width: 900px){
+  .footer-inner{ grid-template-columns:1fr; text-align:center; }
+  .footer .nav{ justify-self:center; }
+}
+
+/* =========================
+   Misc tweaks / safety
+   ========================= */
+.hero-card{ background: var(--card); border:1px solid var(--border); } /* synlig i light */
