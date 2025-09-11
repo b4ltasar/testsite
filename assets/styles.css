@@ -2,9 +2,13 @@
    Base
    ========================= */
 * { box-sizing: border-box; }
-html, body { height: 100%; }
+
+html { min-height: 100%; background: var(--bg); }
+html, body { width: 100%; height: 100%; overflow-x: hidden; }
+
 body{
   margin: 0;
+  min-height: 100svh;
   background: var(--bg);
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -20,11 +24,14 @@ img, video { display: block; max-width: 100%; }
 .section { padding: 56px 0; }
 .stack > * + * { margin-top: 12px; }
 
+/* lock body scroll when drawer is open */
+body.no-scroll { overflow: hidden; height: 100svh; }
+
 /* =========================
    Header
    ========================= */
 .header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--border); }
-.header-inner { display: flex; align-items: center; gap: 16px; padding: 14px 0; }
+.header-inner { display: flex; align-items: center; gap: 16px; padding: 14px 0; justify-content: space-between; }
 
 .brand { display: inline-flex; align-items: center; gap: 8px; }
 .brand-logo { height: 24px; display: block; }
@@ -32,7 +39,7 @@ img, video { display: block; max-width: 100%; }
 html[data-theme="dark"] .brand-logo--light { display: none; }
 html[data-theme="dark"] .brand-logo--dark  { display: block; }
 
-.nav { margin-left: auto; display: flex; gap: 24px; align-items: center; }
+.nav { display: flex; gap: 24px; align-items: center; }
 .nav a { opacity:.9; transition: transform .15s ease, opacity .15s ease; }
 .nav a:hover { opacity:1; transform: scale(1.2); }
 
@@ -59,55 +66,59 @@ html[data-theme="dark"] .brand-logo--dark  { display: block; }
 .burger span:nth-child(2){ top:14px; }
 .burger span:nth-child(3){ top:20px; }
 
+/* mobile/tablet header layout */
 @media (max-width: 900px){
-  .header .nav { display: none; }
-  .header .header-inner { position: relative; justify-content: flex-start; }
+  .nav { display: none; }                                     /* skjul desktop-nav */
+  .header .header-inner { position: relative; }
   .header .brand { margin-right: auto; }
   .header .burger{
     display: block;
     position: absolute; right: 16px; top: 50%;
     transform: translateY(-50%);
     margin: 0;
+  }
 }
 
 /* =========================
    Drawer (mobile nav)
    ========================= */
-
-  }
-}
-.drawer { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
+.drawer { position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow: hidden; }
 
 .drawer-panel{
-  position:absolute; top:0; bottom:0; right:-340px; width:320px;
+  position: absolute; top: 0; bottom: 0;
+  right: -100vw;                 /* helt ude af skærm når lukket */
+  width: 86vw; max-width: 320px;
   background: var(--bg);
-  border-left:1px solid var(--border);
-  display:flex; flex-direction:column; gap:16px; padding:16px;
-  transition:right .2s ease;
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 16px; padding: 16px;
+  transition: right .2s ease;
 }
-/* force absolute white/black panel tones if you want */
+/* tving absolut tone hvis ønsket */
 html[data-theme="light"] .drawer-panel{ background:#fff; }
 html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
-.drawer-backdrop{
-  position:absolute; inset:0; background:rgba(0,0,0,.25);
-  opacity:0; visibility:hidden;
-  transition:opacity .2s ease, visibility 0s .2s;
+@media (min-width: 480px){
+  .drawer-panel{ right: -320px; width: 320px; }     /* eksakt off-screen */
 }
-.drawer[aria-hidden="false"]{ pointer-events:auto; }
-.drawer[aria-hidden="false"] .drawer-panel{ right:0; }
-.drawer[aria-hidden="false"] .drawer-backdrop{ opacity:1; visibility:visible; transition-delay:0s; }
 
+.drawer-backdrop{
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.25);
+  opacity: 0; visibility: hidden;
+  transition: opacity .2s ease, visibility 0s .2s;
+}
+
+.drawer[aria-hidden="false"] { pointer-events: auto; }
+.drawer[aria-hidden="false"] .drawer-panel{ right: 0; }
+.drawer[aria-hidden="false"] .drawer-backdrop{ opacity: 1; visibility: visible; transition-delay: 0s; }
+
+/* Drawer content */
 .drawer-head{ display:flex; align-items:center; justify-content:space-between; }
 .drawer-close{ font-size:26px; line-height:1; background:none; border:0; color:var(--text); cursor:pointer; }
-
 .drawer-nav{ display:grid; gap:14px; }
 .drawer-nav a{ font-weight:600; }
-
-.drawer-tools{
-  display:flex; align-items:center; justify-content: space-between;
-  margin-top:auto; padding-top:8px; border-top:1px solid var(--border);
-}
+.drawer-tools{ display:flex; align-items:center; justify-content:flex-end; margin-top:auto; padding-top:8px; border-top:1px solid var(--border); }
+.drawer-tools span{ display:none; }                 /* fjern 'Theme' label */
 
 /* =========================
    Hero
@@ -135,10 +146,18 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Cards marquee
    ========================= */
-.cards-marquee{ overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); }
-.cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; }
+.cards-marquee{ position: relative; overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); }
+.cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change: transform; }
 .cards-marquee:hover .cards-track{ animation-play-state:paused; }
 @keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+/* soft edge masks (ikke interaktive) */
+.cards-marquee::before,
+.cards-marquee::after{
+  content: ""; position: absolute; top: 0; bottom: 0; width: 24px; pointer-events: none;
+}
+.cards-marquee::before{ left: 0;  background: linear-gradient(to right, var(--card), transparent); }
+.cards-marquee::after { right: 0; background: linear-gradient(to left,  var(--card), transparent); }
 
 .mcard{
   flex:0 0 340px; background:var(--card); border:1px solid var(--border);
@@ -153,14 +172,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 @media (prefers-reduced-motion: reduce){
   .cards-track{ animation: none; }
 }
-/* Marquee må ikke lave horisontal scroll */
-.cards-marquee { overflow: hidden; }
-
-/* Drawer står helt uden for skærm når lukket */
-.drawer { inset: 0; }
-.drawer-panel { right: -100vw; max-width: 320px; width: 86vw; }
-@media (min-width: 480px){ .drawer-panel { right: -320px; width: 320px; } }
-.drawer[aria-hidden="false"] .drawer-panel { right: 0; }
 
 /* =========================
    CTA
@@ -195,49 +206,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 /* =========================
-   Safety tweaks
+   Safety
    ========================= */
 .hero-card{ background: var(--card); border:1px solid var(--border); }
-
-/* ====== HOTFIXES (append at end of styles.css) ====== */
-
-/* 1) Kill horizontal scrolling (drawer off-canvas + marquee transforms) */
-html, body { width: 100%; overflow-x: hidden; }
-.drawer { inset: 0; overflow: hidden; }              /* keep panel from affecting layout */
-.drawer-panel {
-  max-width: 320px;
-  width: 86vw;                                       /* smaller on tiny phones */
-  right: -100vw;                                     /* push fully off-screen by default */
-}
-@media (min-width: 480px){
-  .drawer-panel { width: 320px; right: -320px; }     /* exact off-screen on ≥480px */
-}
-
-/* 2) Burger should sit at the far right on tablet/mobile */
-.header-inner { justify-content: space-between; }    /* stable spacing on all sizes */
-.nav { margin-left: 0; }                             /* no longer needed with space-between */
-@media (max-width: 900px){
-  .header-inner { position: relative; }
-  .burger{
-    display: block;
-    position: absolute;
-    right: 0;                                        /* top-right corner */
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-  }
-}
-
-/* 3) Drawer footer: remove “Theme” label, keep the dot aligned right */
-.drawer-tools { justify-content: flex-end; }
-.drawer-tools span { display: none; }
-
-/* 4) Marquee polish: ensure it never expands layout; add soft edge masks */
-.cards-marquee { position: relative; overflow: hidden; }
-.cards-track { will-change: transform; }
-.cards-marquee::before,
-.cards-marquee::after{
-  content: ""; position: absolute; top: 0; bottom: 0; width: 24px; pointer-events: none;
-}
-.cards-marquee::before{ left: 0;  background: linear-gradient(to right, var(--card), transparent); }
-.cards-marquee::after { right: 0; background: linear-gradient(to left,  var(--card), transparent); }
