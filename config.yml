@@ -1,0 +1,12 @@
+title: NEARWEEK
+description: Exploring where AI meets crypto.
+url: ""        # sæt dit domæne senere (https://nearweek.com)
+baseurl: ""    # hvis projekt-pages: "/nearweek-site", ellers tom
+
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Sørg for at GitHub Pages’ bundt understøtter plugins ovenfor.
