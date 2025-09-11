@@ -97,3 +97,30 @@ img,video{display:block;max-width:100%}
 @media (prefers-reduced-motion:reduce){
   .cards-track{animation:none}
 }
+
+/* tiny theme dot */
+.theme-dot{
+  width: 14px; height: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.02) inset;
+  display:inline-block;
+  cursor:pointer;
+  margin-left: 6px;
+  transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+}
+.theme-dot.on{ background: var(--text); border-color: var(--text); }
+.theme-dot:hover{ transform: scale(1.15); }
+
+/* logo swap (optional – if you prefer white logo in dark) */
+/* .brand-logo { content: url("/images/_logo_horizontal_black.png"); }
+:root[data-theme="dark"] .brand-logo { content: url("/images/_logo_horizontal_white.png"); } */
+
+/* make sure header/footer layout stays stable even before JS */
+.header .nav a { opacity:.9; transition: transform .15s ease, opacity .15s ease; }
+.header .nav a:hover { opacity:1; transform: scale(1.2); }
+.footer .nav a:hover { transform: scale(1.2); }
+
+/* ensure videos/hero boxes have visible background in light */
+.hero-card { background: var(--card); border:1px solid var(--border); }
