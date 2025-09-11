@@ -154,8 +154,8 @@ html[data-theme="dark"] .brand-logo--dark  { display: block; }
 .theme-dot:hover{ transform: scale(1.15); }
 
 /* logo swap (optional – if you prefer white logo in dark) */
-/* .brand-logo { content: url("/images/_logo_horizontal_black.png"); }
-:root[data-theme="dark"] .brand-logo { content: url("/images/_logo_horizontal_white.png"); } */
+/* .brand-logo { content: url("/images/_Logo_horisontal_black.png"); }
+:root[data-theme="dark"] .brand-logo { content: url("/images/_Logo_horisontal_white.png"); } */
 
 /* make sure header/footer layout stays stable even before JS */
 .header .nav a { opacity:.9; transition: transform .15s ease, opacity .15s ease; }
