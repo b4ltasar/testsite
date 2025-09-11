@@ -1,64 +1,93 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}"/>
 
-  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.title }}</title>
-  <meta name="description" content="{{ page.description | default: site.description }}">
-
-  <!-- Apply saved theme BEFORE paint (default = light) -->
+  <!-- Prevent theme flash: read localStorage *before* CSS -->
   <script>
-    (function () {
+    (function() {
       try {
-        var t = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', t);
+        var saved = localStorage.getItem("nw-theme");
+        var theme = saved || "light";            // default: light
+        document.documentElement.setAttribute("data-theme", theme);
       } catch (e) {}
     })();
   </script>
 
-  <!-- Theme tokens (light/dark) -->
-  <style>
-    :root{
-      --bg:#ffffff; --text:#0b0b0b; --muted:#6b7280; --card:#ffffff; --border:#e5e7eb; --accent:#111111;
-    }
-    :root[data-theme="dark"]{
-      --bg:#0f1114; --text:#e7e9ee; --muted:#9aa3b2; --card:#14171b; --border:#262b31; --accent:#e7e9ee;
-    }
-  </style>
-
-  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+  <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}" />
 </head>
-<body style="background:var(--bg); color:var(--text)">
+<body>
 
   <!-- Header -->
-  <header class="header container">
-    <a href="{{ '/' | relative_url }}" class="brand" aria-label="NEARWEEK">
-      <img class="brand-logo" src="{{ '/images/_Logo_horizontal_black.png' | relative_url }}" alt="NEARWEEK">
-    </a>
+  <header class="header">
+    <div class="header-inner container">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="NEARWEEK">
+        <!-- Two sources; CSS hides the irrelevant one based on theme -->
+        <img class="brand-logo brand-logo--light" src="{{ '/images/_Logo_horizontal_black.png' | relative_url }}" alt="NEARWEEK" />
+        <img class="brand-logo brand-logo--dark"  src="{{ '/images/_Logo_horizontal_white.png' | relative_url }}" alt="NEARWEEK" />
+      </a>
 
-    <nav class="nav">
-      <a href="#newsletter">NEWSLETTER</a>
-      <a href="#blog">BLOG</a>
-      <a href="#community">COMMUNITY</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#newsletter">NEWSLETTER</a>
+        <a href="#blog">BLOG</a>
+        <a href="#community">COMMUNITY</a>
+      </nav>
+
       <!-- tiny theme dot -->
-      <button class="theme-dot" id="themeDot" aria-label="Toggle dark mode"></button>
-    </nav>
+      <button id="theme-dot" class="dot" aria-label="Toggle dark mode"></button>
+
+      <!-- hamburger for tablet/mobile -->
+      <button id="burger" class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  {{ content }}
+  <!-- Drawer -->
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="NEARWEEK">
+          <img class="brand-logo brand-logo--light" src="{{ '/images/_Logo_horizontal_black.png' | relative_url }}" alt="NEARWEEK" />
+          <img class="brand-logo brand-logo--dark"  src="{{ '/images/_Logo_horizontal_white.png' | relative_url }}" alt="NEARWEEK" />
+        </a>
+        <button id="drawer-close" class="drawer-close" aria-label="Close menu">×</button>
+      </div>
+      <nav class="drawer-nav">
+        <a href="#newsletter">NEWSLETTER</a>
+        <a href="#blog">BLOG</a>
+        <a href="#community">COMMUNITY</a>
+      </nav>
 
-  <!-- Footer -->
-  <footer class="footer container">
-    <a href="{{ '/' | relative_url }}" aria-label="NEARWEEK">
-      <img class="brand-logo" src="{{ '/images/_logo_horizontal_black.png' | relative_url }}" alt="NEARWEEK">
-    </a>
-    <nav class="nav">
-      <a href="#newsletter">NEWSLETTER</a>
-      <a href="#blog">BLOG</a>
-      <a href="#community">COMMUNITY</a>
-    </nav>
-    <small>© {{ "now" | date: "%Y" }}, NEARWEEK. All rights reserved.</small>
+      <div class="drawer-tools">
+        <span>Theme</span>
+        <button id="theme-dot-drawer" class="dot"></button>
+      </div>
+    </div>
+    <div class="drawer-backdrop" tabindex="-1"></div>
+  </aside>
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="NEARWEEK">
+        <img class="brand-logo brand-logo--light" src="{{ '/images/_Logo_horizontal_black.png' | relative_url }}" alt="NEARWEEK" />
+        <img class="brand-logo brand-logo--dark"  src="{{ '/images/_Logo_horizontal_white.png' | relative_url }}" alt="NEARWEEK" />
+      </a>
+      <nav class="nav">
+        <a href="#newsletter">NEWSLETTER</a>
+        <a href="#blog">BLOG</a>
+        <a href="#community">COMMUNITY</a>
+      </nav>
+      <small>© {{ "now" | date: "%Y" }}, NEARWEEK. All rights reserved.</small>
+    </div>
   </footer>
 
   <script src="{{ '/assets/main.js' | relative_url }}" defer></script>
