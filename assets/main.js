@@ -1,48 +1,39 @@
-/* Theme + Drawer */
-
-(function () {
-  var root = document.documentElement;
-
-  function setTheme(t) {
-    root.setAttribute("data-theme", t);
-    try { localStorage.setItem("nw-theme", t); } catch(e){}
-  }
-  function toggleTheme() {
-    var now = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    setTheme(now);
-  }
-
-  // attach to both dots (header + drawer)
-  function hookThemeDot(id){
-    var el = document.getElementById(id);
-    if (el) el.addEventListener("click", toggleTheme);
-  }
-  hookThemeDot("theme-dot");
-  hookThemeDot("theme-dot-drawer");
-
-  // Drawer
-  var drawer   = document.getElementById("drawer");
-  var burger   = document.getElementById("burger");
-  var closeBtn = document.getElementById("drawer-close");
-  var backdrop = drawer ? drawer.querySelector(".drawer-backdrop") : null;
-
-  function openDrawer() {
-    if (!drawer) return;
-    drawer.setAttribute("aria-hidden", "false");
-    if (burger) burger.setAttribute("aria-expanded", "true");
-  }
-  function closeDrawer() {
-    if (!drawer) return;
-    drawer.setAttribute("aria-hidden", "true");
-    if (burger) burger.setAttribute("aria-expanded", "false");
-  }
-
-  if (burger)  burger.addEventListener("click", openDrawer);
-  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
-  if (backdrop) backdrop.addEventListener("click", closeDrawer);
-
-  // close on ESC
-  document.addEventListener("keydown", function(e){
-    if (e.key === "Escape") closeDrawer();
+// Theme ----------------------------------------------------
+const root = document.documentElement;
+const getTheme = () => localStorage.getItem("nw-theme") || "light";
+const setTheme = (t) => {
+  root.setAttribute("data-theme", t);
+  localStorage.setItem("nw-theme", t);
+  // opdatér de små dots' visuelle state
+  document.querySelectorAll(".dot").forEach(d => {
+    if (t === "dark") d.classList.add("on"); else d.classList.remove("on");
   });
-})();
+};
+
+// init
+setTheme(getTheme());
+
+// togglers
+const toggleTheme = () => setTheme(getTheme() === "light" ? "dark" : "light");
+document.getElementById("theme-dot")?.addEventListener("click", toggleTheme);
+document.getElementById("theme-dot-drawer")?.addEventListener("click", toggleTheme);
+
+// Drawer ---------------------------------------------------
+const drawer = document.getElementById("drawer");
+const burger = document.getElementById("burger");
+const closeBtn = document.getElementById("drawer-close");
+const backdrop = drawer?.querySelector(".drawer-backdrop");
+
+function openDrawer(){
+  drawer.setAttribute("aria-hidden", "false");
+  burger.setAttribute("aria-expanded", "true");
+}
+function closeDrawer(){
+  drawer.setAttribute("aria-hidden", "true");
+  burger.setAttribute("aria-expanded", "false");
+}
+
+burger?.addEventListener("click", openDrawer);
+closeBtn?.addEventListener("click", closeDrawer);
+backdrop?.addEventListener("click", closeDrawer);
+window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeDrawer(); });
