@@ -2,13 +2,9 @@
    Base
    ========================= */
 * { box-sizing: border-box; }
-
-html { min-height: 100%; background: var(--bg); }
-html, body { width: 100%; height: 100%; overflow-x: hidden; }
-
+html, body { height: 100%; width:100%; overflow-x:hidden; }
 body{
   margin: 0;
-  min-height: 100svh;
   background: var(--bg);
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
@@ -23,9 +19,6 @@ img, video { display: block; max-width: 100%; }
 .container { width: min(1200px, 92vw); margin-inline: auto; }
 .section { padding: 56px 0; }
 .stack > * + * { margin-top: 12px; }
-
-/* lock body scroll when drawer is open */
-body.no-scroll { overflow: hidden; height: 100svh; }
 
 /* =========================
    Header
@@ -49,14 +42,14 @@ html[data-theme="dark"] .brand-logo--dark  { display: block; }
   border: 1px solid var(--border);
   background: var(--bg);
   box-shadow: 0 0 0 2px rgba(0,0,0,.02) inset;
-  display: inline-block; cursor: pointer; margin-left: 6px;
+  display: inline-block; cursor: pointer;
   transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
 }
 .dot.on{ background: var(--text); border-color: var(--text); }
 .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .dot:hover{ transform: scale(1.15); }
 
-/* hamburger (hidden on desktop) */
+/* hamburger */
 .burger { display: none; width: 34px; height: 30px; position: relative; }
 .burger span {
   position:absolute; left:4px; right:4px; height:2px; background: var(--text);
@@ -66,59 +59,50 @@ html[data-theme="dark"] .brand-logo--dark  { display: block; }
 .burger span:nth-child(2){ top:14px; }
 .burger span:nth-child(3){ top:20px; }
 
-/* mobile/tablet header layout */
 @media (max-width: 900px){
-  .nav { display: none; }                                     /* skjul desktop-nav */
-  .header .header-inner { position: relative; }
-  .header .brand { margin-right: auto; }
-  .header .burger{
+  .nav { display: none; }
+  .burger{
     display: block;
-    position: absolute; right: 16px; top: 50%;
+    position: absolute; right: 0; top: 50%;
     transform: translateY(-50%);
-    margin: 0;
   }
+  .header-inner { position: relative; }
 }
 
 /* =========================
    Drawer (mobile nav)
    ========================= */
-.drawer { position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow: hidden; }
-
+.drawer { position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow:hidden; }
 .drawer-panel{
-  position: absolute; top: 0; bottom: 0;
-  right: -100vw;                 /* helt ude af skærm når lukket */
-  width: 86vw; max-width: 320px;
+  position:absolute; top:0; bottom:0;
+  right:-100vw;         /* helt væk i lukket tilstand */
+  width:86vw; max-width:320px;
   background: var(--bg);
-  border-left: 1px solid var(--border);
-  display: flex; flex-direction: column; gap: 16px; padding: 16px;
-  transition: right .2s ease;
+  border-left:1px solid var(--border);
+  display:flex; flex-direction:column; gap:16px; padding:16px;
+  transition:right .2s ease;
 }
-/* tving absolut tone hvis ønsket */
+@media (min-width:480px){ .drawer-panel{ right:-320px; width:320px; } }
 html[data-theme="light"] .drawer-panel{ background:#fff; }
 html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
-@media (min-width: 480px){
-  .drawer-panel{ right: -320px; width: 320px; }     /* eksakt off-screen */
-}
-
 .drawer-backdrop{
-  position: absolute; inset: 0;
-  background: rgba(0,0,0,.25);
-  opacity: 0; visibility: hidden;
-  transition: opacity .2s ease, visibility 0s .2s;
+  position:absolute; inset:0; background:rgba(0,0,0,.25);
+  opacity:0; visibility:hidden; transition:opacity .2s ease, visibility 0s .2s;
 }
+.drawer[aria-hidden="false"]{ pointer-events:auto; }
+.drawer[aria-hidden="false"] .drawer-panel{ right:0; }
+.drawer[aria-hidden="false"] .drawer-backdrop{ opacity:1; visibility:visible; transition-delay:0s; }
 
-.drawer[aria-hidden="false"] { pointer-events: auto; }
-.drawer[aria-hidden="false"] .drawer-panel{ right: 0; }
-.drawer[aria-hidden="false"] .drawer-backdrop{ opacity: 1; visibility: visible; transition-delay: 0s; }
-
-/* Drawer content */
 .drawer-head{ display:flex; align-items:center; justify-content:space-between; }
 .drawer-close{ font-size:26px; line-height:1; background:none; border:0; color:var(--text); cursor:pointer; }
+
 .drawer-nav{ display:grid; gap:14px; }
 .drawer-nav a{ font-weight:600; }
-.drawer-tools{ display:flex; align-items:center; justify-content:flex-end; margin-top:auto; padding-top:8px; border-top:1px solid var(--border); }
-.drawer-tools span{ display:none; }                 /* fjern 'Theme' label */
+
+/* kun dot, ingen label */
+.drawer-tools{ margin-top:auto; padding-top:8px; border-top:1px solid var(--border); display:flex; justify-content:flex-end; }
+.drawer-tools span{ display:none; }
 
 /* =========================
    Hero
@@ -138,7 +122,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .hero-card video, .hero-card img{
   position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
 }
-
 @media (max-width: 900px){
   .hero-grid{ grid-template-columns:1fr; gap:28px; }
 }
@@ -146,19 +129,12 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Cards marquee
    ========================= */
-.cards-marquee{ position: relative; overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); }
-.cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change: transform; }
+.cards-marquee{ position:relative; overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); }
+.cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change:transform; }
 .cards-marquee:hover .cards-track{ animation-play-state:paused; }
 @keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
-/* soft edge masks (ikke interaktive) */
-.cards-marquee::before,
-.cards-marquee::after{
-  content: ""; position: absolute; top: 0; bottom: 0; width: 24px; pointer-events: none;
-}
-.cards-marquee::before{ left: 0;  background: linear-gradient(to right, var(--card), transparent); }
-.cards-marquee::after { right: 0; background: linear-gradient(to left,  var(--card), transparent); }
-
+/* kort */
 .mcard{
   flex:0 0 340px; background:var(--card); border:1px solid var(--border);
   border-radius:14px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.06);
@@ -168,10 +144,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .mcard-body{ padding:12px 14px 14px; }
 .mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
 .mcard-text{ color:var(--muted); font-size:14px; }
-
-@media (prefers-reduced-motion: reduce){
-  .cards-track{ animation: none; }
-}
 
 /* =========================
    CTA
