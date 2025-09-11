@@ -56,3 +56,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') closeDrawer();
   });
 });
+
+(function () {
+  var root = document.documentElement;
+  var btn  = document.getElementById('themeDot');
+
+  // sync initial visual state (dot fill)
+  function paintDot() {
+    var t = root.getAttribute('data-theme') || 'light';
+    if (t === 'dark') btn.classList.add('on'); else btn.classList.remove('on');
+  }
+
+  // toggle handler
+  function toggleTheme() {
+    var t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', t);
+    try { localStorage.setItem('theme', t); } catch(e) {}
+    paintDot();
+  }
+
+  if (btn) {
+    btn.addEventListener('click', toggleTheme);
+    paintDot();
+  }
+})();
