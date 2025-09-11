@@ -1,6 +1,5 @@
 title: "THE END IS NEAR"
-lead1: "NEARWEEK deliver curated news, insightful analysis, and real-time updates on the builders, projects, and innovations shaping the future of AI x Web3. Our mission is to connect the global NEAR community with trusted information, enabling everyone to understand, participate in, and help build the open web. Stay informed. Stay early. Stay NEAR."
-lead2: ""
-lead3: ""
-video: "/images/webpage_loop_small.mp4" # sørg for at filnavn stemmer
-giant_image: ""                         # udfyld hvis du vil have stort billede senere
+lead1: "NEARWEEK deliver curated news…"
+lead2: "Our mission is to connect…"
+lead3: "Stay informed. Stay early. Stay NEAR."
+video: "/images/webpage_loop_small.mp4" 
