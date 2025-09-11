@@ -181,3 +181,46 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    Safety tweaks
    ========================= */
 .hero-card{ background: var(--card); border:1px solid var(--border); }
+
+/* ====== HOTFIXES (append at end of styles.css) ====== */
+
+/* 1) Kill horizontal scrolling (drawer off-canvas + marquee transforms) */
+html, body { width: 100%; overflow-x: hidden; }
+.drawer { inset: 0; overflow: hidden; }              /* keep panel from affecting layout */
+.drawer-panel {
+  max-width: 320px;
+  width: 86vw;                                       /* smaller on tiny phones */
+  right: -100vw;                                     /* push fully off-screen by default */
+}
+@media (min-width: 480px){
+  .drawer-panel { width: 320px; right: -320px; }     /* exact off-screen on ≥480px */
+}
+
+/* 2) Burger should sit at the far right on tablet/mobile */
+.header-inner { justify-content: space-between; }    /* stable spacing on all sizes */
+.nav { margin-left: 0; }                             /* no longer needed with space-between */
+@media (max-width: 900px){
+  .header-inner { position: relative; }
+  .burger{
+    display: block;
+    position: absolute;
+    right: 0;                                        /* top-right corner */
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+  }
+}
+
+/* 3) Drawer footer: remove “Theme” label, keep the dot aligned right */
+.drawer-tools { justify-content: flex-end; }
+.drawer-tools span { display: none; }
+
+/* 4) Marquee polish: ensure it never expands layout; add soft edge masks */
+.cards-marquee { position: relative; overflow: hidden; }
+.cards-track { will-change: transform; }
+.cards-marquee::before,
+.cards-marquee::after{
+  content: ""; position: absolute; top: 0; bottom: 0; width: 24px; pointer-events: none;
+}
+.cards-marquee::before{ left: 0;  background: linear-gradient(to right, var(--card), transparent); }
+.cards-marquee::after { right: 0; background: linear-gradient(to left,  var(--card), transparent); }
