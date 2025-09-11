@@ -60,13 +60,22 @@ html[data-theme="dark"] .brand-logo--dark  { display: block; }
 .burger span:nth-child(3){ top:20px; }
 
 @media (max-width: 900px){
-  .nav { display: none; }
-  .burger { display: inline-block; margin-left: auto; }
+  .header .nav { display: none; }
+  .header .header-inner { position: relative; justify-content: flex-start; }
+  .header .brand { margin-right: auto; }
+  .header .burger{
+    display: block;
+    position: absolute; right: 16px; top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
 }
 
 /* =========================
    Drawer (mobile nav)
    ========================= */
+
+  }
+}
 .drawer { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
 
 .drawer-panel{
@@ -144,6 +153,14 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 @media (prefers-reduced-motion: reduce){
   .cards-track{ animation: none; }
 }
+/* Marquee må ikke lave horisontal scroll */
+.cards-marquee { overflow: hidden; }
+
+/* Drawer står helt uden for skærm når lukket */
+.drawer { inset: 0; }
+.drawer-panel { right: -100vw; max-width: 320px; width: 86vw; }
+@media (min-width: 480px){ .drawer-panel { right: -320px; width: 320px; } }
+.drawer[aria-hidden="false"] .drawer-panel { right: 0; }
 
 /* =========================
    CTA
