@@ -4,7 +4,7 @@
       <a class="mcard" href="{{ card.link }}" target="_blank" rel="noopener">
         <span class="mcard-media">
           {% if card.image %}
-            <img src="{{ card.image | relative_url }}" alt="{{ card.title }}">
+            <img src="{{ card.image | replace: ' ', '%20' | relative_url }}" alt="{{ card.title }}" loading="lazy" decoding="async">
           {% endif %}
         </span>
         <div class="mcard-body">
@@ -19,7 +19,7 @@
       <a class="mcard" href="{{ card.link }}" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
         <span class="mcard-media">
           {% if card.image %}
-            <img src="{{ card.image | relative_url }}" alt="">
+            <img src="{{ card.image | replace: ' ', '%20' | relative_url }}" alt="" loading="lazy" decoding="async">
           {% endif %}
         </span>
         <div class="mcard-body">

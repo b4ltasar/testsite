@@ -1,3 +1,5 @@
+# Site theme colors. Change values to update the site's look.
+# Use valid CSS color values (e.g. #RRGGBB or rgba()).
 light:
   bg: "#ffffff"
   text: "#0a0a0a"

@@ -1,15 +1,18 @@
+# Edit the scrolling cards here.
+# Each item needs: title, text, image, link.
+# Image: path under /images; Link: full URL or site path.
 items:
   - title: "AI Superchain"
     text: "Læs om AI og NEAR"
-    image: "/images/ai-superchain-card.jpg"   # læg billedet når du har det
+    image: "/images/dragonshit.png"
     link:  "https://nearweek.com/newsletter"
 
   - title: "Reclaim Sovereignty"
     text: "Et call-to-action"
-    image: "/images/sovereignty-card.jpg"
+    image: "/images/magazinepic.png"
     link:  "https://nearweek.com"
 
   - title: "TEN AI COMMANDMENTS T-SHIRT"
     text: "COMING SOON"
-    image: "/images/tshirt-card.jpg"
+    image: "/images/ten_ai_commandments.png"
     link:  "https://nearweek.com/store"

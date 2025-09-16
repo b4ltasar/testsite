@@ -1,260 +1,30 @@
 ---
-layout: null
+layout: default
+title: NEARWEEK — The End is Near
 ---
-<!DOCTYPE html>
-<html lang="da" class="bg-white text-black">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>NEARWEEK — The End is Near</title>
 
-  <!-- Tailwind (CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            inter: ['Inter','system-ui','-apple-system','Segoe UI','Roboto','Arial','sans-serif'],
-            mono: ['Fragment Mono','ui-monospace','SFMono-Regular','Menlo','monospace']
-          },
-          colors: {
-            border: { DEFAULT: 'rgb(0 0 0 / 0.12)' }
-          },
-          boxShadow: { card: '0 8px 30px rgba(0,0,0,.06)' }
-        }
-      }
-    }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Fragment+Mono&display=swap" rel="stylesheet" />
+{% include hero.html %}
 
-  <!-- Prevent theme flash -->
-  <script>
-    (function(){
-      try {
-        const saved = localStorage.getItem('nw-theme') || 'light';
-        if (saved === 'dark') document.documentElement.classList.add('dark');
-      } catch(e){}
-    })();
-  </script>
+{% include cards-marquee.html %}
 
-  <style>
-    .brand-img{height:26px}
-    .brand-dark{display:none}
-    .dark .brand-light{display:none}
-    .dark .brand-dark{display:block}
+<section class="section">
+  <div class="hero-card">
+    <video autoplay loop muted playsinline preload="metadata" class="w-full h-auto" style="max-height:520px; object-fit:cover;">
+      <source src="/images/webpage_loop2.mp4" type="video/mp4" />
+    </video>
+  </div>
+  <div class="cta">
+    <h2 class="big">DATA IS POWER.</h2>
+    <p class="sub">BUILD THE FUTURE YOU WANT TO PASS TO FUTURE GENERATIONS.</p>
+    <a href="https://nearweek.com/newsletter" target="_blank" rel="noopener" class="cta-button">
+      SIGN UP FOR THE OFFICIAL NEAR NEWSLETTER
+      <svg style="margin-left:8px" width="20" height="20" viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 12.5H34V32.5" stroke="currentColor" stroke-width="2" />
+        <path d="M14 31.875L33.375 13.7109" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </a>
+    <div class="since">IN THE TRENCHES SINCE 2021</div>
+  </div>
+</section>
 
-    /* tiny theme dot */
-    #themeDot{width:12px;height:12px;border-radius:9999px;border:1px solid rgba(0,0,0,.15)}
-    .dark #themeDot{border-color:rgba(255,255,255,.25)}
-    #themeDot.on{background:currentColor}
 
-    /* marquee */
-    @keyframes slide { from{transform:translateX(0)} to{ transform:translateX(-50%)} }
-    .marquee-track{animation:slide 40s linear infinite; width:max-content}
-    .marquee:hover .marquee-track{animation-play-state:paused}
-  </style>
-</head>
-
-<body class="font-inter bg-white text-black dark:bg-neutral-900 dark:text-white">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/85 dark:bg-neutral-900/85 backdrop-blur border-b border-border dark:border-white/10">
-    <div class="max-w-[1200px] mx-auto px-4 md:px-6 flex items-center gap-4 py-3">
-      <a href="/" class="inline-flex items-center" aria-label="NEARWEEK">
-        <!-- swap by theme -->
-        <img class="brand-img brand-light" src="/images/_Logo_horisontal_black.png" alt="NEARWEEK" />
-        <img class="brand-img brand-dark"  src="/images/_Logo_horisontal_white.png" alt="NEARWEEK" />
-      </a>
-
-      <nav class="ml-auto hidden md:flex items-center gap-8">
-        <a href="#newsletter" class="hover:opacity-100 opacity-90 transition transform hover:scale-110">NEWSLETTER</a>
-        <a href="#blog"        class="hover:opacity-100 opacity-90 transition transform hover:scale-110">BLOG</a>
-        <a href="#community"   class="hover:opacity-100 opacity-90 transition transform hover:scale-110">COMMUNITY</a>
-      </nav>
-
-      <!-- theme dot -->
-      <button id="themeDot" class="ml-1 text-black dark:text-white inline-block" aria-label="Toggle dark mode" title="Toggle dark"></button>
-
-      <!-- burger -->
-      <button id="burger" class="md:hidden ml-2 w-8 h-7 relative" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
-        <span class="absolute left-1 right-1 top-2 h-0.5 bg-current"></span>
-        <span class="absolute left-1 right-1 top-3.5 h-0.5 bg-current"></span>
-        <span class="absolute left-1 right-1 top-5 h-0.5 bg-current"></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Drawer -->
-  <aside id="drawer" class="fixed inset-0 z-50 pointer-events-none">
-    <div class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-200" data-backdrop></div>
-    <nav class="absolute right-[-340px] top-0 bottom-0 w-[320px] bg-white dark:bg-neutral-900 border-l border-border dark:border-white/10 p-5 flex flex-col gap-5 transition-[right] duration-200">
-      <div class="flex items-center justify-between">
-        <a href="/" aria-label="NEARWEEK">
-          <img class="brand-img brand-light" src="/images/_Logo_horisontal_black.png" alt="NEARWEEK" />
-          <img class="brand-img brand-dark"  src="/images/_Logo_horisontal_white.png" alt="NEARWEEK" />
-        </a>
-        <button class="text-2xl leading-none" data-close aria-label="Luk">×</button>
-      </div>
-      <a href="#newsletter">NEWSLETTER</a>
-      <a href="#blog">BLOG</a>
-      <a href="#community">COMMUNITY</a>
-
-      <div class="mt-auto pt-4 border-t border-border dark:border-white/10 flex items-center justify-between">
-        <span class="text-sm opacity-75">Theme</span>
-        <button id="themeDotDrawer" class="w-4 h-4 rounded-full border border-border dark:border-white/25"></button>
-      </div>
-    </nav>
-  </aside>
-
-  <main class="max-w-[1200px] mx-auto px-4 md:px-6">
-    <!-- Hero -->
-    <section class="grid grid-cols-1 lg:grid-cols-[1.2fr_.8fr] gap-10 items-center py-10">
-      <div class="space-y-3">
-        <h1 class="text-3xl md:text-4xl font-extrabold">THE END IS NEAR</h1>
-        <p class="text-black/70 dark:text-white/70">NEARWEEK deliver curated news, insightful analysis, and real-time updates on the builders, projects, and innovations shaping the future of AI x Web3.</p>
-        <p class="text-black/70 dark:text-white/70">Our mission is to connect the global NEAR community with trusted information, enabling everyone to understand, participate in, and help build the open web.</p>
-        <p class="text-black/70 dark:text-white/70">Stay informed. Stay early. Stay NEAR.</p>
-      </div>
-
-      <div class="relative aspect-[4/3] rounded-xl border border-border dark:border-white/10 overflow-hidden shadow-card">
-        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-          <source src="/images/webpage_loop_small.mp4" type="video/mp4" />
-        </video>
-      </div>
-    </section>
-
-    <!-- Cards marquee -->
-    <section class="marquee border-y border-border dark:border-white/10 bg-white dark:bg-neutral-900">
-      <div class="marquee-track flex gap-4 py-4">
-        <!-- duplicate set once for seamless loop -->
-        <template id="cards">
-          <a class="block w-[340px] rounded-xl border border-border dark:border-white/10 overflow-hidden shadow-card bg-white dark:bg-neutral-800">
-            <div class="relative aspect-[16/9] bg-black">
-              <img src="/images/magazinepic.png" alt="Newsletter" class="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <div class="p-3">
-              <div class="font-semibold">Reclaim Sovereignty</div>
-              <div class="text-sm opacity-70">Et call-to-action</div>
-            </div>
-          </a>
-
-          <a class="block w-[340px] rounded-xl border border-border dark:border-white/10 overflow-hidden shadow-card bg-white dark:bg-neutral-800">
-            <div class="relative aspect-[16/9] bg-black">
-              <img src="/images/dragonshit.png" alt="AI Superchain" class="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <div class="p-3">
-              <div class="font-semibold">AI Superchain</div>
-              <div class="text-sm opacity-70">Læs om AI og NEAR</div>
-            </div>
-          </a>
-
-          <a class="block w-[340px] rounded-xl border border-border dark:border-white/10 overflow-hidden shadow-card bg-white dark:bg-neutral-800">
-            <div class="relative aspect-[16/9] bg-black">
-              <img src="/images/ten_ai_commandments.png" alt="T-Shirt" class="absolute inset-0 w-full h-full object-cover" />
-            </div>
-            <div class="p-3">
-              <div class="font-semibold">TEN AI COMMANDMENTS T-SHIRT</div>
-              <div class="text-sm opacity-70">COMING SOON</div>
-            </div>
-          </a>
-        </template>
-
-        <div class="flex gap-4" id="trackA"></div>
-        <div class="flex gap-4" id="trackB"></div>
-      </div>
-    </section>
-
-    <!-- Big visual -->
-    <section class="py-10">
-      <div class="relative rounded-xl overflow-hidden border border-border dark:border-white/10">
-        <video autoplay loop muted playsinline class="w-full h-auto max-h-[520px] object-cover">
-          <source src="/images/webpage_loop2.mp4" type="video/mp4" />
-        </video>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="newsletter" class="py-16 text-center">
-      <h2 class="text-5xl font-extrabold mb-3">DATA IS POWER.</h2>
-      <p class="opacity-80 mb-8">BUILD THE FUTURE YOU WANT TO PASS TO FUTURE GENERATIONS.</p>
-      <a href="https://nearweek.com/newsletter" target="_blank" rel="noopener"
-         class="inline-flex items-center justify-center px-7 py-4 rounded-lg border-2 border-current font-bold uppercase tracking-tight hover:scale-105 transition">
-        SIGN UP FOR THE OFFICIAL NEAR NEWSLETTER
-        <svg class="ml-2 w-5 h-5" viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 12.5H34V32.5" stroke="currentColor" stroke-width="2" />
-          <path d="M14 31.875L33.375 13.7109" stroke="currentColor" stroke-width="2"/>
-        </svg>
-      </a>
-      <div class="mt-4 text-xs opacity-70">IN THE TRENCHES SINCE 2021</div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-border dark:border-white/10 mt-10">
-    <div class="max-w-[1200px] mx-auto px-4 md:px-6 py-10 grid gap-4 md:grid-cols-[1fr_auto] items-center">
-      <div class="flex items-center gap-6">
-        <a href="/" aria-label="NEARWEEK">
-          <img class="brand-img brand-light" src="/images/_Logo_horisontal_black.png" alt="NEARWEEK" />
-          <img class="brand-img brand-dark"  src="/images/_Logo_horisontal_white.png" alt="NEARWEEK" />
-        </a>
-        <div class="text-sm opacity-70">
-          EXPLORING WHERE AI MEETS CRYPTO<br>
-          © 2025, NEARWEEK. All rights reserved.
-        </div>
-      </div>
-      <nav class="flex justify-start md:justify-end gap-6">
-        <a href="#newsletter" class="hover:scale-110 transition">NEWSLETTER</a>
-        <a href="#blog" class="hover:scale-110 transition">BLOG</a>
-        <a href="#community" class="hover:scale-110 transition">COMMUNITY</a>
-      </nav>
-    </div>
-  </footer>
-
-  <!-- JS: theme + drawer + marquee dup -->
-  <script>
-    // Theme
-    const applyDot = () => {
-      const on = document.documentElement.classList.contains('dark');
-      document.getElementById('themeDot')?.classList.toggle('on', on);
-      document.getElementById('themeDotDrawer')?.classList.toggle('bg-white', on);
-      document.getElementById('themeDotDrawer')?.classList.toggle('bg-black', !on);
-    };
-    function toggleTheme(){
-      const root = document.documentElement;
-      const dark = root.classList.toggle('dark');
-      try { localStorage.setItem('nw-theme', dark ? 'dark' : 'light'); } catch(e){}
-      applyDot();
-    }
-    document.getElementById('themeDot')?.addEventListener('click', toggleTheme);
-    document.getElementById('themeDotDrawer')?.addEventListener('click', toggleTheme);
-    applyDot();
-
-    // Drawer
-    const drawer = document.getElementById('drawer');
-    const panel  = drawer?.querySelector('nav');
-    const backdrop = drawer?.querySelector('[data-backdrop]');
-    function openDrawer(){
-      drawer.style.pointerEvents = 'auto';
-      backdrop.style.opacity = '1';
-      panel.style.right = '0px';
-    }
-    function closeDrawer(){
-      panel.style.right = '-340px';
-      backdrop.style.opacity = '0';
-      setTimeout(()=>{ drawer.style.pointerEvents='none'; }, 200);
-    }
-    document.getElementById('burger')?.addEventListener('click', openDrawer);
-    drawer?.querySelectorAll('[data-close],[data-backdrop]').forEach(el => el.addEventListener('click', closeDrawer));
-
-    // Marquee: duplicate template twice
-    const tpl = document.getElementById('cards');
-    const A = document.getElementById('trackA');
-    const B = document.getElementById('trackB');
-    if (tpl && A && B){
-      A.append(...tpl.content.cloneNode(true).children);
-      B.append(...tpl.content.cloneNode(true).children);
-    }
-  </script>
-</body>
-</html>

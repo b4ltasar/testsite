@@ -1,0 +1,45 @@
+<header class="header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="NEARWEEK">
+      <img class="brand-logo brand-logo--light" src="{{ site.data.nav.logo_header | default: '/images/logo_horisontal_black.png' }}" alt="NEARWEEK" />
+      <img class="brand-logo brand-logo--dark"  src="{{ site.data.nav.logo_footer | default: '/images/_Logo_horisontal_white.png' }}" alt="NEARWEEK" />
+    </a>
+
+    <nav class="nav">
+      {% for item in site.data.nav.header %}
+        <a href="{{ item.href }}">{{ item.text }}</a>
+      {% endfor %}
+      <button id="theme-dot" class="dot" aria-label="Toggle dark mode"></button>
+    </nav>
+
+    <button id="burger" class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-backdrop" aria-hidden="true"></div>
+    <nav class="drawer-panel">
+      <div class="drawer-head">
+        <a href="/" class="brand" aria-label="NEARWEEK">
+          <img class="brand-logo brand-logo--light" src="{{ site.data.nav.logo_header | default: '/images/logo_horisontal_black.png' }}" alt="NEARWEEK" />
+          <img class="brand-logo brand-logo--dark"  src="{{ site.data.nav.logo_footer | default: '/images/_Logo_horisontal_white.png' }}" alt="NEARWEEK" />
+        </a>
+        <button id="drawer-close" class="drawer-close" aria-label="Close">×</button>
+      </div>
+      <div class="drawer-nav">
+        {% for item in site.data.nav.header %}
+          <a href="{{ item.href }}">{{ item.text }}</a>
+        {% endfor %}
+      </div>
+      <div class="drawer-tools">
+        <span>Theme</span>
+        <button id="theme-dot-drawer" class="dot" aria-label="Toggle dark mode"></button>
+      </div>
+    </nav>
+  </aside>
+</header>
+
+

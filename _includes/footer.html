@@ -1,0 +1,16 @@
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="/" class="brand" aria-label="NEARWEEK">
+      <img class="brand-logo brand-logo--light brand-logo--footer" src="{{ site.data.nav.logo_header | default: '/images/logo_horisontal_black.png' }}" alt="NEARWEEK" />
+      <img class="brand-logo brand-logo--dark brand-logo--footer"  src="{{ site.data.nav.logo_footer | default: '/images/_Logo_horisontal_white.png' }}" alt="NEARWEEK" />
+    </a>
+    <nav class="nav">
+      {% for item in site.data.nav.footer %}
+        <a href="{{ item.href }}">{{ item.text }}</a>
+      {% endfor %}
+    </nav>
+    <small>EXPLORING WHERE AI MEETS CRYPTO — © {{ 'now' | date: '%Y' }}, NEARWEEK.</small>
+  </div>
+</footer>
+
+

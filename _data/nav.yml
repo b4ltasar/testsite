@@ -1,4 +1,7 @@
-logo_header: "/images/_Logo_horisontal_black.png"
+# Edit menu labels and links here. Use absolute paths or full URLs.
+# logo_header: light-mode logo path; logo_footer: dark-mode logo path.
+# To add a menu item, copy a line and change text + href.
+logo_header: "/images/logo_horisontal_black.png"
 logo_footer: "/images/_Logo_horisontal_white.png"
 
 header:
