@@ -35,6 +35,16 @@ html[data-theme="dark"] .brand-logo--dark  { display: block; }
 .dark .brand-logo--dark  { display: block; }
 /* Ensure logos are crisp/visible on dark */
 img.brand-logo{ opacity:1; filter:none; mix-blend-mode:normal; width:auto; height:24px; }
+/* Force dark logo visibility */
+html.dark .brand-logo--dark,
+html[data-theme="dark"] .brand-logo--dark {
+  display: block !important;
+  opacity: 1 !important;
+}
+html.dark .brand-logo--light,
+html[data-theme="dark"] .brand-logo--light {
+  display: none !important;
+}
 
 .nav { display: flex; gap: 24px; align-items: center; }
 .nav a { opacity:.9; transition: transform .15s ease, opacity .15s ease; }
@@ -44,12 +54,12 @@ img.brand-logo{ opacity:1; filter:none; mix-blend-mode:normal; width:auto; heigh
 .dot{
   width: 14px; height: 14px; border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--text);
   box-shadow: 0 0 0 2px rgba(0,0,0,.02) inset;
   display: inline-block; cursor: pointer;
   transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
 }
-.dot.on{ background: var(--text); border-color: var(--text); }
+.dot.on{ background: var(--bg); border-color: var(--bg); }
 .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .dot:hover{ transform: scale(1.15); }
 
@@ -139,6 +149,14 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change:transform; }
 .cards-marquee:hover .cards-track{ animation-play-state:paused; }
 .cards-track.paused{ animation-play-state:paused; }
+/* Enable horizontal scrolling on mobile */
+@media (max-width: 768px) {
+  .cards-marquee{ overflow-x: auto; overflow-y: hidden; }
+  .cards-track{ animation: none; }
+  .cards-marquee::-webkit-scrollbar { height: 4px; }
+  .cards-marquee::-webkit-scrollbar-track { background: var(--border); }
+  .cards-marquee::-webkit-scrollbar-thumb { background: var(--text); border-radius: 2px; }
+}
 @keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
 /* kort */
@@ -147,7 +165,9 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   border-radius:14px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.06);
 }
 .mcard-media{ position:relative; aspect-ratio:16/9; overflow:hidden; background:#111; }
-.mcard-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.02); }
+.mcard-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.02); display:block; }
+/* Ensure images are visible */
+.mcard-media img[src] { opacity: 1; visibility: visible; }
 .mcard-body{ padding:12px 14px 14px; }
 .mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
 .mcard-text{ color:var(--muted); font-size:14px; }
