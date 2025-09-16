@@ -21,6 +21,22 @@
   <meta name="twitter:description" content="{{ site.description }}">
   <meta name="twitter:image" content="{{ '/images/magazinepic.png' | relative_url }}">
 
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.title }}",
+    "description": "{{ site.description }}",
+    "url": "{{ site.url }}{{ site.baseurl }}",
+    "logo": "{{ site.url }}{{ site.baseurl }}/images/logo_horisontal_black.png",
+    "sameAs": [
+      "https://twitter.com/nearweek",
+      "https://linkedin.com/company/nearweek"
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />

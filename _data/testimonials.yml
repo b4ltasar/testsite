@@ -1,0 +1,20 @@
+# Customer testimonials and quotes
+# Add testimonials by copying the structure below
+items:
+  - quote: "NEARWEEK has become my go-to source for understanding the intersection of AI and Web3. The insights are always spot-on."
+    author: "Sarah Chen"
+    role: "Blockchain Developer"
+    company: "TechCorp"
+    featured: true
+
+  - quote: "The curated content saves me hours of research. I trust NEARWEEK to surface the most important developments."
+    author: "Marcus Rodriguez"
+    role: "Investment Analyst"
+    company: "CryptoFund"
+    featured: true
+
+  - quote: "Finally, a publication that understands both AI and crypto. The analysis is always thorough and accessible."
+    author: "Dr. Alex Kim"
+    role: "AI Researcher"
+    company: "University of Technology"
+    featured: false

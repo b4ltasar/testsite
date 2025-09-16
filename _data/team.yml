@@ -1,0 +1,17 @@
+# Team members
+# Add team members by copying the structure below
+items:
+  - name: "NEARWEEK Team"
+    role: "Editorial Team"
+    bio: "Dedicated to bringing you the latest in AI x Web3"
+    image: "/images/magazinepic.png"
+    social:
+      twitter: "https://twitter.com/nearweek"
+      linkedin: "https://linkedin.com/company/nearweek"
+
+  - name: "Community Contributors"
+    role: "Community"
+    bio: "Our global community of builders and innovators"
+    image: "/images/dragonshit.png"
+    social:
+      discord: "https://discord.gg/nearweek"
