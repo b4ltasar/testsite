@@ -25,6 +25,11 @@ img, video { display: block; max-width: 100%; }
    ========================= */
 .header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--border); }
 .header-inner { display: flex; align-items: center; gap: 16px; padding: 14px 0; justify-content: space-between; }
+@media (max-width: 1024px) {
+  .header-inner { justify-content: center; }
+  .header-inner .nav { display: none; }
+  .header-inner .burger { display: block; position: absolute; right: 0; }
+}
 
 .brand { display: inline-flex; align-items: center; gap: 8px; }
 .brand-logo { 
@@ -34,11 +39,11 @@ img, video { display: block; max-width: 100%; }
   opacity: 1 !important;
   visibility: visible !important;
 }
-.brand-logo--dark  { display: none; }
-html[data-theme="dark"] .brand-logo--light { display: none; }
-html[data-theme="dark"] .brand-logo--dark  { display: block; }
-.dark .brand-logo--light { display: none; }
-.dark .brand-logo--dark  { display: block; }
+.brand-logo--dark  { display: none !important; }
+html[data-theme="dark"] .brand-logo--light { display: none !important; }
+html[data-theme="dark"] .brand-logo--dark  { display: block !important; }
+.dark .brand-logo--light { display: none !important; }
+.dark .brand-logo--dark  { display: block !important; }
 /* Ensure logos are crisp/visible on dark */
 img.brand-logo{ opacity:1; filter:none; mix-blend-mode:normal; width:auto; height:24px; }
 /* Force dark logo visibility */
@@ -63,12 +68,12 @@ html[data-theme="dark"] .brand-logo--light {
 .dot{
   width: 14px; height: 14px; border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--text);
+  background: var(--bg);
   box-shadow: 0 0 0 2px rgba(0,0,0,.02) inset;
   display: inline-block; cursor: pointer;
   transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
 }
-.dot.on{ background: var(--bg); border-color: var(--bg); }
+.dot.on{ background: var(--text); border-color: var(--text); }
 .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .dot:hover{ transform: scale(1.15); }
 
@@ -176,13 +181,16 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .mcard-media{ position:relative; aspect-ratio:16/9; overflow:hidden; background:#111; }
 .mcard-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.02); display:block; }
 /* Ensure images are visible */
-.mcard-media img[src] { 
+.mcard-media img { 
   opacity: 1 !important; 
   visibility: visible !important; 
   display: block !important;
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  position: absolute !important;
+  inset: 0 !important;
+  transform: scale(1.02) !important;
 }
 .mcard-body{ padding:12px 14px 14px; }
 .mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
