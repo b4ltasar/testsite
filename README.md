@@ -57,3 +57,19 @@ If your GitHub Pages is configured, you can also rely on GitHub to build it auto
 
 - Avoid spaces in filenames; use dashes or underscores.
 - The theme toggle remembers preference in the browser.
+
+## Base URL configuration
+
+If your site is served from a subpath (e.g. https://user.github.io/repo), set in _config.yml:
+
+- url: https://user.github.io
+- baseurl: /repo
+
+Use {{ "relative_url" }} filter for links and assets to respect baseurl.
+
+Local test with baseurl:
+
+```bash
+jekyll serve --baseurl "$$(awk -F: "/baseurl:/ {print $2}" _config.yml | xargs)"
+```
+

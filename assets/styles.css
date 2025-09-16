@@ -129,9 +129,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Cards marquee
    ========================= */
-.cards-marquee{ position:relative; overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); }
+.cards-marquee{ position:relative; overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); touch-action: pan-y; -webkit-overflow-scrolling: touch; }
 .cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change:transform; }
 .cards-marquee:hover .cards-track{ animation-play-state:paused; }
+.cards-track.paused{ animation-play-state:paused; }
 @keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
 
 /* kort */

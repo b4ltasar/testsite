@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ page.title | default: site.title }}</title>
   <link rel="icon" href="{{ '/images/favicon.png' | relative_url }}">
+  <meta name="description" content="{{ site.description }}">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
+  <meta property="og:image" content="{{ '/images/magazinepic.png' | relative_url }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:image" content="{{ '/images/magazinepic.png' | relative_url }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,6 +109,29 @@
         backdrop.addEventListener('click', closeDrawer);
         window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
         links.forEach(function(a){ a.addEventListener('click', closeDrawer); });
+      });
+    })();
+
+    // Marquee touch pause/resume
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        var marquee = document.getElementById('cardsMarquee');
+        if(!marquee) return;
+        var track = marquee.querySelector('.cards-track');
+        if(!track) return;
+        var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+        function pause(){ track.classList.add('paused'); }
+        function resume(){ track.classList.remove('paused'); }
+
+        if(isTouch){
+          marquee.addEventListener('touchstart', pause, {passive:true});
+          marquee.addEventListener('touchend', resume, {passive:true});
+          marquee.addEventListener('touchcancel', resume, {passive:true});
+        }
+        // Also pause when user focuses links via keyboard
+        marquee.addEventListener('focusin', pause);
+        marquee.addEventListener('focusout', resume);
       });
     })();
   </script>
