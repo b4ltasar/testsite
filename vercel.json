@@ -1,0 +1,11 @@
+{
+  "functions": {
+    "api/mailchimp-proxy.js": {
+      "maxDuration": 10
+    }
+  },
+  "env": {
+    "MAILCHIMP_API_KEY": "@mailchimp-api-key",
+    "MAILCHIMP_SERVER_PREFIX": "@mailchimp-server-prefix"
+  }
+}
