@@ -1,28 +1,30 @@
 <div class="cards-marquee" id="cardsMarquee">
   <div class="cards-track">
     {% for card in site.data.cards.items %}
-      <a class="mcard" href="{{ card.link }}" target="_blank" rel="noopener">
-        <span class="mcard-media">
-          <img src="{{ card.image | relative_url }}" alt="{{ card.title }}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-        </span>
+      <div class="mcard">
+        <div class="mcard-media">
+          <img src="{{ card.image | relative_url }}" alt="{{ card.title }}">
+        </div>
         <div class="mcard-body">
           <div class="mcard-title">{{ card.title }}</div>
           <div class="mcard-text">{{ card.text }}</div>
         </div>
-      </a>
+        <a href="{{ card.link }}" target="_blank" rel="noopener" class="mcard-link"></a>
+      </div>
     {% endfor %}
-
-    <!-- duplikér én gang for uendelig rul -->
+    
+    <!-- duplikér for uendelig rul -->
     {% for card in site.data.cards.items %}
-      <a class="mcard" href="{{ card.link }}" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-        <span class="mcard-media">
-          <img src="{{ card.image | relative_url }}" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-        </span>
+      <div class="mcard">
+        <div class="mcard-media">
+          <img src="{{ card.image | relative_url }}" alt="{{ card.title }}">
+        </div>
         <div class="mcard-body">
           <div class="mcard-title">{{ card.title }}</div>
           <div class="mcard-text">{{ card.text }}</div>
         </div>
-      </a>
+        <a href="{{ card.link }}" target="_blank" rel="noopener" class="mcard-link"></a>
+      </div>
     {% endfor %}
   </div>
 </div>
