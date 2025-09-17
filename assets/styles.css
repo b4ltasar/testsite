@@ -518,7 +518,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   grid-template-columns: auto 1fr auto; 
   align-items: center; 
   padding: 24px 0; 
-  gap: 24px;
+  gap: 48px;
 }
 .footer-right{ display: flex; align-items: center; gap: 24px; }
 .footer .nav{ 
