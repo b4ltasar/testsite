@@ -380,13 +380,13 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 .merch-image{
-  margin-bottom: 2px;
+  margin-bottom: 0px;
 }
 
 /* Desktop specific spacing adjustments */
 @media (min-width: 1025px) {
   .merch-image{
-    margin-bottom: 12px;
+    margin-bottom: 4px;
   }
   .cta {
     margin-top: 16px;
