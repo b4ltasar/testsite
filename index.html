@@ -36,8 +36,12 @@ title: NEARWEEK
     <div class="newsletter-content">
       <h2 class="newsletter-title">SIGN UP FOR THE OFFICIAL NEAR NEWSLETTER</h2>
       <div class="newsletter-form">
-        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
-        <button type="submit" class="newsletter-button">Join</button>
+        <form id="newsletter-form" action="https://nearweek.us1.list-manage.com/subscribe/post" method="post" target="_blank" novalidate>
+          <input type="hidden" name="u" value="YOUR_LIST_ID">
+          <input type="hidden" name="id" value="YOUR_AUDIENCE_ID">
+          <input type="email" name="EMAIL" placeholder="Enter your email" class="newsletter-input" required>
+          <button type="submit" class="newsletter-button">Join</button>
+        </form>
       </div>
     </div>
   </div>
