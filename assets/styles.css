@@ -142,7 +142,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .drawer-close{ font-size:26px; line-height:1; background:none; border:0; color:var(--text); cursor:pointer; }
 
 .drawer-nav{ display:grid; gap:14px; padding: 20px 24px; }
-.drawer-nav a{ font-weight:600; }
+.drawer-nav a{ font-weight:600; margin-left: 0; }
 
 .drawer-tools{ display:flex; align-items:center; gap:12px; }
 .drawer-tools span{ display:none; }
@@ -152,6 +152,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   font-size: 14px; 
   font-weight: 400; 
   margin-bottom: 16px; 
+  margin-left: 0;
   color: var(--muted); 
   text-transform: none;
   letter-spacing: 0.5px;
@@ -575,7 +576,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 @media (max-width: 480px){
-  .drawer-newsletter{ padding: 16px 12px; }
+  .drawer-newsletter{ padding: 16px 24px; }
   .drawer-newsletter-title{ font-size: 12px; margin-bottom: 12px; }
   .drawer-newsletter-input{ padding: 12px 14px; font-size: 15px; }
   .drawer-newsletter-button{ padding: 12px 20px; font-size: 15px; }
