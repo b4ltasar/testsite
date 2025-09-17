@@ -550,22 +550,22 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 @media (max-width: 900px){
   .footer-inner{ 
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr !important; 
     text-align: center; 
     gap: 20px;
   }
   .footer .brand{ 
-    justify-self: center; 
-    grid-column: 1;
+    justify-self: center !important; 
+    grid-column: 1 !important;
   }
   .footer .nav{ 
-    justify-self: center; 
-    grid-column: 1;
+    justify-self: center !important; 
+    grid-column: 1 !important;
   }
   .footer-right{ 
-    align-items: center; 
-    justify-self: center; 
-    grid-column: 1;
+    align-items: center !important; 
+    justify-self: center !important; 
+    grid-column: 1 !important;
   }
   .social-icons{ justify-content: center; }
 }
