@@ -1,0 +1,20 @@
+# Merchandise data
+# Add new merchandise items here
+items:
+  - title: "NEARWEEK T-Shirt"
+    description: "Premium quality cotton t-shirt with NEARWEEK branding"
+    image: "/images/merch-tshirt.jpg"
+    price: "$29.99"
+    link: "https://nearweek.com/store/tshirt"
+    
+  - title: "NEARWEEK Hoodie"
+    description: "Comfortable hoodie perfect for the crypto enthusiast"
+    image: "/images/merch-hoodie.jpg"
+    price: "$49.99"
+    link: "https://nearweek.com/store/hoodie"
+    
+  - title: "NEARWEEK Mug"
+    description: "Start your day with NEARWEEK coffee"
+    image: "/images/merch-mug.jpg"
+    price: "$19.99"
+    link: "https://nearweek.com/store/mug"

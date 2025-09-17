@@ -1,0 +1,23 @@
+# Blog posts data
+# Add new blog posts here
+posts:
+  - title: "The Future of AI and Blockchain"
+    excerpt: "Exploring how artificial intelligence is revolutionizing blockchain technology and what it means for the future."
+    image: "/images/blog1.jpg"
+    date: "2025-01-17"
+    author: "NEARWEEK Team"
+    link: "https://nearweek.com/blog/ai-blockchain-future"
+    
+  - title: "NEAR Protocol Updates"
+    excerpt: "Latest developments and updates from the NEAR ecosystem that you need to know about."
+    image: "/images/blog2.jpg"
+    date: "2025-01-15"
+    author: "NEARWEEK Team"
+    link: "https://nearweek.com/blog/near-protocol-updates"
+    
+  - title: "DeFi Trends 2025"
+    excerpt: "What's trending in decentralized finance and how it's shaping the crypto landscape."
+    image: "/images/blog3.jpg"
+    date: "2025-01-12"
+    author: "NEARWEEK Team"
+    link: "https://nearweek.com/blog/defi-trends-2025"
