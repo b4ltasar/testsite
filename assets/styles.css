@@ -359,6 +359,69 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 
 /* =========================
+   Feature Section
+   ========================= */
+.feature-section{ 
+  padding: 40px 0; 
+}
+.feature-grid{ 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 32px; 
+  flex-wrap: wrap;
+}
+.feature-item{ 
+  text-align: center; 
+  transition: transform .3s ease; 
+  max-width: 1200px;
+}
+.feature-item:hover{ 
+  transform: scale(1.05); 
+}
+.feature-image{
+  margin-bottom: 16px;
+}
+.feature-content{
+  margin-top: 0px;
+  padding-top: 0px;
+}
+.feature-image img{ 
+  width: 100%; 
+  max-width: 1200px; 
+  height: auto; 
+  border-radius: 12px; 
+}
+.feature-title{ 
+  font-size: 28px; 
+  font-weight: 700; 
+  margin-bottom: 12px; 
+  color: var(--text);
+}
+.feature-description{ 
+  color: var(--muted); 
+  margin-bottom: 16px; 
+  line-height: 1.5; 
+  font-size: 16px;
+}
+.feature-button{ 
+  display: inline-block; 
+  padding: 12px 24px; 
+  background: transparent; 
+  color: var(--text); 
+  text-decoration: none; 
+  border: 2px solid var(--text); 
+  border-radius: 8px; 
+  font-weight: 600; 
+  transition: all .3s ease; 
+}
+.feature-button:hover{ 
+  background: var(--text); 
+  color: var(--bg); 
+  transform: translateY(-2px); 
+}
+
+/* =========================
    Trenches Section
    ========================= */
 .newsletter-section{ 

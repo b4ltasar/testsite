@@ -1,0 +1,7 @@
+# Feature section data
+items:
+  - title: "NEARWEEK T-Shirt"
+    description: "Premium quality cotton t-shirt with NEARWEEK branding"
+    image: "/images/ten_ai commandments.png"
+    link: "https://nearweek.com/shop"
+    button_text: "Shop Now"

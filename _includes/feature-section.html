@@ -1,0 +1,20 @@
+<section class="feature-section" id="feature">
+  <div class="container">
+    <div class="feature-grid">
+      {% for item in site.data.feature.items %}
+        <div class="feature-item" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 150 }}">
+          <div class="feature-image">
+            <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">{{ item.title }}</h3>
+            <p class="feature-description">{{ item.description }}</p>
+            <a href="{{ item.link }}" target="_blank" rel="noopener" class="feature-button">
+              {{ item.button_text }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
