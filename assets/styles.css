@@ -562,6 +562,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     grid-template-columns: 1fr !important; 
     text-align: center; 
     gap: 20px;
+    position: static !important;
   }
   .footer .brand{ 
     justify-self: center !important; 
@@ -570,6 +571,9 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .footer .nav{ 
     justify-self: center !important; 
     grid-column: 1 !important;
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
   }
   .footer-right{ 
     align-items: center !important; 
