@@ -381,9 +381,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .merch-image{
   margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 .merch-content{
-  margin-top: 0px;
+  margin-top: -10px;
   padding-top: 0px;
 }
 
@@ -391,6 +392,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 @media (min-width: 1025px) {
   .merch-image{
     margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  .merch-content{
+    margin-top: -10px;
   }
   .cta {
     margin-top: 16px;
