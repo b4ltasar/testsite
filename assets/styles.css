@@ -382,6 +382,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .merch-image{
   margin-bottom: 0px;
 }
+.merch-content{
+  margin-top: 0px;
+  padding-top: 0px;
+}
 
 /* Desktop specific spacing adjustments */
 @media (min-width: 1025px) {
