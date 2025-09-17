@@ -386,11 +386,17 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   margin-top: 0px;
   padding-top: 0px;
 }
+.feature-image{ 
+  overflow: hidden;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 0 auto;
+}
 .feature-image img{ 
   width: 100%; 
-  max-width: 1200px; 
   height: auto; 
-  border-radius: 12px; 
+  object-fit: cover;
+  object-position: center;
 }
 .feature-title{ 
   font-size: 28px; 
