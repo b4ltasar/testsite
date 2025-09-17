@@ -503,6 +503,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   align-items: center; 
   padding: 24px 0; 
   gap: 0;
+  position: relative;
 }
 .footer-right{ 
   display: flex; 
@@ -515,8 +516,11 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   display: flex; 
   gap: 32px;
   justify-self: center;
-  grid-column: 2;
+  grid-column: 1 / -1;
   justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .footer-brand{ 
   grid-column: 1 / -1; 
