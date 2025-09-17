@@ -17,7 +17,7 @@ img, video { display: block; max-width: 100%; }
 
 /* helpers */
 .container { width: min(1200px, 92vw); margin-inline: auto; }
-.section { padding: 16px 0; }
+.section { padding: 8px 0; }
 .stack > * + * { margin-top: 12px; }
 
 /* =========================
@@ -168,7 +168,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Cards marquee
    ========================= */
-.cards-marquee{ position:relative; overflow-x: auto; overflow-y: hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+.cards-marquee{ position:relative; overflow-x: auto; overflow-y: hidden; padding:8px 0; touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
 .cards-marquee::-webkit-scrollbar { height: 6px; }
 .cards-marquee::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
 .cards-marquee::-webkit-scrollbar-thumb { background: var(--text); border-radius: 3px; }
@@ -240,15 +240,15 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Blog Section
    ========================= */
-.blog-section{ padding: 60px 0; background: var(--card); }
+.blog-section{ padding: 60px 0; }
 .section-header{ text-align: center; margin-bottom: 48px; }
 .section-title{ font-size: clamp(28px, 4vw, 36px); font-weight: 800; margin-bottom: 12px; }
 .section-subtitle{ color: var(--muted); font-size: 18px; }
 
 .blog-grid{ 
   display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-  gap: 24px; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 16px; 
   margin-top: 32px; 
 }
 
@@ -359,7 +359,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .merch-item{ 
   text-align: center; 
   transition: transform .3s ease; 
-  max-width: 400px;
+  max-width: 1200px;
 }
 
 .merch-item:hover{ 
@@ -372,7 +372,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .merch-image img{ 
   width: 100%; 
-  max-width: 400px; 
+  max-width: 1200px; 
   height: auto; 
   border-radius: 12px; 
 }
@@ -420,8 +420,28 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    ========================= */
 .footer{ border-top:1px solid var(--border); margin-top:56px; }
 .footer-inner{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px; padding:24px 0 40px; }
+.footer-right{ display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
 .footer .nav{ justify-self:end; }
 .footer .nav a:hover{ transform: scale(1.2); }
+.social-icons{ display: flex; gap: 16px; }
+.social-icons a{ 
+  color: var(--text); 
+  transition: transform .2s ease, opacity .2s ease; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 32px; 
+  height: 32px; 
+  border-radius: 50%; 
+  background: var(--card); 
+  border: 1px solid var(--border);
+}
+.social-icons a:hover{ 
+  transform: scale(1.1); 
+  background: var(--accent); 
+  color: var(--bg); 
+  border-color: var(--accent);
+}
 .footer small{ color:var(--muted); grid-column:1 / -1; }
 .brand-logo--footer{ height:28px; }
 
