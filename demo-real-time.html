@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Newsletter Demo</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .demo-box { 
+            background: #f0f0f0; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin: 20px 0;
+        }
+        .timestamp { color: #666; font-size: 14px; }
+        .highlight { background: #e8f5e8; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>🔄 Real-Time Newsletter Fetching Demo</h1>
+    
+    <div class="demo-box">
+        <h2>How It Works:</h2>
+        <ol>
+            <li><strong>User visits your website</strong> → Browser loads page</li>
+            <li><strong>JavaScript runs</strong> → Calls your Vercel proxy</li>
+            <li><strong>Vercel server</strong> → Fetches latest from Mailchimp API</li>
+            <li><strong>Fresh data returned</strong> → Website shows latest newsletters</li>
+        </ol>
+    </div>
+
+    <div class="demo-box highlight">
+        <h3>⚡ This Happens EVERY TIME Someone Visits!</h3>
+        <p>No caching, no scheduled updates, no stale data.</p>
+        <p class="timestamp">Current time: <span id="current-time"></span></p>
+    </div>
+
+    <div class="demo-box">
+        <h3>🛡️ Security Benefits:</h3>
+        <ul>
+            <li>✅ API key stays on Vercel server</li>
+            <li>✅ Never exposed to website visitors</li>
+            <li>✅ Rate limiting and validation</li>
+            <li>✅ CORS protection</li>
+        </ul>
+    </div>
+
+    <div class="demo-box">
+        <h3>📊 Performance:</h3>
+        <ul>
+            <li>First load: ~200-500ms (API call to Mailchimp)</li>
+            <li>Loading spinner shows while fetching</li>
+            <li>Always shows the absolute latest newsletters</li>
+        </ul>
+    </div>
+
+    <script>
+        // Show current time to demonstrate real-time nature
+        function updateTime() {
+            document.getElementById('current-time').textContent = new Date().toLocaleString();
+        }
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>

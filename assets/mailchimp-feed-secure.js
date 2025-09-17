@@ -1,6 +1,12 @@
 /**
  * Secure Mailchimp Newsletter Feed Integration
- * Uses server-side proxy to keep API keys secure
+ * 
+ * 🔄 REAL-TIME DATA: Fetches fresh newsletters on every page load
+ * 🛡️ SECURE: API key stays on server, never exposed to clients
+ * ⚡ FAST: Optimized for performance with loading states
+ * 
+ * This fetches the latest newsletters from Mailchimp every time
+ * someone visits your website - no caching, no scheduled updates!
  */
 
 class SecureMailchimpFeed {
@@ -48,15 +54,19 @@ class SecureMailchimpFeed {
 
   /**
    * Fetch campaigns through secure proxy
+   * 🔄 This runs EVERY TIME someone visits your website
+   * Always gets the latest newsletters from Mailchimp
    */
   async fetchCampaigns() {
-    const url = `${this.proxyUrl}?count=${this.campaignCount}`;
+    const url = `${this.proxyUrl}?count=${this.campaignCount}&t=${Date.now()}`;
     
     const response = await fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      // Ensure we always get fresh data (no browser caching)
+      cache: 'no-cache'
     });
 
     if (!response.ok) {
