@@ -4,13 +4,13 @@
       <img class="brand-logo brand-logo--light brand-logo--footer" src="{{ (site.data.nav.logo_header | default: '/images/logohorisontalblack.png') | relative_url }}" alt="NEARWEEK" />
       <img class="brand-logo brand-logo--dark brand-logo--footer"  src="{{ (site.data.nav.logo_footer | default: '/images/logohorisontalwhite.png') | relative_url }}" alt="NEARWEEK" />
     </a>
+    <nav class="nav">
+      {% for item in site.data.nav.footer %}
+        <a href="{{ item.href | relative_url }}">{{ item.text }}</a>
+      {% endfor %}
+    </nav>
+    
     <div class="footer-right">
-      <nav class="nav">
-        {% for item in site.data.nav.footer %}
-          <a href="{{ item.href | relative_url }}">{{ item.text }}</a>
-        {% endfor %}
-      </nav>
-      
       <div class="social-icons">
         <a href="https://linkedin.com/company/nearweek" target="_blank" rel="noopener" aria-label="LinkedIn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
