@@ -258,9 +258,9 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    CTA
    ========================= */
-.cta{ text-align:center; padding:4px 0; }
-.cta .big{ font-size: clamp(28px, 6vw, 56px); font-weight: 900; letter-spacing:.02em; margin: 0 0 8px; }
-.cta .sub{ color:var(--muted); margin: 0 0 16px; }
+.cta{ text-align:center; padding:0; margin:0; }
+.cta .big{ font-size: clamp(28px, 6vw, 56px); font-weight: 900; letter-spacing:.02em; margin: 0 0 4px; }
+.cta .sub{ color:var(--muted); margin: 0 0 8px; }
 .cta-button{
   display:inline-flex; align-items:center; justify-content:center;
   padding:18px 28px; border-radius:8px;
