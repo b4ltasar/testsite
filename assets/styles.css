@@ -258,7 +258,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    CTA
    ========================= */
-.cta{ text-align:center; padding:0; margin:0; }
+.cta{ text-align:center; padding:0; margin:8px 0 0; }
 .cta .big{ font-size: clamp(28px, 6vw, 56px); font-weight: 900; letter-spacing:.02em; margin: 0 0 4px; }
 .cta .sub{ color:var(--muted); margin: 0 0 8px; }
 .cta-button{
