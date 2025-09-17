@@ -377,10 +377,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   max-width: 1200px;
 }
 .feature-item:hover{ 
-  transform: scale(1.05); 
+  transform: none; 
 }
 .feature-image{
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 .feature-content{
   margin-top: 0px;
@@ -389,14 +389,18 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .feature-image{ 
   overflow: hidden;
   border-radius: 12px;
-  max-width: 400px;
+  max-width: 1200px;
   margin: 0 auto;
+  transition: transform .3s ease;
 }
 .feature-image img{ 
   width: 100%; 
   height: auto; 
   object-fit: cover;
   object-position: center;
+}
+.feature-item:hover .feature-image{
+  transform: scale(1.1);
 }
 .feature-title{ 
   font-size: 28px; 
