@@ -559,30 +559,38 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 @media (max-width: 900px){
   .footer-inner{ 
-    grid-template-columns: 1fr !important; 
+    display: flex !important;
+    flex-direction: column !important;
     text-align: center; 
-    gap: 20px;
+    gap: 16px;
     position: static !important;
   }
   .footer .brand{ 
-    justify-self: center !important; 
-    grid-column: 1 !important;
+    order: 1;
   }
   .footer .nav{ 
-    justify-self: center !important; 
-    grid-column: 1 !important;
+    order: 2;
     position: static !important;
     left: auto !important;
     transform: none !important;
   }
   .footer-right{ 
-    align-items: center !important; 
-    justify-self: center !important; 
-    grid-column: 1 !important;
+    order: 3;
+    flex-direction: column !important;
+    gap: 12px !important;
   }
-  .social-icons{ justify-content: center; }
+  .social-icons{ 
+    justify-content: center;
+    order: 1;
+  }
+  .footer-brand{
+    order: 2;
+  }
 }
   
+  .newsletter-section{
+    padding: 60px 0 !important;
+  }
   .newsletter-form{ 
     flex-direction: column; 
     gap: 16px; 
