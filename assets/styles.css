@@ -386,7 +386,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* Desktop specific spacing adjustments */
 @media (min-width: 1025px) {
   .merch-image{
-    margin-bottom: 4px;
+    margin-bottom: 0px;
   }
   .cta {
     margin-top: 16px;
