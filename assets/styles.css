@@ -511,7 +511,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .footer-inner{ 
   display: grid; 
   grid-template-columns: auto 1fr auto; 
-  align-items: center; 
+  align-items: start; 
   padding: 24px 0 40px; 
   gap: 24px;
 }
@@ -520,6 +520,12 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   display: flex; 
   gap: 32px;
   justify-self: center;
+  grid-row: 1;
+}
+.footer-brand{ 
+  grid-column: 1 / -1; 
+  text-align: center; 
+  margin-top: 20px; 
 }
 .footer .nav a:hover{ transform: scale(1.2); }
 .social-icons{ display: flex; gap: 16px; }
@@ -548,7 +554,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .drawer-social a:hover{ 
   transform: scale(1.1); 
 }
-.footer-brand{ grid-column: 1 / -1; text-align: center; margin-top: 32px; }
 .footer-rights{ color: var(--muted); font-size: 12px; }
 .brand-logo--footer{ height:28px; }
 
