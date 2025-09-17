@@ -23,6 +23,10 @@
     <div class="drawer-backdrop" aria-hidden="true"></div>
     <nav class="drawer-panel">
       <div class="drawer-head">
+        <div class="drawer-tools">
+          <span>Theme</span>
+          <button id="theme-dot-drawer" class="dot" aria-label="Toggle dark mode"></button>
+        </div>
         <button id="drawer-close" class="drawer-close" aria-label="Close">×</button>
       </div>
       <div class="drawer-nav">
@@ -30,9 +34,12 @@
           <a href="{{ item.href | relative_url }}">{{ item.text }}</a>
         {% endfor %}
       </div>
-      <div class="drawer-tools">
-        <span>Theme</span>
-        <button id="theme-dot-drawer" class="dot" aria-label="Toggle dark mode"></button>
+      <div class="drawer-newsletter">
+        <h3 class="drawer-newsletter-title">NEWSLETTER</h3>
+        <div class="drawer-newsletter-form">
+          <input type="email" placeholder="Enter your email" class="drawer-newsletter-input" required>
+          <button type="submit" class="drawer-newsletter-button">Join</button>
+        </div>
       </div>
       <div class="drawer-social">
         <a href="https://linkedin.com/company/nearweek" target="_blank" rel="noopener" aria-label="LinkedIn">

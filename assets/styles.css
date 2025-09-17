@@ -17,7 +17,7 @@ img, video { display: block; max-width: 100%; }
 
 /* helpers */
 .container { width: min(1200px, 92vw); margin-inline: auto; }
-.section { padding: 2px 0; }
+.section { padding: 0; }
 .stack > * + * { margin-top: 12px; }
 
 /* =========================
@@ -138,15 +138,29 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .drawer[aria-hidden="false"] .drawer-panel{ right:0; }
 .drawer[aria-hidden="false"] .drawer-backdrop{ opacity:1; visibility:visible; transition-delay:0s; }
 
-.drawer-head{ display:flex; align-items:center; justify-content:space-between; }
+.drawer-head{ display:flex; align-items:center; justify-content:space-between; padding: 20px 24px; border-bottom: 1px solid var(--border); }
 .drawer-close{ font-size:26px; line-height:1; background:none; border:0; color:var(--text); cursor:pointer; }
 
-.drawer-nav{ display:grid; gap:14px; }
+.drawer-nav{ display:grid; gap:14px; padding: 20px 24px; }
 .drawer-nav a{ font-weight:600; }
 
-/* kun dot, ingen label */
-.drawer-tools{ margin-top:auto; padding-top:8px; border-top:1px solid var(--border); display:flex; justify-content:flex-end; }
-.drawer-tools span{ display:none; }
+.drawer-tools{ display:flex; align-items:center; gap:12px; }
+.drawer-tools span{ display:block; font-size:14px; color:var(--muted); }
+
+.drawer-newsletter{ padding: 20px 24px; border-top: 1px solid var(--border); }
+.drawer-newsletter-title{ font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--text); }
+.drawer-newsletter-form{ display: flex; gap: 8px; }
+.drawer-newsletter-input{ 
+  flex: 1; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; 
+  background: var(--bg); color: var(--text); font-size: 14px;
+}
+.drawer-newsletter-input:focus{ outline: none; border-color: var(--text); }
+.drawer-newsletter-button{ 
+  padding: 8px 16px; background: var(--text); color: var(--bg); border: none; 
+  border-radius: 6px; font-weight: 600; font-size: 14px; cursor: pointer;
+  transition: background .2s ease;
+}
+.drawer-newsletter-button:hover{ background: var(--muted); }
 
 /* =========================
    Hero
@@ -350,8 +364,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   transform: scale(1.05); 
 }
 
-.merch-image{ 
-  margin-bottom: 12px; 
+.merch-image{
+  margin-bottom: 8px;
 }
 
 .merch-image img{ 
@@ -465,9 +479,9 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    Footer
    ========================= */
 .footer{ border-top:1px solid var(--border); margin-top:56px; }
-.footer-inner{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap:12px; padding:24px 0 40px; }
+.footer-inner{ display:grid; grid-template-columns: auto 1fr auto; align-items:center; gap:24px; padding:24px 0 40px; }
 .footer-right{ display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
-.footer .nav{ justify-self:end; }
+.footer .nav{ justify-self:center; grid-column: 2; }
 .footer .nav a:hover{ transform: scale(1.2); }
 .social-icons{ display: flex; gap: 16px; }
 .social-icons a{ 
@@ -504,6 +518,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .footer .nav{ justify-self:center; }
   .footer-right{ align-items: center; }
   .social-icons{ justify-content: center; }
+  .footer .brand{ justify-self: center; }
   
   .newsletter-form{ 
     flex-direction: column; 
