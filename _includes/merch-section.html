@@ -1,10 +1,5 @@
 <section class="merch-section" id="merch">
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">NEARWEEK Merch</h2>
-      <p class="section-subtitle">Show your support with our exclusive merchandise</p>
-    </div>
-    
     <div class="merch-grid">
       {% for item in site.data.merch.items %}
         <div class="merch-item" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 150 }}">

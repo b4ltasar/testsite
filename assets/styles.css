@@ -347,21 +347,23 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Merch Section
    ========================= */
-.merch-section{ padding: 60px 0; }
+.merch-section{ padding: 40px 0; }
 .merch-grid{ 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
   gap: 32px; 
-  margin-top: 32px; 
+  flex-wrap: wrap;
 }
 
 .merch-item{ 
   text-align: center; 
   transition: transform .3s ease; 
+  max-width: 400px;
 }
 
 .merch-item:hover{ 
-  transform: translateY(-4px); 
+  transform: scale(1.05); 
 }
 
 .merch-image{ 
@@ -370,14 +372,13 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .merch-image img{ 
   width: 100%; 
-  max-width: 300px; 
+  max-width: 400px; 
   height: auto; 
   border-radius: 12px; 
-  box-shadow: 0 8px 32px rgba(0,0,0,.1); 
 }
 
 .merch-title{ 
-  font-size: 24px; 
+  font-size: 28px; 
   font-weight: 700; 
   margin-bottom: 12px; 
 }
@@ -386,10 +387,11 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   color: var(--muted); 
   margin-bottom: 16px; 
   line-height: 1.5; 
+  font-size: 16px;
 }
 
 .merch-price{ 
-  font-size: 20px; 
+  font-size: 24px; 
   font-weight: 700; 
   color: var(--accent); 
   margin-bottom: 20px; 
@@ -398,16 +400,18 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .merch-button{ 
   display: inline-block; 
   padding: 12px 24px; 
-  background: var(--text); 
-  color: var(--bg); 
+  background: transparent; 
+  color: var(--text); 
   text-decoration: none; 
+  border: 2px solid var(--text); 
   border-radius: 8px; 
   font-weight: 600; 
   transition: all .3s ease; 
 }
 
 .merch-button:hover{ 
-  background: var(--accent); 
+  background: var(--text); 
+  color: var(--bg); 
   transform: translateY(-2px); 
 }
 
