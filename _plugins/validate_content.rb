@@ -10,7 +10,7 @@ module Jekyll
       return unless site.config['validate_content']
       
       validate_cards(site)
-      validate_posts(site)
+      validate_blog_posts(site)
     end
 
     private
@@ -25,14 +25,14 @@ module Jekyll
       end
     end
 
-    def validate_posts(site)
-      posts = site.data['posts']
-      return unless posts && posts['items']
+    def validate_blog_posts(site)
+      blog = site.data['blog']
+      return unless blog && blog['posts']
       
-      posts['items'].each_with_index do |post, index|
-        validate_required_fields(post, ['title', 'excerpt', 'date', 'author', 'slug', 'link'], "posts[#{index}]")
-        validate_date_format(post['date'], "posts[#{index}].date") if post['date']
-        validate_slug_format(post['slug'], "posts[#{index}].slug") if post['slug']
+      blog['posts'].each_with_index do |post, index|
+        validate_required_fields(post, ['title', 'excerpt', 'date', 'author', 'link'], "blog.posts[#{index}]")
+        validate_date_format(post['date'], "blog.posts[#{index}].date") if post['date']
+        validate_image_path(post['image'], "blog.posts[#{index}].image") if post['image']
       end
     end
 
