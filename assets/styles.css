@@ -163,6 +163,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 @media (max-width: 900px){
   .hero-grid{ grid-template-columns:1fr; gap:28px; }
+  .hero-grid .stack{ text-align: center; }
 }
 
 /* =========================
