@@ -521,6 +521,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  top: 0;
 }
 .footer-brand{ 
   grid-column: 1 / -1; 
