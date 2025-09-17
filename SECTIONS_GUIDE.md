@@ -84,7 +84,8 @@ Tilføj til `assets/styles.css`:
 ### 4. Tilføj til index.html
 Tilføj til `index.html`:
 ```html
-{% include news-section.html %}
+<!-- Example: Add your new section include here -->
+<!-- {% include news-section.html %} -->
 ```
 
 ## Eksisterende sektioner
