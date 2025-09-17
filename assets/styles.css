@@ -68,12 +68,12 @@ html[data-theme="dark"] .brand-logo--light {
 .dot{
   width: 14px; height: 14px; border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: var(--text);
   box-shadow: 0 0 0 2px rgba(0,0,0,.02) inset;
   display: inline-block; cursor: pointer;
   transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
 }
-.dot.on{ background: var(--text); border-color: var(--text); }
+.dot.on{ background: var(--bg); border-color: var(--bg); }
 .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .dot:hover{ transform: scale(1.15); }
 
@@ -159,7 +159,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Cards marquee
    ========================= */
-.cards-marquee{ position:relative; overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); touch-action: pan-y; -webkit-overflow-scrolling: touch; }
+.cards-marquee{ position:relative; overflow:hidden; padding:8px 0; border-block:1px solid var(--border); background:var(--card); touch-action: pan-x; -webkit-overflow-scrolling: touch; }
 .cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change:transform; }
 .cards-marquee:hover .cards-track{ animation-play-state:paused; }
 .cards-track.paused{ animation-play-state:paused; }
@@ -179,18 +179,16 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   border-radius:14px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.06);
 }
 .mcard-media{ position:relative; aspect-ratio:16/9; overflow:hidden; background:#111; }
-.mcard-media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transform:scale(1.02); display:block; }
-/* Ensure images are visible */
-.mcard-media img { 
-  opacity: 1 !important; 
-  visibility: visible !important; 
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  position: absolute !important;
-  inset: 0 !important;
-  transform: scale(1.02) !important;
+.mcard-media img{ 
+  position:absolute !important; 
+  inset:0 !important; 
+  width:100% !important; 
+  height:100% !important; 
+  object-fit:cover !important; 
+  transform:scale(1.02) !important; 
+  display:block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 .mcard-body{ padding:12px 14px 14px; }
 .mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
