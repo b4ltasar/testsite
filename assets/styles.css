@@ -495,10 +495,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .footer{ border-top:1px solid var(--border); margin-top:56px; }
 .footer-inner{ 
   display: grid; 
-  grid-template-columns: 1fr auto 1fr; 
+  grid-template-columns: auto 1fr auto; 
   align-items: center; 
   padding: 24px 0; 
-  gap: 120px;
+  gap: 0;
 }
 .footer-right{ 
   display: flex; 
@@ -512,6 +512,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   gap: 32px;
   justify-self: center;
   grid-column: 2;
+  justify-content: center;
 }
 .footer-brand{ 
   grid-column: 1 / -1; 
