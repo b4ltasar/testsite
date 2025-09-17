@@ -2,7 +2,7 @@
 # logo_header: light-mode logo path; logo_footer: dark-mode logo path.
 # To add a menu item, copy a line and change text + href.
 logo_header: "/images/logohorisontalblack.png"
-logo_footer: "/images/logohoristontalwhite.png"
+logo_footer: "/images/logohorisontalwhite.png"
 
 header:
   - { text: "NEWSLETTER", href: "/#newsletter" }

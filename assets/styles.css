@@ -55,6 +55,15 @@ html[data-theme="dark"] .brand-logo--dark {
   width: auto !important;
   height: 24px !important;
 }
+/* Force white logo in dark mode */
+.dark .brand-logo--dark,
+html[data-theme="dark"] .brand-logo--dark {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: auto !important;
+  height: 24px !important;
+}
 html.dark .brand-logo--light,
 html[data-theme="dark"] .brand-logo--light {
   display: none !important;
@@ -68,12 +77,12 @@ html[data-theme="dark"] .brand-logo--light {
 .dot{
   width: 14px; height: 14px; border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--text);
+  background: var(--bg);
   box-shadow: 0 0 0 2px rgba(0,0,0,.02) inset;
   display: inline-block; cursor: pointer;
   transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
 }
-.dot.on{ background: var(--bg); border-color: var(--bg); }
+.dot.on{ background: var(--text); border-color: var(--text); }
 .dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .dot:hover{ transform: scale(1.15); }
 
@@ -178,17 +187,18 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   flex:0 0 340px; background:var(--card); border:1px solid var(--border);
   border-radius:14px; overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.06);
 }
-.mcard-media{ position:relative; aspect-ratio:16/9; overflow:hidden; background:#111; }
+.mcard-media{ 
+  position:relative; 
+  aspect-ratio:16/9; 
+  overflow:hidden; 
+  background:#111; 
+  display: block;
+}
 .mcard-media img{ 
-  position:absolute !important; 
-  inset:0 !important; 
-  width:100% !important; 
-  height:100% !important; 
-  object-fit:cover !important; 
-  transform:scale(1.02) !important; 
-  display:block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .mcard-body{ padding:12px 14px 14px; }
 .mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
