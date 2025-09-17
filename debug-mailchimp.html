@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailchimp Debug Tool</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background: #f8f9fa;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .error { color: #dc3545; }
+        .success { color: #28a745; }
+        .warning { color: #ffc107; }
+        .info { color: #17a2b8; }
+        button { 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        pre { 
+            background: #f8f9fa; 
+            padding: 15px; 
+            border-radius: 4px; 
+            overflow-x: auto;
+            border: 1px solid #e9ecef;
+        }
+        .step { 
+            background: #e7f3ff; 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Mailchimp Integration Debug Tool</h1>
+        
+        <div class="step">
+            <h3>Step 1: Check Your Setup</h3>
+            <p>First, let's verify your configuration:</p>
+            <ul>
+                <li>✅ Vercel deployment with environment variables set</li>
+                <li>✅ MAILCHIMP_API_KEY environment variable</li>
+                <li>✅ MAILCHIMP_SERVER_PREFIX environment variable</li>
+                <li>✅ Proxy endpoint accessible</li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h3>Step 2: Test Your Proxy</h3>
+            <p>Click the button below to test your Vercel proxy:</p>
+            <button onclick="testProxy()">Test Proxy Endpoint</button>
+            <div id="proxy-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Step 3: Test Direct API (Optional)</h3>
+            <p>If proxy fails, test direct API connection:</p>
+            <input type="text" id="api-key" placeholder="Your API Key" style="width: 300px; padding: 8px; margin: 5px;">
+            <input type="text" id="server-prefix" placeholder="Server Prefix (e.g., us1)" style="width: 100px; padding: 8px; margin: 5px;">
+            <br>
+            <button onclick="testDirectAPI()">Test Direct API</button>
+            <div id="direct-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Step 4: Common Issues & Solutions</h3>
+            <div class="step">
+                <h4>❌ "Failed to fetch" Error</h4>
+                <p><strong>Solution:</strong> Check if your Vercel function is deployed and accessible</p>
+                <p>Try visiting: <code>https://your-site.vercel.app/api/mailchimp-proxy</code></p>
+            </div>
+            
+            <div class="step">
+                <h4>❌ "Mailchimp API key not configured" Error</h4>
+                <p><strong>Solution:</strong> Set environment variables in Vercel dashboard</p>
+                <p>Go to: Vercel Dashboard → Your Project → Settings → Environment Variables</p>
+            </div>
+            
+            <div class="step">
+                <h4>❌ "401 Unauthorized" Error</h4>
+                <p><strong>Solution:</strong> Check your API key and server prefix</p>
+                <p>Make sure the API key is valid and the server prefix matches</p>
+            </div>
+            
+            <div class="step">
+                <h4>❌ "No campaigns found" Error</h4>
+                <p><strong>Solution:</strong> Make sure you have sent newsletters in Mailchimp</p>
+                <p>Only sent campaigns will appear in the API</p>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3>Step 5: Quick Fixes</h3>
+            <button onclick="showQuickFixes()">Show Quick Fixes</button>
+            <div id="quick-fixes" style="display: none;">
+                <h4>Quick Fixes:</h4>
+                <ol>
+                    <li><strong>Update your layout file:</strong> Replace the old JavaScript with the secure version</li>
+                    <li><strong>Check Vercel deployment:</strong> Make sure the API function is deployed</li>
+                    <li><strong>Verify environment variables:</strong> Check they're set correctly in Vercel</li>
+                    <li><strong>Test the proxy URL:</strong> Visit it directly in your browser</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function testProxy() {
+            const resultDiv = document.getElementById('proxy-result');
+            resultDiv.innerHTML = '<p class="info">Testing proxy...</p>';
+            
+            try {
+                const response = await fetch('/api/mailchimp-proxy?count=1', {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                    cache: 'no-cache'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Proxy Test Passed!</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    const errorText = await response.text();
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Proxy Test Failed</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Error: ${errorText}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Network Error</h4>
+                        <p>Error: ${error.message}</p>
+                        <p>This usually means the proxy endpoint doesn't exist or isn't accessible.</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function testDirectAPI() {
+            const apiKey = document.getElementById('api-key').value;
+            const serverPrefix = document.getElementById('server-prefix').value;
+            const resultDiv = document.getElementById('direct-result');
+            
+            if (!apiKey || !serverPrefix) {
+                resultDiv.innerHTML = '<p class="warning">Please enter both API key and server prefix</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<p class="info">Testing direct API...</p>';
+            
+            try {
+                const baseUrl = `https://${serverPrefix}.api.mailchimp.com/3.0`;
+                const response = await fetch(`${baseUrl}/campaigns?count=1&status=sent`, {
+                    headers: {
+                        'Authorization': `apikey ${apiKey}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h4>✅ Direct API Test Passed!</h4>
+                            <p>Status: ${response.status}</p>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    const errorText = await response.text();
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h4>❌ Direct API Test Failed</h4>
+                            <p>Status: ${response.status}</p>
+                            <p>Error: ${errorText}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h4>❌ Network Error</h4>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function showQuickFixes() {
+            document.getElementById('quick-fixes').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
