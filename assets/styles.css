@@ -516,12 +516,13 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   display: flex; 
   gap: 32px;
   justify-self: center;
-  grid-column: 1 / -1;
+  grid-column: 2;
   justify-content: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 0;
+  position: static;
+  left: auto;
+  transform: none;
+  top: auto;
+  align-self: center;
 }
 .footer-brand{ 
   grid-column: 1 / -1; 
@@ -585,7 +586,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     order: 1;
   }
   .footer-brand{
-    order: 2;
+    order: 4;
   }
 }
 
