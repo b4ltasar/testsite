@@ -1,15 +1,15 @@
 items:
-  - title: "AI Superchain"
-    text: "Læs om AI og NEAR"
-    image: "/images/ai-superchain-card.jpg"   # læg billedet når du har det
-    link:  "https://nearweek.com/newsletter"
+  - title: "CONTRIBUTE"
+    text: "Submit to the NEARWEEK Bot"
+    image: "/images/favicon.png"
+    link:  "https://x.com/nearweekbot"
 
-  - title: "Reclaim Sovereignty"
-    text: "Et call-to-action"
-    image: "/images/sovereignty-card.jpg"
-    link:  "https://nearweek.com"
+  - title: "NEARCON 2026"
+    text: "Announcing NEARCON 2026: The Internet Wants to Think"
+    image: "/images/nearcon2026.webp"
+    link:  "https://www.near.org/blog/announcing-nearcon-2026-the-internet-wants-to-think"
 
-  - title: "TEN AI COMMANDMENTS T-SHIRT"
-    text: "COMING SOON"
-    image: "/images/tshirt-card.jpg"
-    link:  "https://nearweek.com/store"
+  - title: "NEAR LEGION"
+    text: "Pledge Your Allegiance - Join The Legion!"
+    image: "/images/initiatelegion.png"
+    link:  "https://nearlegion.com/"
