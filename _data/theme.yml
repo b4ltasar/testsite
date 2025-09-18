@@ -9,7 +9,7 @@ light:
   accent: "#0ea5e9"
 
 dark:
-  bg: "#000000"
+  bg: "#0f1115"
   text: "#f5f7fb"
   muted: "#9ca3af"
   card: "#12141a"

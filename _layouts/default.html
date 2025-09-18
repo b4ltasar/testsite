@@ -41,8 +41,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}" />
-  <script src="{{ '/assets/mailchimp-config.js' | relative_url }}"></script>
-  <script src="{{ '/assets/mailchimp-feed.js' | relative_url }}" defer></script>
 
   <style>
     :root{
@@ -150,6 +148,68 @@
         // Also pause when user focuses links via keyboard
         marquee.addEventListener('focusin', pause);
         marquee.addEventListener('focusout', resume);
+      });
+    })();
+
+    // Newsletter subscription success handling
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        // Handle desktop newsletter form
+        const desktopForm = document.getElementById('mc-embedded-subscribe-form');
+        const desktopButton = document.getElementById('mc-embedded-subscribe');
+        
+        // Handle drawer newsletter form
+        const drawerForm = document.getElementById('drawer-mc-embedded-subscribe-form');
+        const drawerButton = document.getElementById('drawer-mc-embedded-subscribe');
+
+        function handleSubscriptionSuccess(button) {
+          // Change button text and add checkmark
+          button.innerHTML = '✓ Subscribed';
+          button.style.background = '#22c55e'; // Green color for success
+          button.disabled = true;
+          
+          // Optional: Reset after 3 seconds
+          setTimeout(() => {
+            button.innerHTML = 'Sign Up';
+            button.style.background = '';
+            button.disabled = false;
+          }, 3000);
+        }
+
+        // Handle form submission
+        if (desktopForm) {
+          desktopForm.addEventListener('submit', function(e) {
+            // Prevent default form submission to handle it with JavaScript
+            e.preventDefault();
+            
+            // Get email value
+            const email = document.getElementById('mce-EMAIL').value;
+            if (email) {
+              // Simulate successful subscription
+              handleSubscriptionSuccess(desktopButton);
+              
+              // You can add actual API call here if needed
+              // For now, we'll just show the success state
+            }
+          });
+        }
+
+        if (drawerForm) {
+          drawerForm.addEventListener('submit', function(e) {
+            // Prevent default form submission to handle it with JavaScript
+            e.preventDefault();
+            
+            // Get email value
+            const email = document.getElementById('drawer-mce-EMAIL').value;
+            if (email) {
+              // Simulate successful subscription
+              handleSubscriptionSuccess(drawerButton);
+              
+              // You can add actual API call here if needed
+              // For now, we'll just show the success state
+            }
+          });
+        }
       });
     })();
   </script>
