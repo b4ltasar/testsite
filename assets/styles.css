@@ -311,6 +311,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   overflow: hidden; 
   transition: transform .2s ease;
   position: relative;
+  cursor: pointer;
 }
 
 .blog-card:hover{ 
@@ -342,6 +343,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 10;
 }
 
 .blog-card:hover .blog-card-overlay {
@@ -471,21 +473,23 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    Trenches Section
    ========================= */
 .newsletter-section{ 
-  padding: 40px 0; 
+  padding: 60px 0; 
   background: var(--card); 
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 .newsletter-content{ 
   text-align: center; 
-  max-width: 500px; 
+  max-width: 600px; 
   margin: 0 auto; 
 }
 .newsletter-title{ 
-  font-size: 24px; 
+  font-size: 28px; 
   font-weight: 700; 
-  margin-bottom: 24px; 
+  margin-bottom: 32px; 
   color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .newsletter-form{ 
   display: flex; 
@@ -536,31 +540,32 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    ========================= */
 .footer{ border-top:1px solid var(--border); margin-top:56px; }
 .footer-inner{ 
-  display: grid; 
-  grid-template-columns: auto 1fr auto; 
+  display: flex; 
   align-items: center; 
+  justify-content: space-between;
   padding: 24px 0; 
   gap: 32px;
-  position: relative;
+}
+.footer .brand{ 
+  flex: 0 0 auto;
+}
+.footer .nav{ 
+  display: flex; 
+  gap: 32px;
+  justify-content: center;
+  flex: 1;
 }
 .footer-right{ 
   display: flex; 
   align-items: center; 
   gap: 24px; 
-  grid-column: 3;
-  justify-self: end;
-}
-.footer .nav{ 
-  display: flex; 
-  gap: 32px;
-  justify-self: center;
-  grid-column: 2;
-  justify-content: center;
+  flex: 0 0 auto;
 }
 .footer-brand{ 
-  grid-column: 1 / -1; 
+  width: 100%;
   text-align: center; 
   margin-top: 24px; 
+  order: 3;
 }
 .footer .nav a:hover{ transform: scale(1.2); }
 .social-icons{ display: flex; gap: 16px; }
@@ -616,10 +621,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   }
   .social-icons{ 
     justify-content: center;
-    order: 2;
+    order: 1;
   }
   .footer-brand{
-    order: 1;
+    order: 2;
   }
 }
 
