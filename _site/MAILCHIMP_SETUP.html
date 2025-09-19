@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mailchimp Newsletter Feed Setup Guide | Exploring Where AI meets Crypto</title>
+  <link rel="icon" href="/images/favicon.png">
+  <meta name="description" content="Exploring where AI meets crypto">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mailchimp Newsletter Feed Setup Guide">
+  <meta property="og:description" content="Exploring where AI meets crypto">
+  <meta property="og:url" content="http://0.0.0.0:4000/MAILCHIMP_SETUP.html">
+  <meta property="og:image" content="/images/magazinepic.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mailchimp Newsletter Feed Setup Guide">
+  <meta name="twitter:description" content="Exploring where AI meets crypto">
+  <meta name="twitter:image" content="/images/magazinepic.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NEARWEEK",
+    "description": "Exploring where AI meets crypto",
+    "url": "http://0.0.0.0:4000",
+    "logo": "http://0.0.0.0:4000/images/logohorisontalblack.png",
+    "sameAs": [
+      "https://twitter.com/nearweek",
+      "https://linkedin.com/company/nearweek"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #0a0a0a;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --border: rgba(0,0,0,0.12);
+      --accent: #0ea5e9;
+    }
+    html.dark{
+      --bg: #000000;
+      --text: #f5f7fb;
+      --muted: #9ca3af;
+      --card: #12141a;
+      --border: rgba(255,255,255,0.12);
+      --accent: #22d3ee;
+    }
+</style>
+
+  <script>
+    (function(){
+      try{
+        var saved = localStorage.getItem('nw-theme') || 'light';
+        var root = document.documentElement;
+        if(saved === 'dark') root.classList.add('dark');
+        root.setAttribute('data-theme', saved);
+      }catch(e){}
+    })();
+  </script>
+</head>
+<body>
+  <header class="header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="NEARWEEK">
+         <img class="brand-logo brand-logo--light" src="/images/logohorisontalblack.png" alt="NEARWEEK" />
+      <img class="brand-logo brand-logo--dark"  src="/images/logohorisontalwhite.png" alt="NEARWEEK" />
+    </a>
+
+    <nav class="nav">
+      
+        <a href="https://x.com/NEARWEEK/articles">NEWSLETTER</a>
+      
+        <a href="https://nearweek.medium.com/">BLOG</a>
+      
+        <a href="https://t.me/nearweek">COMMUNITY</a>
+      
+      <button id="theme-dot" class="dot" aria-label="Toggle dark mode"></button>
+    </nav>
+
+    <button id="burger" class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-backdrop" aria-hidden="true"></div>
+    <nav class="drawer-panel">
+      <div class="drawer-head">
+        <div class="drawer-tools">
+          <button id="theme-dot-drawer" class="dot" aria-label="Toggle dark mode"></button>
+        </div>
+        <button id="drawer-close" class="drawer-close" aria-label="Close">×</button>
+      </div>
+      <div class="drawer-nav">
+        
+          <a href="https://x.com/NEARWEEK/articles">NEWSLETTER</a>
+        
+          <a href="https://nearweek.medium.com/">BLOG</a>
+        
+          <a href="https://t.me/nearweek">COMMUNITY</a>
+        
+      </div>
+      <div class="drawer-newsletter">
+        <h3 class="drawer-newsletter-title">SUBSCRIBE TO NEARWEEK</h3>
+        <div class="drawer-newsletter-form">
+          <form id="drawer-mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" action="https://nearweek.us1.list-manage.com/subscribe/post?u=ed13caf5cf7d37689d81ef60b&amp;id=86d4e11a12&amp;f_id=003e00e2f0" method="post" target="_blank" novalidate>
+            <input type="email" value="" name="EMAIL" class="drawer-newsletter-input" id="drawer-mce-EMAIL" placeholder="Enter your email" required>
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_ed13caf5cf7d37689d81ef60b_86d4e11a12" tabindex="-1" value="">
+            </div>
+            <button type="submit" name="subscribe" id="drawer-mc-embedded-subscribe" class="drawer-newsletter-button">Sign Up</button>
+          </form>
+        </div>
+      </div>
+      <div class="drawer-social">
+        <a href="https://linkedin.com/company/nearweek" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://youtube.com/@nearweek" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/nearweek" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/nearweek" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://t.me/nearweek" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </aside>
+</header>
+
+
+
+  <main class="container">
+    <h1 id="mailchimp-newsletter-feed-setup-guide">Mailchimp Newsletter Feed Setup Guide</h1>
+
+<p>This guide will help you set up a live newsletter feed on your website using your Mailchimp API credentials.</p>
+
+<h2 id="whats-been-added">What’s Been Added</h2>
+
+<p>✅ <strong>Newsletter Feed Section</strong> - A new section that displays your latest Mailchimp newsletters<br />
+✅ <strong>Live API Integration</strong> - Fetches real-time data from your Mailchimp account<br />
+✅ <strong>Responsive Design</strong> - Works on all devices with your existing theme<br />
+✅ <strong>Error Handling</strong> - Graceful fallbacks and user-friendly error messages<br />
+✅ <strong>Loading States</strong> - Professional loading indicators</p>
+
+<h2 id="setup-instructions">Setup Instructions</h2>
+
+<h3 id="1-get-your-mailchimp-api-key">1. Get Your Mailchimp API Key</h3>
+
+<ol>
+  <li>Log in to your Mailchimp account</li>
+  <li>Go to <strong>Account</strong> → <strong>Extras</strong> → <strong>API Keys</strong></li>
+  <li>Click <strong>Create A Key</strong></li>
+  <li>Copy the generated API key (it looks like: <code class="language-plaintext highlighter-rouge">abc123def456-us1</code>)</li>
+</ol>
+
+<h3 id="2-find-your-server-prefix">2. Find Your Server Prefix</h3>
+
+<p>Your server prefix is the part after the dash in your API key:</p>
+<ul>
+  <li>If your API key is <code class="language-plaintext highlighter-rouge">abc123def456-us1</code>, your server prefix is <code class="language-plaintext highlighter-rouge">us1</code></li>
+  <li>If your API key is <code class="language-plaintext highlighter-rouge">xyz789ghi012-us5</code>, your server prefix is <code class="language-plaintext highlighter-rouge">us5</code></li>
+</ul>
+
+<h3 id="3-configure-your-credentials">3. Configure Your Credentials</h3>
+
+<p>Edit the file <code class="language-plaintext highlighter-rouge">/assets/mailchimp-config.js</code> and replace the placeholder values:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">MAILCHIMP_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// Replace with your actual Mailchimp API key</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your-actual-api-key-here</span><span class="dl">'</span><span class="p">,</span>
+  
+  <span class="c1">// Replace with your server prefix (e.g., us1, us2, us3, etc.)</span>
+  <span class="na">serverPrefix</span><span class="p">:</span> <span class="dl">'</span><span class="s1">us1</span><span class="dl">'</span><span class="p">,</span>
+  
+  <span class="c1">// Optional: Specify a specific list ID if you want to use a particular list</span>
+  <span class="c1">// Leave null to automatically use the first available list</span>
+  <span class="na">listId</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+  
+  <span class="c1">// Number of recent campaigns to display (default: 6)</span>
+  <span class="na">campaignCount</span><span class="p">:</span> <span class="mi">6</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="4-deploy-your-changes">4. Deploy Your Changes</h3>
+
+<ol>
+  <li>Commit your changes to your GitHub repository</li>
+  <li>Push to your main branch</li>
+  <li>GitHub Pages will automatically rebuild your site</li>
+</ol>
+
+<h2 id="features">Features</h2>
+
+<h3 id="-beautiful-design">🎨 <strong>Beautiful Design</strong></h3>
+<ul>
+  <li>Matches your existing website theme</li>
+  <li>Responsive grid layout</li>
+  <li>Hover effects and smooth animations</li>
+  <li>Loading spinners and error states</li>
+</ul>
+
+<h3 id="-mobile-friendly">📱 <strong>Mobile Friendly</strong></h3>
+<ul>
+  <li>Responsive design that works on all screen sizes</li>
+  <li>Touch-friendly interactions</li>
+  <li>Optimized for mobile viewing</li>
+</ul>
+
+<h3 id="-live-updates">🔄 <strong>Live Updates</strong></h3>
+<ul>
+  <li>Automatically fetches your latest newsletters</li>
+  <li>No manual updates required</li>
+  <li>Real-time content from your Mailchimp account</li>
+</ul>
+
+<h3 id="️-error-handling">🛡️ <strong>Error Handling</strong></h3>
+<ul>
+  <li>Graceful fallbacks if API calls fail</li>
+  <li>User-friendly error messages</li>
+  <li>Retry functionality for failed requests</li>
+</ul>
+
+<h2 id="customization-options">Customization Options</h2>
+
+<h3 id="change-number-of-newsletters">Change Number of Newsletters</h3>
+<p>Edit the <code class="language-plaintext highlighter-rouge">campaignCount</code> in your config:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">campaignCount</span><span class="p">:</span> <span class="mi">9</span>  <span class="c1">// Show 9 newsletters instead of 6</span>
+</code></pre></div></div>
+
+<h3 id="use-a-specific-list">Use a Specific List</h3>
+<p>If you have multiple lists and want to use a specific one:</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">listId</span><span class="p">:</span> <span class="dl">'</span><span class="s1">your-specific-list-id-here</span><span class="dl">'</span>
+</code></pre></div></div>
+
+<h3 id="styling">Styling</h3>
+<p>The newsletter feed uses CSS custom properties that match your theme:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">--bg</code> - Background color</li>
+  <li><code class="language-plaintext highlighter-rouge">--text</code> - Text color</li>
+  <li><code class="language-plaintext highlighter-rouge">--accent</code> - Accent color</li>
+  <li><code class="language-plaintext highlighter-rouge">--border</code> - Border color</li>
+  <li><code class="language-plaintext highlighter-rouge">--card-bg</code> - Card background</li>
+</ul>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="please-configure-your-mailchimp-api-key">“Please configure your Mailchimp API key”</h3>
+<ul>
+  <li>Make sure you’ve updated the <code class="language-plaintext highlighter-rouge">apiKey</code> in <code class="language-plaintext highlighter-rouge">mailchimp-config.js</code></li>
+  <li>Ensure the API key is correct and active</li>
+</ul>
+
+<h3 id="invalid-api-credentials">“Invalid API credentials”</h3>
+<ul>
+  <li>Double-check your API key</li>
+  <li>Verify your server prefix is correct</li>
+  <li>Make sure your API key has the necessary permissions</li>
+</ul>
+
+<h3 id="no-newsletters-available">“No newsletters available”</h3>
+<ul>
+  <li>Check if you have sent any campaigns in Mailchimp</li>
+  <li>Verify the campaigns have the status “sent”</li>
+  <li>Try increasing the <code class="language-plaintext highlighter-rouge">campaignCount</code> in your config</li>
+</ul>
+
+<h3 id="network-error">“Network error”</h3>
+<ul>
+  <li>Check your internet connection</li>
+  <li>Verify Mailchimp’s API is accessible</li>
+  <li>Check browser console for detailed error messages</li>
+</ul>
+
+<h2 id="security-notes">Security Notes</h2>
+
+<p>⚠️ <strong>Important</strong>: Your API key will be visible in the browser’s source code. For production sites, consider:</p>
+
+<ol>
+  <li><strong>Using a server-side proxy</strong> to hide your API key</li>
+  <li><strong>Implementing rate limiting</strong> to prevent abuse</li>
+  <li><strong>Using environment variables</strong> for sensitive data</li>
+</ol>
+
+<h2 id="support">Support</h2>
+
+<p>If you encounter any issues:</p>
+<ol>
+  <li>Check the browser console for error messages</li>
+  <li>Verify your Mailchimp API key and server prefix</li>
+  <li>Ensure your Mailchimp account has active campaigns</li>
+  <li>Test with a simple API call to verify connectivity</li>
+</ol>
+
+<h2 id="api-rate-limits">API Rate Limits</h2>
+
+<p>Mailchimp has API rate limits:</p>
+<ul>
+  <li><strong>Free accounts</strong>: 10 requests per minute</li>
+  <li><strong>Paid accounts</strong>: Higher limits based on plan</li>
+</ul>
+
+<p>The feed makes minimal API calls (1-2 per page load), so you should be well within limits.</p>
+
+<hr />
+
+<p>Your newsletter feed is now ready! Once you configure your API credentials, your latest Mailchimp newsletters will automatically appear on your website.</p>
+
+  </main>
+  <footer class="footer">
+  <div class="container footer-inner">
+    <a href="/" class="brand" aria-label="NEARWEEK">
+      <img class="brand-logo brand-logo--light brand-logo--footer" src="/images/logohorisontalblack.png" alt="NEARWEEK" />
+      <img class="brand-logo brand-logo--dark brand-logo--footer"  src="/images/logohorisontalwhite.png" alt="NEARWEEK" />
+    </a>
+    <nav class="nav">
+      
+        <a href="https://x.com/NEARWEEK/articles">NEWSLETTER</a>
+      
+        <a href="https://nearweek.medium.com/">BLOG</a>
+      
+        <a href="https://t.me/nearweek">COMMUNITY</a>
+      
+    </nav>
+    
+    <div class="footer-right">
+      <div class="social-icons">
+        <a href="https://linkedin.com/company/nearweek" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://youtube.com/@nearweek" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/nearweek" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/nearweek" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://t.me/nearweek" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-brand">
+      <div class="footer-rights">NEARWEEK, All rights reserved, 2025</div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+  <script>
+    // Theme toggle
+    (function(){
+      function applyDot(){
+        var on = document.documentElement.classList.contains('dark');
+        var dots = document.querySelectorAll('.dot');
+        dots.forEach(function(d){ d.classList.toggle('on', on); });
+      }
+      function toggleTheme(){
+        var root = document.documentElement;
+        var dark = root.classList.toggle('dark');
+        var mode = dark ? 'dark' : 'light';
+        root.setAttribute('data-theme', mode);
+        try{ localStorage.setItem('nw-theme', mode); }catch(e){}
+        applyDot();
+      }
+      document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('theme-dot')?.addEventListener('click', toggleTheme);
+        document.getElementById('theme-dot-drawer')?.addEventListener('click', toggleTheme);
+        applyDot();
+      });
+    })();
+
+    // Drawer
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        var drawer  = document.getElementById('drawer');
+        var burger  = document.getElementById('burger');
+        var closeBtn = document.getElementById('drawer-close');
+        var backdrop = drawer?.querySelector('.drawer-backdrop');
+        var links    = drawer?.querySelectorAll('.drawer-nav a') || [];
+        if (!drawer || !burger || !closeBtn || !backdrop) return;
+
+        function openDrawer(){
+          drawer.setAttribute('aria-hidden','false');
+          burger.setAttribute('aria-expanded','true');
+        }
+        function closeDrawer(){
+          drawer.setAttribute('aria-hidden','true');
+          burger.setAttribute('aria-expanded','false');
+        }
+        burger.addEventListener('click', openDrawer);
+        closeBtn.addEventListener('click', closeDrawer);
+        backdrop.addEventListener('click', closeDrawer);
+        window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+        links.forEach(function(a){ a.addEventListener('click', closeDrawer); });
+      });
+    })();
+
+    // Marquee touch pause/resume
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        var marquee = document.getElementById('cardsMarquee');
+        if(!marquee) return;
+        var track = marquee.querySelector('.cards-track');
+        if(!track) return;
+        var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+        function pause(){ track.classList.add('paused'); }
+        function resume(){ track.classList.remove('paused'); }
+
+        if(isTouch){
+          marquee.addEventListener('touchstart', pause, {passive:true});
+          marquee.addEventListener('touchend', resume, {passive:true});
+          marquee.addEventListener('touchcancel', resume, {passive:true});
+        }
+        // Also pause when user focuses links via keyboard
+        marquee.addEventListener('focusin', pause);
+        marquee.addEventListener('focusout', resume);
+      });
+    })();
+
+    // Newsletter subscription success handling
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        // Handle desktop newsletter form
+        const desktopForm = document.getElementById('mc-embedded-subscribe-form');
+        const desktopButton = document.getElementById('mc-embedded-subscribe');
+        
+        // Handle drawer newsletter form
+        const drawerForm = document.getElementById('drawer-mc-embedded-subscribe-form');
+        const drawerButton = document.getElementById('drawer-mc-embedded-subscribe');
+
+        function handleSubscriptionSuccess(button) {
+          // Change button text and add checkmark
+          button.innerHTML = '✓ Subscribed';
+          button.style.background = '#22c55e'; // Green color for success
+          button.disabled = true;
+          
+          // Optional: Reset after 3 seconds
+          setTimeout(() => {
+            button.innerHTML = 'Sign Up';
+            button.style.background = '';
+            button.disabled = false;
+          }, 3000);
+        }
+
+        // Handle form submission
+        if (desktopForm) {
+          desktopForm.addEventListener('submit', function(e) {
+            // Prevent default form submission to handle it with JavaScript
+            e.preventDefault();
+            
+            // Get email value
+            const email = document.getElementById('mce-EMAIL').value;
+            if (email) {
+              // Simulate successful subscription
+              handleSubscriptionSuccess(desktopButton);
+              
+              // You can add actual API call here if needed
+              // For now, we'll just show the success state
+            }
+          });
+        }
+
+        if (drawerForm) {
+          drawerForm.addEventListener('submit', function(e) {
+            // Prevent default form submission to handle it with JavaScript
+            e.preventDefault();
+            
+            // Get email value
+            const email = document.getElementById('drawer-mce-EMAIL').value;
+            if (email) {
+              // Simulate successful subscription
+              handleSubscriptionSuccess(drawerButton);
+              
+              // You can add actual API call here if needed
+              // For now, we'll just show the success state
+            }
+          });
+        }
+      });
+    })();
+
+    // 3D Carousel functionality
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        const carousel = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        
+        if (!carousel || !items.length) return;
+        
+        let currentIndex = 0;
+        const totalItems = items.length;
+        
+        function updateCarousel() {
+          items.forEach((item, index) => {
+            item.classList.remove('active', 'prev', 'next');
+            item.style.display = 'none';
+            
+            // Only show 3 items at once: previous, current, next
+            const prevIndex = (currentIndex - 1 + totalItems) % totalItems;
+            const nextIndex = (currentIndex + 1) % totalItems;
+            
+            if (index === currentIndex) {
+              item.classList.add('active');
+              item.style.display = 'block';
+            } else if (index === prevIndex) {
+              item.classList.add('prev');
+              item.style.display = 'block';
+            } else if (index === nextIndex) {
+              item.classList.add('next');
+              item.style.display = 'block';
+            }
+          });
+        }
+        
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % totalItems;
+          updateCarousel();
+        }
+        
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+          updateCarousel();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'ArrowLeft') prevSlide();
+          if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        // Enhanced touch/swipe support
+        let startX = 0;
+        let startY = 0;
+        let endX = 0;
+        let endY = 0;
+        let isScrolling = false;
+        
+        carousel.addEventListener('touchstart', function(e) {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isScrolling = false;
+        });
+        
+        carousel.addEventListener('touchmove', function(e) {
+          if (!startX || !startY) return;
+          
+          endX = e.touches[0].clientX;
+          endY = e.touches[0].clientY;
+          
+          const diffX = Math.abs(startX - endX);
+          const diffY = Math.abs(startY - endY);
+          
+          // Determine if user is scrolling vertically or horizontally
+          if (diffY > diffX) {
+            isScrolling = true;
+          }
+        });
+        
+        carousel.addEventListener('touchend', function(e) {
+          if (!startX || !startY || isScrolling) return;
+          
+          endX = e.changedTouches[0].clientX;
+          endY = e.changedTouches[0].clientY;
+          
+          const diffX = startX - endX;
+          const diffY = Math.abs(startY - endY);
+          
+          // Only trigger if horizontal swipe is more significant than vertical
+          if (Math.abs(diffX) > 50 && diffX > diffY) {
+            if (diffX > 0) {
+              nextSlide();
+            } else {
+              prevSlide();
+            }
+          }
+          
+          // Reset values
+          startX = 0;
+          startY = 0;
+          endX = 0;
+          endY = 0;
+          isScrolling = false;
+        });
+        
+        // Initialize
+        updateCarousel();
+      });
+    })();
+  </script>
+</body>
+</html>

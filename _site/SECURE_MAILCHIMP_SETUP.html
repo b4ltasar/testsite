@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🔒 Secure Mailchimp Integration Setup | Exploring Where AI meets Crypto</title>
+  <link rel="icon" href="/images/favicon.png">
+  <meta name="description" content="Exploring where AI meets crypto">
+  <meta name="theme-color" content="#000000">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="🔒 Secure Mailchimp Integration Setup">
+  <meta property="og:description" content="Exploring where AI meets crypto">
+  <meta property="og:url" content="http://0.0.0.0:4000/SECURE_MAILCHIMP_SETUP.html">
+  <meta property="og:image" content="/images/magazinepic.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="🔒 Secure Mailchimp Integration Setup">
+  <meta name="twitter:description" content="Exploring where AI meets crypto">
+  <meta name="twitter:image" content="/images/magazinepic.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NEARWEEK",
+    "description": "Exploring where AI meets crypto",
+    "url": "http://0.0.0.0:4000",
+    "logo": "http://0.0.0.0:4000/images/logohorisontalblack.png",
+    "sameAs": [
+      "https://twitter.com/nearweek",
+      "https://linkedin.com/company/nearweek"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #0a0a0a;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --border: rgba(0,0,0,0.12);
+      --accent: #0ea5e9;
+    }
+    html.dark{
+      --bg: #000000;
+      --text: #f5f7fb;
+      --muted: #9ca3af;
+      --card: #12141a;
+      --border: rgba(255,255,255,0.12);
+      --accent: #22d3ee;
+    }
+</style>
+
+  <script>
+    (function(){
+      try{
+        var saved = localStorage.getItem('nw-theme') || 'light';
+        var root = document.documentElement;
+        if(saved === 'dark') root.classList.add('dark');
+        root.setAttribute('data-theme', saved);
+      }catch(e){}
+    })();
+  </script>
+</head>
+<body>
+  <header class="header">
+  <div class="container header-inner">
+    <a href="/" class="brand" aria-label="NEARWEEK">
+         <img class="brand-logo brand-logo--light" src="/images/logohorisontalblack.png" alt="NEARWEEK" />
+      <img class="brand-logo brand-logo--dark"  src="/images/logohorisontalwhite.png" alt="NEARWEEK" />
+    </a>
+
+    <nav class="nav">
+      
+        <a href="https://x.com/NEARWEEK/articles">NEWSLETTER</a>
+      
+        <a href="https://nearweek.medium.com/">BLOG</a>
+      
+        <a href="https://t.me/nearweek">COMMUNITY</a>
+      
+      <button id="theme-dot" class="dot" aria-label="Toggle dark mode"></button>
+    </nav>
+
+    <button id="burger" class="burger" aria-label="Open menu" aria-controls="drawer" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <aside id="drawer" class="drawer" aria-hidden="true">
+    <div class="drawer-backdrop" aria-hidden="true"></div>
+    <nav class="drawer-panel">
+      <div class="drawer-head">
+        <div class="drawer-tools">
+          <button id="theme-dot-drawer" class="dot" aria-label="Toggle dark mode"></button>
+        </div>
+        <button id="drawer-close" class="drawer-close" aria-label="Close">×</button>
+      </div>
+      <div class="drawer-nav">
+        
+          <a href="https://x.com/NEARWEEK/articles">NEWSLETTER</a>
+        
+          <a href="https://nearweek.medium.com/">BLOG</a>
+        
+          <a href="https://t.me/nearweek">COMMUNITY</a>
+        
+      </div>
+      <div class="drawer-newsletter">
+        <h3 class="drawer-newsletter-title">SUBSCRIBE TO NEARWEEK</h3>
+        <div class="drawer-newsletter-form">
+          <form id="drawer-mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" action="https://nearweek.us1.list-manage.com/subscribe/post?u=ed13caf5cf7d37689d81ef60b&amp;id=86d4e11a12&amp;f_id=003e00e2f0" method="post" target="_blank" novalidate>
+            <input type="email" value="" name="EMAIL" class="drawer-newsletter-input" id="drawer-mce-EMAIL" placeholder="Enter your email" required>
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_ed13caf5cf7d37689d81ef60b_86d4e11a12" tabindex="-1" value="">
+            </div>
+            <button type="submit" name="subscribe" id="drawer-mc-embedded-subscribe" class="drawer-newsletter-button">Sign Up</button>
+          </form>
+        </div>
+      </div>
+      <div class="drawer-social">
+        <a href="https://linkedin.com/company/nearweek" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://youtube.com/@nearweek" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/nearweek" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/nearweek" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://t.me/nearweek" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </aside>
+</header>
+
+
+
+  <main class="container">
+    <h1 id="-secure-mailchimp-integration-setup">🔒 Secure Mailchimp Integration Setup</h1>
+
+<h2 id="️-security-issue-with-previous-approach">⚠️ Security Issue with Previous Approach</h2>
+
+<p>The previous setup exposed your Mailchimp API key in client-side code, which is a <strong>major security risk</strong>. Anyone could view your source code and steal your API key.</p>
+
+<h2 id="-secure-solutions">✅ Secure Solutions</h2>
+
+<h3 id="option-1-vercel-serverless-proxy-recommended"><strong>Option 1: Vercel Serverless Proxy (Recommended)</strong></h3>
+
+<p>This keeps your API key secure on the server side.</p>
+
+<h4 id="step-1-deploy-to-vercel">Step 1: Deploy to Vercel</h4>
+
+<ol>
+  <li><strong>Connect your GitHub repo to Vercel</strong></li>
+  <li><strong>Set environment variables in Vercel dashboard:</strong>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">MAILCHIMP_API_KEY</code> = your actual API key</li>
+      <li><code class="language-plaintext highlighter-rouge">MAILCHIMP_SERVER_PREFIX</code> = your server prefix (e.g., us1)</li>
+    </ul>
+  </li>
+</ol>
+
+<h4 id="step-2-update-your-website">Step 2: Update Your Website</h4>
+
+<p>Replace the insecure JavaScript with the secure version:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Remove these lines from your layout --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/mailchimp-config.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/mailchimp-feed.js"</span> <span class="na">defer</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- Add this secure version instead --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/mailchimp-feed-secure.js"</span> <span class="na">defer</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h4 id="step-3-update-proxy-url">Step 3: Update Proxy URL</h4>
+
+<p>In <code class="language-plaintext highlighter-rouge">mailchimp-feed-secure.js</code>, update the proxy URL:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">SECURE_CONFIG</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// Use your Vercel domain</span>
+  <span class="na">proxyUrl</span><span class="p">:</span> <span class="dl">'</span><span class="s1">https://your-site.vercel.app/api/mailchimp-proxy</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">campaignCount</span><span class="p">:</span> <span class="mi">6</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="option-2-github-pages--netlify-functions"><strong>Option 2: GitHub Pages + Netlify Functions</strong></h3>
+
+<p>If you prefer to stay with GitHub Pages:</p>
+
+<ol>
+  <li><strong>Create a Netlify site</strong> connected to your GitHub repo</li>
+  <li><strong>Add environment variables</strong> in Netlify dashboard</li>
+  <li><strong>Use Netlify Functions</strong> instead of Vercel</li>
+</ol>
+
+<hr />
+
+<h3 id="option-3-static-generation-safest-for-github-pages"><strong>Option 3: Static Generation (Safest for GitHub Pages)</strong></h3>
+
+<p>Generate newsletter data at build time:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># .github/workflows/update-newsletters.yml</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">Update Newsletters</span>
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">schedule</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">cron</span><span class="pi">:</span> <span class="s1">'</span><span class="s">0</span><span class="nv"> </span><span class="s">*/6</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*'</span>  <span class="c1"># Every 6 hours</span>
+  <span class="na">workflow_dispatch</span><span class="pi">:</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">update-newsletters</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Fetch newsletters</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s"># Script to fetch from Mailchimp API and update _data/newsletters.yml</span>
+      <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Commit changes</span>
+        <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">git config --local user.email "action@github.com"</span>
+          <span class="s">git config --local user.name "GitHub Action"</span>
+          <span class="s">git add _data/newsletters.yml</span>
+          <span class="s">git commit -m "Update newsletters" || exit 0</span>
+          <span class="s">git push</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="️-security-benefits">🛡️ Security Benefits</h2>
+
+<h3 id="server-side-proxy-options-1--2"><strong>Server-Side Proxy (Options 1 &amp; 2)</strong></h3>
+<ul>
+  <li>✅ API key never exposed to clients</li>
+  <li>✅ Rate limiting possible</li>
+  <li>✅ Request validation</li>
+  <li>✅ CORS protection</li>
+  <li>✅ Real-time data</li>
+</ul>
+
+<h3 id="static-generation-option-3"><strong>Static Generation (Option 3)</strong></h3>
+<ul>
+  <li>✅ API key only used during build</li>
+  <li>✅ No server required</li>
+  <li>✅ Fastest loading</li>
+  <li>⚠️ Data updates only on schedule</li>
+</ul>
+
+<hr />
+
+<h2 id="-quick-start-vercel">🚀 Quick Start (Vercel)</h2>
+
+<ol>
+  <li><strong>Deploy to Vercel:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Vercel CLI</span>
+npm i <span class="nt">-g</span> vercel
+   
+<span class="c"># Deploy</span>
+vercel
+</code></pre></div>    </div>
+  </li>
+  <li><strong>Set environment variables:</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vercel <span class="nb">env </span>add MAILCHIMP_API_KEY
+vercel <span class="nb">env </span>add MAILCHIMP_SERVER_PREFIX
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p><strong>Update your website</strong> to use the secure JavaScript</p>
+  </li>
+  <li><strong>Test the integration</strong></li>
+</ol>
+
+<hr />
+
+<h2 id="-alternative-environment-based-config">🔧 Alternative: Environment-Based Config</h2>
+
+<p>If you want to keep using GitHub Pages, you can use a build-time approach:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// In your build process, replace placeholders</span>
+<span class="kd">const</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">apiKey</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MAILCHIMP_API_KEY</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">PLACEHOLDER</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">serverPrefix</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MAILCHIMP_SERVER_PREFIX</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">us1</span><span class="dl">'</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Then set up GitHub Actions to build with your secrets.</p>
+
+<hr />
+
+<h2 id="-performance-considerations">⚡ Performance Considerations</h2>
+
+<ul>
+  <li><strong>Server-Side Proxy</strong>: ~200-500ms additional latency</li>
+  <li><strong>Static Generation</strong>: Instant loading, but data can be stale</li>
+  <li><strong>Client-Side (Insecure)</strong>: Fastest, but security risk</li>
+</ul>
+
+<hr />
+
+<h2 id="-recommendation">🎯 Recommendation</h2>
+
+<p><strong>Use Option 1 (Vercel Serverless Proxy)</strong> because:</p>
+<ul>
+  <li>✅ Secure (API key protected)</li>
+  <li>✅ Real-time data</li>
+  <li>✅ Easy to set up</li>
+  <li>✅ Scales automatically</li>
+  <li>✅ Works with your existing GitHub Pages setup</li>
+</ul>
+
+<p>Would you like me to help you set up the Vercel deployment or implement one of the other secure options?</p>
+
+  </main>
+  <footer class="footer">
+  <div class="container footer-inner">
+    <a href="/" class="brand" aria-label="NEARWEEK">
+      <img class="brand-logo brand-logo--light brand-logo--footer" src="/images/logohorisontalblack.png" alt="NEARWEEK" />
+      <img class="brand-logo brand-logo--dark brand-logo--footer"  src="/images/logohorisontalwhite.png" alt="NEARWEEK" />
+    </a>
+    <nav class="nav">
+      
+        <a href="https://x.com/NEARWEEK/articles">NEWSLETTER</a>
+      
+        <a href="https://nearweek.medium.com/">BLOG</a>
+      
+        <a href="https://t.me/nearweek">COMMUNITY</a>
+      
+    </nav>
+    
+    <div class="footer-right">
+      <div class="social-icons">
+        <a href="https://linkedin.com/company/nearweek" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://youtube.com/@nearweek" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com/nearweek" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/nearweek" target="_blank" rel="noopener" aria-label="X (Twitter)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="https://t.me/nearweek" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-brand">
+      <div class="footer-rights">NEARWEEK, All rights reserved, 2025</div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+  <script>
+    // Theme toggle
+    (function(){
+      function applyDot(){
+        var on = document.documentElement.classList.contains('dark');
+        var dots = document.querySelectorAll('.dot');
+        dots.forEach(function(d){ d.classList.toggle('on', on); });
+      }
+      function toggleTheme(){
+        var root = document.documentElement;
+        var dark = root.classList.toggle('dark');
+        var mode = dark ? 'dark' : 'light';
+        root.setAttribute('data-theme', mode);
+        try{ localStorage.setItem('nw-theme', mode); }catch(e){}
+        applyDot();
+      }
+      document.addEventListener('DOMContentLoaded', function(){
+        document.getElementById('theme-dot')?.addEventListener('click', toggleTheme);
+        document.getElementById('theme-dot-drawer')?.addEventListener('click', toggleTheme);
+        applyDot();
+      });
+    })();
+
+    // Drawer
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        var drawer  = document.getElementById('drawer');
+        var burger  = document.getElementById('burger');
+        var closeBtn = document.getElementById('drawer-close');
+        var backdrop = drawer?.querySelector('.drawer-backdrop');
+        var links    = drawer?.querySelectorAll('.drawer-nav a') || [];
+        if (!drawer || !burger || !closeBtn || !backdrop) return;
+
+        function openDrawer(){
+          drawer.setAttribute('aria-hidden','false');
+          burger.setAttribute('aria-expanded','true');
+        }
+        function closeDrawer(){
+          drawer.setAttribute('aria-hidden','true');
+          burger.setAttribute('aria-expanded','false');
+        }
+        burger.addEventListener('click', openDrawer);
+        closeBtn.addEventListener('click', closeDrawer);
+        backdrop.addEventListener('click', closeDrawer);
+        window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+        links.forEach(function(a){ a.addEventListener('click', closeDrawer); });
+      });
+    })();
+
+    // Marquee touch pause/resume
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        var marquee = document.getElementById('cardsMarquee');
+        if(!marquee) return;
+        var track = marquee.querySelector('.cards-track');
+        if(!track) return;
+        var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+        function pause(){ track.classList.add('paused'); }
+        function resume(){ track.classList.remove('paused'); }
+
+        if(isTouch){
+          marquee.addEventListener('touchstart', pause, {passive:true});
+          marquee.addEventListener('touchend', resume, {passive:true});
+          marquee.addEventListener('touchcancel', resume, {passive:true});
+        }
+        // Also pause when user focuses links via keyboard
+        marquee.addEventListener('focusin', pause);
+        marquee.addEventListener('focusout', resume);
+      });
+    })();
+
+    // Newsletter subscription success handling
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        // Handle desktop newsletter form
+        const desktopForm = document.getElementById('mc-embedded-subscribe-form');
+        const desktopButton = document.getElementById('mc-embedded-subscribe');
+        
+        // Handle drawer newsletter form
+        const drawerForm = document.getElementById('drawer-mc-embedded-subscribe-form');
+        const drawerButton = document.getElementById('drawer-mc-embedded-subscribe');
+
+        function handleSubscriptionSuccess(button) {
+          // Change button text and add checkmark
+          button.innerHTML = '✓ Subscribed';
+          button.style.background = '#22c55e'; // Green color for success
+          button.disabled = true;
+          
+          // Optional: Reset after 3 seconds
+          setTimeout(() => {
+            button.innerHTML = 'Sign Up';
+            button.style.background = '';
+            button.disabled = false;
+          }, 3000);
+        }
+
+        // Handle form submission
+        if (desktopForm) {
+          desktopForm.addEventListener('submit', function(e) {
+            // Prevent default form submission to handle it with JavaScript
+            e.preventDefault();
+            
+            // Get email value
+            const email = document.getElementById('mce-EMAIL').value;
+            if (email) {
+              // Simulate successful subscription
+              handleSubscriptionSuccess(desktopButton);
+              
+              // You can add actual API call here if needed
+              // For now, we'll just show the success state
+            }
+          });
+        }
+
+        if (drawerForm) {
+          drawerForm.addEventListener('submit', function(e) {
+            // Prevent default form submission to handle it with JavaScript
+            e.preventDefault();
+            
+            // Get email value
+            const email = document.getElementById('drawer-mce-EMAIL').value;
+            if (email) {
+              // Simulate successful subscription
+              handleSubscriptionSuccess(drawerButton);
+              
+              // You can add actual API call here if needed
+              // For now, we'll just show the success state
+            }
+          });
+        }
+      });
+    })();
+
+    // 3D Carousel functionality
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        const carousel = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        
+        if (!carousel || !items.length) return;
+        
+        let currentIndex = 0;
+        const totalItems = items.length;
+        
+        function updateCarousel() {
+          items.forEach((item, index) => {
+            item.classList.remove('active', 'prev', 'next');
+            item.style.display = 'none';
+            
+            // Only show 3 items at once: previous, current, next
+            const prevIndex = (currentIndex - 1 + totalItems) % totalItems;
+            const nextIndex = (currentIndex + 1) % totalItems;
+            
+            if (index === currentIndex) {
+              item.classList.add('active');
+              item.style.display = 'block';
+            } else if (index === prevIndex) {
+              item.classList.add('prev');
+              item.style.display = 'block';
+            } else if (index === nextIndex) {
+              item.classList.add('next');
+              item.style.display = 'block';
+            }
+          });
+        }
+        
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % totalItems;
+          updateCarousel();
+        }
+        
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+          updateCarousel();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'ArrowLeft') prevSlide();
+          if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        // Enhanced touch/swipe support
+        let startX = 0;
+        let startY = 0;
+        let endX = 0;
+        let endY = 0;
+        let isScrolling = false;
+        
+        carousel.addEventListener('touchstart', function(e) {
+          startX = e.touches[0].clientX;
+          startY = e.touches[0].clientY;
+          isScrolling = false;
+        });
+        
+        carousel.addEventListener('touchmove', function(e) {
+          if (!startX || !startY) return;
+          
+          endX = e.touches[0].clientX;
+          endY = e.touches[0].clientY;
+          
+          const diffX = Math.abs(startX - endX);
+          const diffY = Math.abs(startY - endY);
+          
+          // Determine if user is scrolling vertically or horizontally
+          if (diffY > diffX) {
+            isScrolling = true;
+          }
+        });
+        
+        carousel.addEventListener('touchend', function(e) {
+          if (!startX || !startY || isScrolling) return;
+          
+          endX = e.changedTouches[0].clientX;
+          endY = e.changedTouches[0].clientY;
+          
+          const diffX = startX - endX;
+          const diffY = Math.abs(startY - endY);
+          
+          // Only trigger if horizontal swipe is more significant than vertical
+          if (Math.abs(diffX) > 50 && diffX > diffY) {
+            if (diffX > 0) {
+              nextSlide();
+            } else {
+              prevSlide();
+            }
+          }
+          
+          // Reset values
+          startX = 0;
+          startY = 0;
+          endX = 0;
+          endY = 0;
+          isScrolling = false;
+        });
+        
+        // Initialize
+        updateCarousel();
+      });
+    })();
+  </script>
+</body>
+</html>
