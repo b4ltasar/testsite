@@ -1014,12 +1014,16 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   margin: 24px auto;
   margin-bottom: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .newsletter-content{ 
   text-align: center; 
-  max-width: 600px; 
+  max-width: 350px; 
   margin: 0 auto; 
+  padding: 0 20px;
 }
 .newsletter-title{ 
   font-size: 28px; 
