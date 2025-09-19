@@ -60,72 +60,7 @@ img, video {
   background: transparent !important;
 }
 
-/* Theme-specific video sources - maximum specificity */
-.theme-video .light-video {
-  display: block !important;
-}
-
-.theme-video .dark-video {
-  display: none !important;
-}
-
-html[data-theme="dark"] .theme-video .light-video {
-  display: none !important;
-}
-
-html[data-theme="dark"] .theme-video .dark-video {
-  display: block !important;
-}
-
-html[data-theme="light"] .theme-video .light-video {
-  display: block !important;
-}
-
-html[data-theme="light"] .theme-video .dark-video {
-  display: none !important;
-}
-
-/* Maximum specificity for video sources */
-#themeVideo .light-video {
-  display: block !important;
-}
-
-#themeVideo .dark-video {
-  display: none !important;
-}
-
-html[data-theme="dark"] #themeVideo .light-video {
-  display: none !important;
-}
-
-html[data-theme="dark"] #themeVideo .dark-video {
-  display: block !important;
-}
-
-/* Force video source visibility with maximum specificity */
-video.theme-video source.light-video {
-  display: block !important;
-}
-
-video.theme-video source.dark-video {
-  display: none !important;
-}
-
-html[data-theme="dark"] video.theme-video source.light-video {
-  display: none !important;
-}
-
-html[data-theme="dark"] video.theme-video source.dark-video {
-  display: block !important;
-}
-
-html[data-theme="light"] video.theme-video source.light-video {
-  display: block !important;
-}
-
-html[data-theme="light"] video.theme-video source.dark-video {
-  display: none !important;
-}
+/* Video theme switching - handled by JavaScript for reliability */
 
 [data-theme="dark"] .section video {
   background: var(--bg) !important;
@@ -467,9 +402,15 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
 .mcard-text{ color:var(--muted); font-size:14px; }
 
-/* =========================
-   Merchandise 3D Carousel
-   ========================= */
+/* ========================================
+   MERCHANDISE 3D CAROUSEL
+   ========================================
+   Creates a 3D perspective carousel with:
+   - Center highlighted item (full content)
+   - Side background items (images only)
+   - Responsive positioning for mobile/desktop
+   - Smooth transitions and hover effects
+   ======================================== */
 .merch-carousel {
   position: relative;
   display: flex;

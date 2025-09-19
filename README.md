@@ -1,76 +1,234 @@
-# NEARWEEK site – quick guide
+# NEARWEEK Website
 
-A small Jekyll site designed for easy editing by non-coders. Content is data-driven via `_data/*.yml` and reusable HTML includes in `_includes/`.
+A modern, responsive website built with Jekyll for the NEARWEEK community. Features dark/light theme switching, interactive 3D carousel, and optimized performance.
 
-## How to edit content
+## 🚀 Features
 
-- Header and footer links: `_data/nav.yml`
-- Hero text and video: `_data/hero.yml`
-- Cards in the scrolling marquee: `_data/cards.yml`
-- Theme colors (light/dark): `_data/theme.yml`
-- Images: place under `images/` and reference with a path like `/images/your-file.png`
+- **Modern Design**: Clean, professional aesthetic with smooth animations
+- **Theme Switching**: Dark/light mode with persistent user preference
+- **Interactive Elements**: 3D merchandise carousel with touch support
+- **Responsive Design**: Optimized for desktop, tablet, and mobile
+- **Performance Optimized**: Fast loading with lazy loading and efficient CSS
+- **Content Management**: Easy content updates via YAML data files
 
-Each data file contains short comments explaining what to change.
+## 🛠️ Tech Stack
 
-## Structure
+- **Jekyll**: Static site generator
+- **GitHub Pages**: Hosting and deployment
+- **CSS Custom Properties**: Modern theming system
+- **Vanilla JavaScript**: No external dependencies
+- **Semantic HTML**: Accessible and SEO-friendly
 
-- `_layouts/default.html`: Base layout, sets theme variables and includes header/footer
-- `_includes/header.html`, `_includes/footer.html`, `_includes/hero.html`, `_includes/cards-marquee.html`
-- `index.html`: Home page that stitches includes together
-- `assets/styles.css`: Single source of styles
+## 📁 Project Structure
 
-## Run locally
-
-Requires Ruby + Bundler and Jekyll.
-
-```bash
-# Install Jekyll tooling (one time)
-# If you don't have Ruby/bundler/jekyll, install via rbenv/asdf or system Ruby
-# gem install bundler jekyll
-
-# Serve the site
-jekyll serve --livereload
-# Open http://127.0.0.1:4000
+```
+testsite/
+├── _data/                 # Content management
+│   ├── cards.yml         # Cards marquee data
+│   ├── feature.yml       # Merchandise carousel data
+│   └── ...
+├── _includes/            # Reusable components
+│   ├── header.html       # Site header with navigation
+│   ├── footer.html       # Site footer
+│   ├── hero.html         # Hero section
+│   ├── cards-marquee.html # Horizontal scrolling cards
+│   └── feature-section.html # 3D merchandise carousel
+├── _layouts/             # Page templates
+│   └── default.html      # Main layout with theme system
+├── assets/               # Static assets
+│   └── styles.css        # Main stylesheet
+├── images/               # Image assets
+└── index.html           # Homepage
 ```
 
-If your GitHub Pages is configured, you can also rely on GitHub to build it automatically on push.
+## 🎨 Theme System
 
-## Deploy (GitHub Pages)
+The website uses a sophisticated theme system with CSS custom properties:
 
-- Commit and push changes to the `main` branch; GitHub Pages (if enabled) will rebuild.
-- Settings → Pages → Build from GitHub Actions or from branch.
-- If using Actions, ensure a workflow exists in `.github/workflows/`.
+- **Light Theme**: Clean white background with dark text
+- **Dark Theme**: Dark background with light text
+- **Video Switching**: Theme-specific video content
+- **Persistent Storage**: User preference saved in localStorage
 
-## Add new cards
+### CSS Variables
+```css
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0a;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --border: rgba(0, 0, 0, 0.12);
+  --accent: #0ea5e9;
+}
+```
 
-1. Upload your image to `images/`
-2. Add an entry in `_data/cards.yml`:
+## 🎯 Key Components
 
+### 1. Hero Section
+- Large video background with theme switching
+- Call-to-action with animated button
+- Responsive text layout
+
+### 2. Cards Marquee
+- Horizontal scrolling card display
+- Touch-friendly on mobile
+- Pause on hover for desktop
+
+### 3. Merchandise Carousel
+- 3D perspective carousel
+- Touch/swipe support on mobile
+- Auto-rotation with manual override
+- Clean background items (images only)
+
+### 4. Blog Section
+- Grid layout for blog posts
+- Responsive card design
+- Hover effects and transitions
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Ruby 2.7+ (for Jekyll)
+- Bundler gem
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/b4ltasar/testsite.git
+cd testsite
+
+# Install dependencies
+bundle install
+
+# Serve locally
+bundle exec jekyll serve
+
+# Open in browser
+open http://localhost:4000
+```
+
+### Development
+```bash
+# Watch for changes
+bundle exec jekyll serve --livereload
+
+# Build for production
+bundle exec jekyll build
+```
+
+## 📝 Content Management
+
+### Adding New Cards
+Edit `_data/cards.yml`:
 ```yaml
-- title: "My Card"
-  text: "Short description"
-  image: "/images/my-card.png"
-  link:  "https://example.com"
+items:
+  - title: "New Card"
+    text: "Description"
+    image: "/images/card-image.png"
+    link: "https://example.com"
 ```
 
-## Notes
+### Adding Merchandise
+Edit `_data/feature.yml`:
+```yaml
+items:
+  - title: "New Product"
+    description: "Product description"
+    image: "/images/product.png"
+    link: "https://shop.example.com"
+    button_text: "BUY NOW"
+```
 
-- Avoid spaces in filenames; use dashes or underscores.
-- The theme toggle remembers preference in the browser.
+### Adding Blog Posts
+Create new files in `_posts/` with Jekyll front matter.
 
-## Base URL configuration
+## 🎨 Customization
 
-If your site is served from a subpath (e.g. https://user.github.io/repo), set in _config.yml:
+### Colors
+Update CSS custom properties in `assets/styles.css`:
+```css
+:root {
+  --accent: #your-color;
+}
+```
 
-- url: https://user.github.io
-- baseurl: /repo
+### Typography
+Modify font families in the CSS variables section.
 
-Use {{ "relative_url" }} filter for links and assets to respect baseurl.
+### Layout
+Adjust spacing and sizing using the CSS custom properties system.
 
-Local test with baseurl:
+## 📱 Responsive Breakpoints
 
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+
+## 🔧 JavaScript Features
+
+### Theme Switching
+- Automatic detection of system preference
+- Manual toggle with persistent storage
+- Video content switching based on theme
+
+### Carousel Functionality
+- 3D perspective transforms
+- Touch/swipe gestures on mobile
+- Keyboard navigation (arrow keys)
+- Auto-rotation with pause on interaction
+
+### Performance Optimizations
+- Lazy loading for images
+- Efficient event listeners
+- Debounced resize handlers
+
+## 🚀 Deployment
+
+The site is automatically deployed to GitHub Pages on every push to the `main` branch.
+
+### Manual Deployment
 ```bash
-jekyll serve --baseurl "$$(awk -F: "/baseurl:/ {print $2}" _config.yml | xargs)"
+# Build the site
+bundle exec jekyll build
+
+# Deploy to GitHub Pages
+git add .
+git commit -m "Deploy updates"
+git push origin main
 ```
 
-# Force deployment
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Video not switching themes**
+   - Check browser console for JavaScript errors
+   - Verify video files exist in `/images/`
+
+2. **Carousel not working**
+   - Ensure JavaScript is enabled
+   - Check for console errors
+
+3. **Styles not loading**
+   - Clear browser cache
+   - Check file paths in `_layouts/default.html`
+
+## 📄 License
+
+This project is proprietary to NEARWEEK.
+
+## 🤝 Contributing
+
+For internal development, please:
+1. Create a feature branch
+2. Make your changes
+3. Test thoroughly
+4. Submit a pull request
+
+## 📞 Support
+
+For technical issues, contact the development team.
+
+---
+
+**Built with ❤️ for the NEARWEEK community**

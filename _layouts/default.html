@@ -154,20 +154,35 @@
       });
     })();
 
-    // Merchandise 3D Carousel functionality
+    // ========================================
+    // MERCHANDISE 3D CAROUSEL FUNCTIONALITY
+    // ========================================
+    // Creates a 3D perspective carousel with:
+    // - Center highlighted item with full content
+    // - Side items showing only images (no text)
+    // - Touch/swipe support on mobile
+    // - Auto-rotation with manual override
+    // - Keyboard navigation (arrow keys)
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
         var track = document.getElementById('merchTrack');
         if(!track) return;
-        
+
         var prevBtn = document.getElementById('merchPrev');
         var nextBtn = document.getElementById('merchNext');
         var items = track.querySelectorAll('.merch-item');
         var currentIndex = 0;
         var totalItems = items.length;
         
+        // ========================================
+        // 3D CAROUSEL POSITIONING LOGIC
+        // ========================================
+        // Positions items in 3D space:
+        // - Center item: scale(1), translateZ(0) - fully visible
+        // - Side items: scale(0.7), translateZ(-100px) - background preview
+        // - Hidden items: scale(0.6), translateZ(-200px) - barely visible
         function updateCarousel() {
-          // Check if mobile
+          // Check if mobile for responsive positioning
           var isMobile = window.innerWidth <= 768;
           
           // Add a small delay to prevent rapid updates
@@ -364,26 +379,32 @@
           });
         }
         
-             // Initialize
-             console.log('Initializing merch carousel with', totalItems, 'items');
+             // Initialize carousel
              updateCarousel();
       });
     })();
 
-    // Direct video source switching - bypass CSS completely
+    // ========================================
+    // VIDEO THEME SWITCHING SYSTEM
+    // ========================================
+    // Handles switching between light/dark video sources:
+    // - Light mode: webpageloop2.mp4 (white video)
+    // - Dark mode: webpageloop2black.mp4 (black video)
+    // - Automatic switching on theme changes
+    // - Fallback source creation if missing
     (function(){
-      function switchVideoSource() {
-        var video = document.getElementById('themeVideo');
-        if (!video) {
-          console.log('Video element not found!');
-          return;
-        }
+      var video = null;
+      var lightSource = null;
+      var darkSource = null;
+      
+      function initVideoSources() {
+        video = document.getElementById('themeVideo');
+        if (!video) return false;
         
-        // Always get fresh references to sources
-        var lightSource = video.querySelector('.light-video');
-        var darkSource = video.querySelector('.dark-video');
+        lightSource = video.querySelector('.light-video');
+        darkSource = video.querySelector('.dark-video');
         
-        // If sources are missing, recreate them
+        // Create sources if they don't exist
         if (!lightSource) {
           lightSource = document.createElement('source');
           lightSource.src = '{{ "/images/webpageloop2.mp4" | relative_url }}';
@@ -398,73 +419,45 @@
           darkSource.className = 'dark-video';
         }
         
-        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        console.log('Switching video - Theme is dark:', isDark);
-        console.log('Light source src:', lightSource.src);
-        console.log('Dark source src:', darkSource.src);
+        return true;
+      }
+      
+      function switchVideoTheme() {
+        if (!initVideoSources()) return;
         
-        // Actually remove and re-add source elements to force video switching
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        
+        // Clear video sources
+        video.innerHTML = '';
+        
+        // Add the correct source
         if (isDark) {
-          // Dark mode - remove light source, add dark source
-          console.log('Removing light source, adding dark source');
-          lightSource.remove();
           video.appendChild(darkSource);
         } else {
-          // Light mode - remove dark source, add light source
-          console.log('Removing dark source, adding light source');
-          darkSource.remove();
           video.appendChild(lightSource);
         }
         
-        // Reload video to pick up new source
-        console.log('Reloading video...');
+        // Reload video
         video.load();
         video.play();
-        
-        // Check what source is actually being used
-        setTimeout(function() {
-          console.log('Video currentSrc after reload:', video.currentSrc);
-        }, 1000);
       }
       
-      // Watch for theme changes with multiple methods
+      // Theme change observer
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-            console.log('Theme changed to:', document.documentElement.getAttribute('data-theme'));
-            setTimeout(switchVideoSource, 100);
+            switchVideoTheme();
           }
         });
       });
       
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-      });
-      
-      // Also listen directly to theme toggle clicks
+      // Initialize
       document.addEventListener('DOMContentLoaded', function() {
-        var themeDot = document.getElementById('theme-dot');
-        var themeDotDrawer = document.getElementById('theme-dot-drawer');
-        
-        if (themeDot) {
-          themeDot.addEventListener('click', function() {
-            console.log('Theme dot clicked');
-            setTimeout(switchVideoSource, 200);
-          });
-        }
-        
-        if (themeDotDrawer) {
-          themeDotDrawer.addEventListener('click', function() {
-            console.log('Theme dot drawer clicked');
-            setTimeout(switchVideoSource, 200);
-          });
-        }
-      });
-      
-      // Initialize on load
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(switchVideoSource, 500);
+        observer.observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
+        switchVideoTheme();
       });
     })();
 
