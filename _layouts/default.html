@@ -420,24 +420,33 @@
     (function(){
       function updateThemeVideo() {
         var video = document.getElementById('themeVideo');
-        if (!video) return;
+        if (!video) {
+          console.log('Theme video not found');
+          return;
+        }
         
         var lightSource = video.querySelector('.light-video');
         var darkSource = video.querySelector('.dark-video');
         
-        if (!lightSource || !darkSource) return;
+        if (!lightSource || !darkSource) {
+          console.log('Video sources not found');
+          return;
+        }
         
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        console.log('Theme is dark:', isDark);
         
-        // Force hide both sources first
-        lightSource.style.display = 'none';
-        darkSource.style.display = 'none';
+        // Force hide both sources first with !important
+        lightSource.style.setProperty('display', 'none', 'important');
+        darkSource.style.setProperty('display', 'none', 'important');
         
-        // Then show the correct one
+        // Then show the correct one with !important
         if (isDark) {
-          darkSource.style.display = 'block';
+          darkSource.style.setProperty('display', 'block', 'important');
+          console.log('Showing dark video');
         } else {
-          lightSource.style.display = 'block';
+          lightSource.style.setProperty('display', 'block', 'important');
+          console.log('Showing light video');
         }
         
         // Reload video to use new source
@@ -460,7 +469,14 @@
       
       // Initialize on load
       document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(updateThemeVideo, 200); // Delay to ensure DOM is ready
+        setTimeout(updateThemeVideo, 100); // Shorter delay
+        // Also run immediately after a short delay
+        setTimeout(updateThemeVideo, 500);
+      });
+      
+      // Also run on window load as backup
+      window.addEventListener('load', function() {
+        setTimeout(updateThemeVideo, 100);
       });
     })();
 
