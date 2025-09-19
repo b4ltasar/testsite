@@ -167,21 +167,10 @@
         var totalItems = items.length;
         
         function updateCarousel() {
-          // Remove active class from all items
-          items.forEach(function(item) {
-            item.classList.remove('active');
-          });
-          
-          // Set active item
-          var activeItem = items[currentIndex];
-          if (activeItem) {
-            activeItem.classList.add('active');
-          }
-          
           // Check if mobile
           var isMobile = window.innerWidth <= 768;
           
-          // Position items in 3D space
+          // Position items in 3D space first to prevent glitch
           items.forEach(function(item, index) {
             var relativeIndex = (index - currentIndex + totalItems) % totalItems;
             
@@ -217,6 +206,17 @@
               item.style.opacity = '0.3';
             }
           });
+          
+          // Remove active class from all items
+          items.forEach(function(item) {
+            item.classList.remove('active');
+          });
+          
+          // Set active item after positioning
+          var activeItem = items[currentIndex];
+          if (activeItem) {
+            activeItem.classList.add('active');
+          }
         }
         
         function nextSlide() {
