@@ -223,10 +223,10 @@
             activeItem.classList.add('active');
           }
           
-          // Re-enable transitions after a brief moment
+          // Re-enable transitions after a brief moment with smooth easing
           setTimeout(function() {
             items.forEach(function(item) {
-              item.style.transition = '';
+              item.style.transition = 'transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-out, scale 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
             });
           }, 50);
         }
