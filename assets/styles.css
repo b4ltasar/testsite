@@ -59,7 +59,7 @@ img, video { display: block; max-width: 100%; }
 }
 
 .section + .feature-section {
-  margin-top: -60px;
+  margin-top: -100px;
 }
 .section .container {
   width: 100%;
@@ -283,23 +283,23 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 @media (max-width: 1024px) and (min-width: 769px) {
   /* Tablet carousel adjustments */
   .carousel-container {
-    padding: 0 20px;
+    padding: 0 25px;
   }
   
   .carousel-track {
-    height: 500px;
+    height: 450px;
   }
   
   .carousel-item {
-    width: 300px;
+    width: 280px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-180px) translateZ(-100px) rotateY(35deg);
+    transform: translateX(-160px) translateZ(-80px) rotateY(30deg);
   }
   
   .carousel-item.next {
-    transform: translateX(180px) translateZ(-100px) rotateY(-35deg);
+    transform: translateX(160px) translateZ(-80px) rotateY(-30deg);
   }
   
   .feature-content {
@@ -350,23 +350,23 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   /* Carousel mobile styles */
   .carousel-container {
     max-width: 100%;
-    padding: 0 15px;
+    padding: 0 20px;
   }
   
   .carousel-track {
-    height: 450px;
+    height: 400px;
   }
   
   .carousel-item {
-    width: 260px;
+    width: 240px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-140px) translateZ(-80px) rotateY(40deg);
+    transform: translateX(-120px) translateZ(-60px) rotateY(35deg);
   }
   
   .carousel-item.next {
-    transform: translateX(140px) translateZ(-80px) rotateY(-40deg);
+    transform: translateX(120px) translateZ(-60px) rotateY(-35deg);
   }
   
   .carousel-nav {
@@ -648,7 +648,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .carousel-item {
   position: absolute;
-  width: 600px;
+  width: 500px;
   text-align: center;
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-style: preserve-3d;
@@ -672,13 +672,13 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 .carousel-item.prev {
-  transform: translateX(-400px) translateZ(-250px) rotateY(35deg);
+  transform: translateX(-320px) translateZ(-200px) rotateY(30deg);
   opacity: 0.25;
   scale: 0.6;
 }
 
 .carousel-item.next {
-  transform: translateX(400px) translateZ(-250px) rotateY(-35deg);
+  transform: translateX(320px) translateZ(-200px) rotateY(-30deg);
   opacity: 0.25;
   scale: 0.6;
 }
