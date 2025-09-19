@@ -1,7 +1,25 @@
 # Feature section data
 items:
   - title: "NEARWEEK L/S T-SHIRT"
-    description: "NEAR OG, Extremely comfortable, 100& Cotton"
+    description: "NEAR OG, Extremely comfortable, 100% Cotton"
+    image: "/images/merch-tshirt.png"
+    link: ""
+    button_text: "COMING SOON"
+    
+  - title: "NEARWEEK HOODIE"
+    description: "Premium quality, perfect for the trenches"
+    image: "/images/merch-tshirt.png"
+    link: ""
+    button_text: "COMING SOON"
+    
+  - title: "NEARWEEK CAP"
+    description: "Represent NEARWEEK in style"
+    image: "/images/merch-tshirt.png"
+    link: ""
+    button_text: "COMING SOON"
+    
+  - title: "NEARWEEK MUG"
+    description: "Start your day with NEARWEEK energy"
     image: "/images/merch-tshirt.png"
     link: ""
     button_text: "COMING SOON"

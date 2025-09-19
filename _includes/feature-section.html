@@ -1,20 +1,34 @@
 <section class="feature-section" id="feature">
   <div class="container">
-    <div class="feature-grid">
-      {% for item in site.data.feature.items %}
-        <div class="feature-item" data-aos="fade-up" data-aos-delay="{{ forloop.index0 | times: 150 }}">
-          <div class="feature-image">
-            <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
+    <div class="carousel-container">
+      <button class="carousel-nav carousel-prev" aria-label="Previous item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <div class="carousel-track">
+        {% for item in site.data.feature.items %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+            <div class="feature-image">
+              <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">{{ item.title }}</h3>
+              <p class="feature-description">{{ item.description }}</p>
+              <a href="{{ item.link }}" target="_blank" rel="noopener" class="feature-button">
+                {{ item.button_text }}
+              </a>
+            </div>
           </div>
-          <div class="feature-content">
-            <h3 class="feature-title">{{ item.title }}</h3>
-            <p class="feature-description">{{ item.description }}</p>
-            <a href="{{ item.link }}" target="_blank" rel="noopener" class="feature-button">
-              {{ item.button_text }}
-            </a>
-          </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+      
+      <button class="carousel-nav carousel-next" aria-label="Next item">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
