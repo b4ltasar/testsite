@@ -283,33 +283,33 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 @media (max-width: 1024px) and (min-width: 769px) {
   /* Tablet carousel adjustments */
   .carousel-container {
-    padding: 0 25px;
+    padding: 0 35px;
   }
   
   .carousel-track {
-    height: 450px;
+    height: 400px;
   }
   
   .carousel-item {
-    width: 280px;
+    width: 250px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-160px) translateZ(-80px) rotateY(30deg);
+    transform: translateX(-140px) translateZ(-70px) rotateY(25deg);
   }
   
   .carousel-item.next {
-    transform: translateX(160px) translateZ(-80px) rotateY(-30deg);
+    transform: translateX(140px) translateZ(-70px) rotateY(-25deg);
   }
   
   .feature-content {
     margin-top: 20px;
     min-width: 280px;
-    padding: 14px 18px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.25);
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
   
   .carousel-nav {
@@ -355,23 +355,23 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   /* Carousel mobile styles */
   .carousel-container {
     max-width: 100%;
-    padding: 0 20px;
+    padding: 0 30px;
   }
   
   .carousel-track {
-    height: 400px;
+    height: 350px;
   }
   
   .carousel-item {
-    width: 240px;
+    width: 200px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-120px) translateZ(-60px) rotateY(35deg);
+    transform: translateX(-100px) translateZ(-50px) rotateY(30deg);
   }
   
   .carousel-item.next {
-    transform: translateX(120px) translateZ(-60px) rotateY(-35deg);
+    transform: translateX(100px) translateZ(-50px) rotateY(-30deg);
   }
   
   .carousel-nav {
@@ -387,19 +387,19 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     right: -10px;
   }
   
-  /* Mobile feature content - consistent readable box */
+  /* Mobile feature content - clean text below image */
   .feature-content {
     position: relative;
     bottom: auto;
     left: auto;
     transform: none;
-    margin-top: 24px;
+    margin-top: 20px;
     min-width: 260px;
-    padding: 12px 16px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
     backdrop-filter: none;
   }
   
@@ -654,7 +654,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .carousel-item {
   position: absolute;
-  width: 500px;
+  width: 450px;
   text-align: center;
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-style: preserve-3d;
@@ -678,13 +678,13 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 .carousel-item.prev {
-  transform: translateX(-320px) translateZ(-200px) rotateY(30deg);
+  transform: translateX(-280px) translateZ(-180px) rotateY(25deg);
   opacity: 0.25;
   scale: 0.6;
 }
 
 .carousel-item.next {
-  transform: translateX(320px) translateZ(-200px) rotateY(-30deg);
+  transform: translateX(280px) translateZ(-180px) rotateY(-25deg);
   opacity: 0.25;
   scale: 0.6;
 }
@@ -708,15 +708,15 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .feature-content {
   position: absolute;
-  bottom: -30px;
+  bottom: -40px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
   z-index: 10;
   min-width: 280px;
   text-align: center;
