@@ -81,6 +81,27 @@ img, video {
   -ms-transform: none !important;
   -o-transform: none !important;
 }
+
+/* Theme-specific video sources */
+.theme-video .light-video {
+  display: block;
+}
+
+.theme-video .dark-video {
+  display: none;
+}
+
+[data-theme="dark"] .theme-video .light-video {
+  display: none;
+}
+
+[data-theme="dark"] .theme-video .dark-video {
+  display: block;
+}
+
+[data-theme="dark"] .section video {
+  background: var(--bg) !important;
+}
 .stack > * + * { margin-top: 12px; }
 
 /* =========================

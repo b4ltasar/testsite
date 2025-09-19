@@ -396,6 +396,48 @@
       });
     })();
 
+    // Theme video switching
+    (function(){
+      function updateThemeVideo() {
+        var video = document.getElementById('themeVideo');
+        if (!video) return;
+        
+        var lightSource = video.querySelector('.light-video');
+        var darkSource = video.querySelector('.dark-video');
+        
+        if (!lightSource || !darkSource) return;
+        
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        
+        if (isDark) {
+          lightSource.style.display = 'none';
+          darkSource.style.display = 'block';
+          video.load(); // Reload video to use new source
+        } else {
+          lightSource.style.display = 'block';
+          darkSource.style.display = 'none';
+          video.load(); // Reload video to use new source
+        }
+      }
+      
+      // Watch for theme changes
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+            updateThemeVideo();
+          }
+        });
+      });
+      
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+      });
+      
+      // Initialize on load
+      document.addEventListener('DOMContentLoaded', updateThemeVideo);
+    })();
+
     // Newsletter form handling
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
