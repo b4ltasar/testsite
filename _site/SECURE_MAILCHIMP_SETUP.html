@@ -40,8 +40,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/style.css?v=20250919125256" />
-  <link rel="preload" href="/assets/css/style.css?v=20250919125256" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="/assets/css/style.css?v=20250919125311" />
+  <link rel="preload" href="/assets/css/style.css?v=20250919125311" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
   <style>
     :root{
@@ -60,7 +60,42 @@
       --border: rgba(255,255,255,0.12);
       --accent: #22d3ee;
     }
-</style>
+    
+    /* Fallback CSS to ensure basic styling works */
+    body { 
+      background: var(--bg) !important; 
+      color: var(--text) !important; 
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+    }
+    .hero-grid { 
+      display: grid !important; 
+      grid-template-columns: 1.1fr .9fr !important; 
+      gap: 32px !important; 
+      align-items: center !important; 
+      padding: 40px 0 24px !important; 
+    }
+    .mcard { 
+      flex: 0 0 340px !important; 
+      background: var(--card) !important; 
+      border: 1px solid var(--border) !important; 
+      border-radius: 16px !important; 
+      overflow: hidden !important; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; 
+      position: relative !important; 
+    }
+    .cards-marquee { 
+      position: relative !important; 
+      overflow-x: auto !important; 
+      overflow-y: hidden !important; 
+      padding: 8px 0 !important; 
+    }
+    .cards-track { 
+      display: flex !important; 
+      gap: 16px !important; 
+      width: max-content !important; 
+      padding: 10px 0 !important; 
+    }
+  </style>
 
   <script>
     (function(){
