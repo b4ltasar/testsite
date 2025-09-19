@@ -370,7 +370,30 @@
       });
     })();
 
-    // Video theme switching is now handled by CSS only - same as other theme elements
+    // Simple video theme switching - reload video when theme changes
+    (function(){
+      function reloadVideo() {
+        var video = document.getElementById('themeVideo');
+        if (video) {
+          video.load();
+          video.play();
+        }
+      }
+      
+      // Watch for theme changes
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+            reloadVideo();
+          }
+        });
+      });
+      
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['data-theme']
+      });
+    })();
 
     // Newsletter form handling
     (function(){
