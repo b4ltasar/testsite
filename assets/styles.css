@@ -49,37 +49,15 @@ img, video {
 }
 .section { padding: 40px 0; margin: 0; border: none; outline: none; box-shadow: none; }
 .section video { 
-  border: none !important; 
-  outline: none !important; 
-  box-shadow: none !important; 
-  border-radius: 0 !important;
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  appearance: none !important;
   width: 80% !important;
   height: auto !important;
   margin: 0 auto !important;
   display: block !important;
   object-fit: cover !important;
-  overflow: hidden !important;
-  background: white !important;
-  padding: 0 !important;
-  position: relative !important;
-  z-index: 1 !important;
-  filter: none !important;
-  -webkit-filter: none !important;
-  -moz-filter: none !important;
-  -ms-filter: none !important;
-  -o-filter: none !important;
-  -webkit-mask: linear-gradient(white, white) !important;
-  mask: linear-gradient(white, white) !important;
-  clip-path: inset(0) !important;
-  -webkit-clip-path: inset(0) !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  -moz-transform: none !important;
-  -ms-transform: none !important;
-  -o-transform: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 /* Theme-specific video sources */
@@ -1166,46 +1144,19 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    Safety
    ========================= */
 .hero-card{ 
-  background: transparent !important; 
-  border: none !important; 
-  outline: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  overflow: hidden !important;
-  position: relative !important;
-  margin: 0 !important;
-  padding: 0 !important;
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  overflow: visible;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
-.hero-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: white;
-  z-index: 0;
-  pointer-events: none;
-}
+/* Removed all stroke-related overlays */
 
-.hero-card::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: white;
-  z-index: -1;
-  pointer-events: none;
-}
-
-/* Dark mode video background */
-[data-theme="dark"] .hero-card::before,
-[data-theme="dark"] .hero-card::after {
-  background: var(--bg);
-}
+/* Removed dark mode stroke overlays */
 
 /* Dark mode merch background items */
 [data-theme="dark"] .merch-item[data-index]:not(.active),
