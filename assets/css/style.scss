@@ -2,6 +2,27 @@
 ---
 
 /* =========================
+   CSS Variables
+   ========================= */
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0a;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --border: rgba(0,0,0,0.12);
+  --accent: #0ea5e9;
+}
+
+html.dark {
+  --bg: #000000;
+  --text: #f5f7fb;
+  --muted: #9ca3af;
+  --card: #12141a;
+  --border: rgba(255,255,255,0.12);
+  --accent: #22d3ee;
+}
+
+/* =========================
    Base
    ========================= */
 * { box-sizing: border-box; }
