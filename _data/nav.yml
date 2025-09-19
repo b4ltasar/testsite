@@ -5,11 +5,11 @@ logo_header: "/images/logohorisontalblack.png"
 logo_footer: "/images/logohorisontalwhite.png"
 
 header:
-  - { text: "NEWSLETTER", href: "/#newsletter" }
-  - { text: "BLOG",        href: "/#blog" }
-  - { text: "COMMUNITY",   href: "/#community" }
+  - { text: "NEWSLETTER", href: "https://x.com/NEARWEEK/articles" }
+  - { text: "BLOG",        href: "https://nearweek.medium.com/" }
+  - { text: "COMMUNITY",   href: "https://t.me/nearweek" }
 
 footer:
-  - { text: "NEWSLETTER", href: "/#newsletter" }
-  - { text: "BLOG",        href: "/#blog" }
-  - { text: "COMMUNITY",   href: "/#community" }
+   - { text: "NEWSLETTER", href: "https://x.com/NEARWEEK/articles" }
+  - { text: "BLOG",        href: "https://nearweek.medium.com/" }
+  - { text: "COMMUNITY",   href: "https://t.me/nearweek" }
