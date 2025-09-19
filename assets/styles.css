@@ -60,7 +60,7 @@ img, video {
   background: transparent !important;
 }
 
-/* Theme-specific video sources - using same logic as other theme elements */
+/* Theme-specific video sources - maximum specificity */
 .theme-video .light-video {
   display: block !important;
 }
@@ -85,7 +85,7 @@ html[data-theme="light"] .theme-video .dark-video {
   display: none !important;
 }
 
-/* Additional specificity for video sources */
+/* Maximum specificity for video sources */
 #themeVideo .light-video {
   display: block !important;
 }
@@ -100,6 +100,31 @@ html[data-theme="dark"] #themeVideo .light-video {
 
 html[data-theme="dark"] #themeVideo .dark-video {
   display: block !important;
+}
+
+/* Force video source visibility with maximum specificity */
+video.theme-video source.light-video {
+  display: block !important;
+}
+
+video.theme-video source.dark-video {
+  display: none !important;
+}
+
+html[data-theme="dark"] video.theme-video source.light-video {
+  display: none !important;
+}
+
+html[data-theme="dark"] video.theme-video source.dark-video {
+  display: block !important;
+}
+
+html[data-theme="light"] video.theme-video source.light-video {
+  display: block !important;
+}
+
+html[data-theme="light"] video.theme-video source.dark-video {
+  display: none !important;
 }
 
 [data-theme="dark"] .section video {
