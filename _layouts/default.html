@@ -43,7 +43,7 @@
   
   
   <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}" />
-  
+
   <style>
     :root{
       --bg: {{ site.data.theme.light.bg }};
@@ -62,7 +62,7 @@
       --accent: {{ site.data.theme.dark.accent }};
     }
     
-  </style>
+</style>
 
   <script>
     (function(){
@@ -235,8 +235,8 @@
                    var title = item.querySelector('.merch-title');
                    var description = item.querySelector('.merch-description');
                    var button = item.querySelector('.merch-button');
-                   
-                   if (index === currentIndex) {
+            
+            if (index === currentIndex) {
                      // Show all content on active item
                      if (content) content.style.display = 'flex';
                      if (title) title.style.display = 'block';
@@ -272,7 +272,7 @@
           // Delay to prevent glitch
           setTimeout(updateCarousel, 20);
         }
-
+        
         function prevSlide() {
           currentIndex = (currentIndex - 1 + totalItems) % totalItems;
           // Delay to prevent glitch
@@ -370,28 +370,35 @@
       });
     })();
 
-    // Simple video theme switching - reload video when theme changes
+    // Direct video source switching - bypass CSS completely
     (function(){
-      function reloadVideo() {
+      function switchVideoSource() {
         var video = document.getElementById('themeVideo');
-        if (video) {
-          console.log('Reloading video...');
-          video.load();
-          video.play();
+        if (!video) return;
+        
+        var lightSource = video.querySelector('.light-video');
+        var darkSource = video.querySelector('.dark-video');
+        if (!lightSource || !darkSource) return;
+        
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        console.log('Switching video - Theme is dark:', isDark);
+        
+        // Directly manipulate the source elements
+        if (isDark) {
+          // Dark mode - show dark video, hide light video
+          lightSource.style.display = 'none';
+          darkSource.style.display = 'block';
+          console.log('Showing dark video, hiding light video');
+        } else {
+          // Light mode - show light video, hide dark video
+          lightSource.style.display = 'block';
+          darkSource.style.display = 'none';
+          console.log('Showing light video, hiding dark video');
         }
-      }
-      
-      function debugVideoSources() {
-        var video = document.getElementById('themeVideo');
-        if (video) {
-          var lightSource = video.querySelector('.light-video');
-          var darkSource = video.querySelector('.dark-video');
-          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-          
-          console.log('Theme is dark:', isDark);
-          console.log('Light source display:', lightSource ? getComputedStyle(lightSource).display : 'not found');
-          console.log('Dark source display:', darkSource ? getComputedStyle(darkSource).display : 'not found');
-        }
+        
+        // Reload video to pick up new source
+        video.load();
+        video.play();
       }
       
       // Watch for theme changes
@@ -399,10 +406,7 @@
         mutations.forEach(function(mutation) {
           if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
             console.log('Theme changed to:', document.documentElement.getAttribute('data-theme'));
-            setTimeout(function() {
-              debugVideoSources();
-              reloadVideo();
-            }, 100);
+            setTimeout(switchVideoSource, 100);
           }
         });
       });
@@ -412,9 +416,9 @@
         attributeFilter: ['data-theme']
       });
       
-      // Debug on load
+      // Initialize on load
       document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(debugVideoSources, 500);
+        setTimeout(switchVideoSource, 500);
       });
     })();
 
