@@ -1,35 +1,42 @@
-<section class="feature-section" id="feature">
+<section class="section">
   <div class="container">
-    <div class="carousel-container">
-      <button class="carousel-nav carousel-prev" aria-label="Previous item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      
-      <div class="carousel-track">
-        {% for item in site.data.feature.items %}
-          <div class="carousel-item {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
-            <div class="feature-image">
-              <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
+    <div class="feature-header">
+      <h2 class="h2">MERCHANDISE HIGHLIGHT</h2>
+      <p class="feature-subtitle">Exclusive NEARWEEK merchandise coming soon</p>
+    </div>
+    
+    <div class="feature-carousel">
+      <div class="carousel-container">
+        <div class="carousel-track" id="featureCarousel">
+          {% for item in site.data.feature.items %}
+            <div class="feature-card">
+              <div class="feature-card-media">
+                <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
+              </div>
+              <div class="feature-card-body">
+                <h3 class="feature-card-title">{{ item.title }}</h3>
+                <p class="feature-card-text">{{ item.description }}</p>
+                <a href="{{ item.link | default: '#' }}" class="feature-card-button" {% if item.link == '' %}onclick="return false;"{% endif %}>
+                  {{ item.button_text | default: 'Learn More' }}
+                </a>
+              </div>
             </div>
-            <div class="feature-content">
-              <h3 class="feature-title">{{ item.title }}</h3>
-              <p class="feature-description">{{ item.description }}</p>
-              <a href="{{ item.link }}" target="_blank" rel="noopener" class="feature-button">
-                {{ item.button_text }}
-              </a>
-            </div>
-          </div>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
       
-      <button class="carousel-nav carousel-next" aria-label="Next item">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+      <div class="carousel-controls">
+        <button class="carousel-btn carousel-prev" id="featurePrev" aria-label="Previous">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+          </svg>
+        </button>
+        <button class="carousel-btn carousel-next" id="featureNext" aria-label="Next">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </section>
-

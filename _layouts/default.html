@@ -154,6 +154,75 @@
       });
     })();
 
+    // Feature carousel functionality
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        var carousel = document.getElementById('featureCarousel');
+        if(!carousel) return;
+        
+        var prevBtn = document.getElementById('featurePrev');
+        var nextBtn = document.getElementById('featureNext');
+        var cards = carousel.querySelectorAll('.feature-card');
+        var currentIndex = 0;
+        var cardsPerView = 3;
+        var cardWidth = 320 + 24; // card width + gap
+        
+        function updateCarousel() {
+          var translateX = -currentIndex * cardWidth;
+          carousel.style.transform = 'translateX(' + translateX + 'px)';
+          
+          // Update button states
+          prevBtn.disabled = currentIndex === 0;
+          nextBtn.disabled = currentIndex >= cards.length - cardsPerView;
+        }
+        
+        function nextSlide() {
+          if (currentIndex < cards.length - cardsPerView) {
+            currentIndex++;
+            updateCarousel();
+          }
+        }
+        
+        function prevSlide() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+        }
+        
+        // Event listeners
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        
+        // Responsive handling
+        function handleResize() {
+          if (window.innerWidth <= 768) {
+            cardsPerView = 1;
+            cardWidth = 280 + 24;
+          } else if (window.innerWidth <= 1024) {
+            cardsPerView = 2;
+            cardWidth = 300 + 24;
+          } else {
+            cardsPerView = 3;
+            cardWidth = 320 + 24;
+          }
+          
+          // Reset to first slide if current position is invalid
+          if (currentIndex > cards.length - cardsPerView) {
+            currentIndex = Math.max(0, cards.length - cardsPerView);
+          }
+          
+          updateCarousel();
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial call
+        
+        // Initialize
+        updateCarousel();
+      });
+    })();
+
     // Newsletter form handling
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
