@@ -131,6 +131,28 @@
       });
     })();
 
+    // Marquee touch pause/resume
+    (function(){
+      document.addEventListener('DOMContentLoaded', function(){
+        var marquee = document.getElementById('cardsMarquee');
+        if(!marquee) return;
+        var track = marquee.querySelector('.cards-track');
+        if(!track) return;
+        var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+        function pause(){ track.classList.add('paused'); }
+        function resume(){ track.classList.remove('paused'); }
+
+        if(isTouch){
+          marquee.addEventListener('touchstart', pause, {passive:true});
+          marquee.addEventListener('touchend', resume, {passive:true});
+          marquee.addEventListener('touchcancel', resume, {passive:true});
+        }
+        // Also pause when user focuses links via keyboard
+        marquee.addEventListener('focusin', pause);
+        marquee.addEventListener('focusout', resume);
+      });
+    })();
 
     // Newsletter form handling
     (function(){

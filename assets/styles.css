@@ -286,6 +286,73 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 .mcard-text{ color:var(--muted); font-size:14px; }
 
 /* =========================
+   Cards marquee
+   ========================= */
+.cards-marquee{ position:relative; overflow-x: auto; overflow-y: hidden; padding:8px 0; touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
+.cards-marquee::-webkit-scrollbar { height: 6px; }
+.cards-marquee::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
+.cards-marquee::-webkit-scrollbar-thumb { background: var(--text); border-radius: 3px; }
+.cards-marquee::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+.cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change:transform; }
+.cards-marquee:hover .cards-track{ animation-play-state:paused; }
+.cards-track.paused{ animation-play-state:paused; }
+
+/* Enable automatic scrolling on mobile/tablet */
+@media (max-width: 1024px) {
+  .cards-marquee{ overflow-x: hidden; }
+  .cards-track{ animation: cards-marquee 30s linear infinite; }
+}
+/* Enable horizontal scrolling on mobile */
+@media (max-width: 768px) {
+  .cards-marquee{ overflow-x: auto; overflow-y: hidden; }
+  .cards-track{ animation: none; }
+  .cards-marquee::-webkit-scrollbar { height: 4px; }
+  .cards-marquee::-webkit-scrollbar-track { background: var(--border); }
+  .cards-marquee::-webkit-scrollbar-thumb { background: var(--text); border-radius: 2px; }
+}
+@keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+/* kort */
+.mcard{
+  flex:0 0 340px; 
+  background:var(--card); 
+  border:1px solid var(--border);
+  border-radius:16px; 
+  overflow:hidden; 
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  position: relative;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mcard:hover {
+  transform: translateY(-8px);
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+  border-color: var(--text);
+}
+.mcard-media{ 
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #111;
+}
+.mcard-media img{ 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.mcard-link{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.mcard-body{ padding:12px 14px 14px; }
+.mcard-title{ font-weight:700; font-size:16px; margin:2px 0 4px; }
+.mcard-text{ color:var(--muted); font-size:14px; }
+
+/* =========================
    CTA
    ========================= */
 .cta{ text-align:center; padding:0; margin:8px 0 0; }
