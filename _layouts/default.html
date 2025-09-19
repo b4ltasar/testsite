@@ -42,28 +42,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   
   
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}" />
   
   <style>
-    /* Force CSS variables to work */
-    :root {
-      --bg: #ffffff !important;
-      --text: #0a0a0a !important;
-      --muted: #6b7280 !important;
-      --card: #ffffff !important;
-      --border: rgba(0,0,0,0.12) !important;
-      --accent: #0ea5e9 !important;
+    :root{
+      --bg: {{ site.data.theme.light.bg }};
+      --text: {{ site.data.theme.light.text }};
+      --muted: {{ site.data.theme.light.muted }};
+      --card: {{ site.data.theme.light.card }};
+      --border: {{ site.data.theme.light.border }};
+      --accent: {{ site.data.theme.light.accent }};
     }
-    
-    body {
-      background: #ffffff !important;
-      color: #0a0a0a !important;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
-    }
-    
-    .header {
-      background: #ffffff !important;
-      border-bottom: 1px solid rgba(0,0,0,0.12) !important;
+    html.dark{
+      --bg: {{ site.data.theme.dark.bg }};
+      --text: {{ site.data.theme.dark.text }};
+      --muted: {{ site.data.theme.dark.muted }};
+      --card: {{ site.data.theme.dark.card }};
+      --border: {{ site.data.theme.dark.border }};
+      --accent: {{ site.data.theme.dark.accent }};
     }
   </style>
 
