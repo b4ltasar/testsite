@@ -43,6 +43,29 @@
   
   
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
+  
+  <style>
+    /* Force CSS variables to work */
+    :root {
+      --bg: #ffffff !important;
+      --text: #0a0a0a !important;
+      --muted: #6b7280 !important;
+      --card: #ffffff !important;
+      --border: rgba(0,0,0,0.12) !important;
+      --accent: #0ea5e9 !important;
+    }
+    
+    body {
+      background: #ffffff !important;
+      color: #0a0a0a !important;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif !important;
+    }
+    
+    .header {
+      background: #ffffff !important;
+      border-bottom: 1px solid rgba(0,0,0,0.12) !important;
+    }
+  </style>
 
   <script>
     (function(){
