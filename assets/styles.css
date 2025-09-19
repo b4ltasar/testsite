@@ -39,6 +39,15 @@ img, video { display: block; max-width: 100%; }
   .container { width: min(1800px, 80vw); }
 }
 .section { padding: 0; margin: 0; border: none; outline: none; box-shadow: none; }
+.section video { 
+  border: none !important; 
+  outline: none !important; 
+  box-shadow: none !important; 
+  border-radius: 0 !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+}
 .stack > * + * { margin-top: 12px; }
 
 /* =========================
@@ -226,6 +235,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
+  border-radius: 0 !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
 }
 @media (max-width: 900px){
   .hero-grid{ 
@@ -1082,6 +1095,12 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Safety
    ========================= */
-.hero-card{ background: transparent; border: none; }
+.hero-card{ 
+  background: transparent !important; 
+  border: none !important; 
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
 /* Remove frame when needed */
 .no-frame{ border:0 !important; background:transparent !important; box-shadow:none !important; }
