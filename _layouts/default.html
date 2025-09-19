@@ -229,6 +229,19 @@
               activeItem.classList.add('active');
             }
             
+            // Hide content on backmost items (z-index 1), show on others
+            items.forEach(function(item) {
+              var zIndex = item.style.zIndex;
+              var content = item.querySelector('.merch-content');
+              if (content) {
+                if (zIndex === '1') {
+                  content.style.display = 'none';
+                } else {
+                  content.style.display = 'flex';
+                }
+              }
+            });
+            
             // Re-enable transitions after a longer delay
             setTimeout(function() {
               items.forEach(function(item) {

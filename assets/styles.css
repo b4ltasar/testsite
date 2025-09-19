@@ -545,13 +545,15 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   text-align: center;
 }
 
-/* Hide all content on non-active items */
-.merch-item:not(.active) .merch-content {
+/* Hide content on items with z-index 1 (backmost items) */
+.merch-item[style*="z-index: 1"] .merch-content {
   display: none !important;
 }
 
-/* Ensure only active item shows content */
-.merch-item.active .merch-content {
+/* Show content on active item and side items (z-index 2 and 3) */
+.merch-item.active .merch-content,
+.merch-item[style*="z-index: 2"] .merch-content,
+.merch-item[style*="z-index: 3"] .merch-content {
   display: flex !important;
 }
 
