@@ -1014,13 +1014,14 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   margin: 24px auto;
   margin-bottom: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+  max-width: 600px;
+  width: 90%;
 }
 .newsletter-content{ 
   text-align: center; 
-  max-width: 400px; 
+  max-width: 500px; 
   margin: 0 auto; 
-  padding: 0 30px;
+  padding: 0 20px;
 }
 .newsletter-title{ 
   font-size: 28px; 
@@ -1176,9 +1177,16 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
   
   .newsletter-section{
-    padding: 60px 0 !important;
-    margin: 12px !important;
+    padding: 40px 0 !important;
+    margin: 16px !important;
     border-radius: 16px !important;
+    width: 95% !important;
+    max-width: 95% !important;
+  }
+  
+  .newsletter-content{
+    padding: 0 16px !important;
+    max-width: 100% !important;
   }
   .newsletter-form{ 
     flex-direction: column; 
