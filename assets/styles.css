@@ -47,7 +47,7 @@ img, video {
 @media (min-width: 1920px) {
   .container { width: min(1800px, 80vw); }
 }
-.section { padding: 0; margin: 0; border: none; outline: none; box-shadow: none; }
+.section { padding: 40px 0; margin: 0; border: none; outline: none; box-shadow: none; }
 .section video { 
   border: none !important; 
   outline: none !important; 
@@ -66,6 +66,11 @@ img, video {
   padding: 0 !important;
   position: relative !important;
   z-index: 1 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  -moz-filter: none !important;
+  -ms-filter: none !important;
+  -o-filter: none !important;
 }
 .stack > * + * { margin-top: 12px; }
 
@@ -1136,6 +1141,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   border-radius: 0 !important;
   overflow: hidden !important;
   position: relative !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .hero-card::before {
