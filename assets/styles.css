@@ -12,6 +12,7 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 a { color: inherit; text-decoration: none; }
 img, video { 
   display: block; 
@@ -1006,9 +1007,13 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    ========================= */
 .newsletter-section{ 
   padding: 60px 0; 
-  background: var(--card); 
+  background: var(--content-bg); 
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  border-radius: 24px;
+  margin: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 .newsletter-content{ 
   text-align: center; 
@@ -1170,6 +1175,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   
   .newsletter-section{
     padding: 60px 0 !important;
+    margin: 12px !important;
+    border-radius: 16px !important;
   }
   .newsletter-form{ 
     flex-direction: column; 
