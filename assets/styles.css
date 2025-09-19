@@ -49,7 +49,7 @@ img, video {
 }
 .section { padding: 0; margin: 0; border: none; outline: none; box-shadow: none; }
 .section video { 
-  border: none !important; 
+  border: 2px solid white !important; 
   outline: none !important; 
   box-shadow: none !important; 
   border-radius: 0 !important;
@@ -60,6 +60,8 @@ img, video {
   height: auto !important;
   margin: 0 auto !important;
   display: block !important;
+  object-fit: cover !important;
+  overflow: hidden !important;
 }
 .stack > * + * { margin-top: 12px; }
 
@@ -244,8 +246,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   box-shadow:none;
 }
 .hero-card video, .hero-card img{
-  width:80%; height:auto; object-fit:contain;
-  border: none !important;
+  width:80%; height:auto; object-fit:cover;
+  border: 2px solid white !important;
   outline: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
@@ -254,6 +256,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   appearance: none !important;
   margin: 0 auto;
   display: block;
+  overflow: hidden;
 }
 @media (max-width: 900px){
   .hero-grid{ 
@@ -1115,6 +1118,12 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   outline: none !important;
   box-shadow: none !important;
   border-radius: 0 !important;
+}
+
+/* Dark mode video border */
+[data-theme="dark"] .hero-card video,
+[data-theme="dark"] .section video {
+  border: 2px solid var(--bg) !important;
 }
 /* Remove frame when needed */
 .no-frame{ border:0 !important; background:transparent !important; box-shadow:none !important; }
