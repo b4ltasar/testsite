@@ -302,43 +302,53 @@
           });
         });
         
-        // Touch slide functionality
-        var startX = 0;
-        var startY = 0;
-        var isDragging = false;
-        var threshold = 50; // minimum distance for swipe
-        
-        track.addEventListener('touchstart', function(e) {
-          startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
-          isDragging = true;
-        }, { passive: true });
-        
-        track.addEventListener('touchmove', function(e) {
-          if (!isDragging) return;
-          e.preventDefault();
-        }, { passive: false });
-        
-        track.addEventListener('touchend', function(e) {
-          if (!isDragging) return;
-          isDragging = false;
-          
-          var endX = e.changedTouches[0].clientX;
-          var endY = e.changedTouches[0].clientY;
-          var diffX = startX - endX;
-          var diffY = startY - endY;
-          
-          // Only trigger if horizontal swipe is greater than vertical
-          if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
-            if (diffX > 0) {
-              // Swiped left - next slide
-              nextSlideManual();
-            } else {
-              // Swiped right - previous slide
-              prevSlideManual();
-            }
-          }
-        }, { passive: true });
+             // Touch slide functionality - improved for mobile
+             var startX = 0;
+             var startY = 0;
+             var isDragging = false;
+             var threshold = 30; // reduced threshold for easier swiping
+             var maxVerticalSwipe = 100; // maximum vertical movement allowed
+
+             track.addEventListener('touchstart', function(e) {
+               startX = e.touches[0].clientX;
+               startY = e.touches[0].clientY;
+               isDragging = true;
+             }, { passive: true });
+
+             track.addEventListener('touchmove', function(e) {
+               if (!isDragging) return;
+               
+               var currentX = e.touches[0].clientX;
+               var currentY = e.touches[0].clientY;
+               var diffX = startX - currentX;
+               var diffY = startY - currentY;
+               
+               // Only prevent default if it's a horizontal swipe
+               if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffY) < maxVerticalSwipe) {
+                 e.preventDefault();
+               }
+             }, { passive: false });
+
+             track.addEventListener('touchend', function(e) {
+               if (!isDragging) return;
+               isDragging = false;
+
+               var endX = e.changedTouches[0].clientX;
+               var endY = e.changedTouches[0].clientY;
+               var diffX = startX - endX;
+               var diffY = startY - endY;
+
+               // Only trigger if horizontal swipe is greater than vertical and within limits
+               if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold && Math.abs(diffY) < maxVerticalSwipe) {
+                 if (diffX > 0) {
+                   // Swiped left - next slide
+                   nextSlideManual();
+                 } else {
+                   // Swiped right - previous slide
+                   prevSlideManual();
+                 }
+               }
+             }, { passive: true });
         
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
@@ -400,8 +410,9 @@
           });
         }
         
-        // Initialize
-        updateCarousel();
+             // Initialize
+             console.log('Initializing merch carousel with', totalItems, 'items');
+             updateCarousel();
       });
     })();
 
