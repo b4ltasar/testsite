@@ -40,8 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
-
+  
   <style>
     :root{
       --bg: {{ site.data.theme.light.bg }};
@@ -59,8 +58,9 @@
       --border: {{ site.data.theme.dark.border }};
       --accent: {{ site.data.theme.dark.accent }};
     }
-    
   </style>
+  
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
 
   <script>
     (function(){
