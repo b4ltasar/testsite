@@ -73,3 +73,4 @@ Local test with baseurl:
 jekyll serve --baseurl "$$(awk -F: "/baseurl:/ {print $2}" _config.yml | xargs)"
 ```
 
+# Force deployment
