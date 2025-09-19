@@ -657,6 +657,31 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     margin-top: 80px;
   }
   
+  /* Mobile video container fixes */
+  .hero-card {
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    position: relative !important;
+  }
+  
+  .hero-card video {
+    width: 100% !important;
+    height: auto !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    object-fit: cover !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
   .merch-item {
     width: 300px;
     height: 450px;
@@ -1136,6 +1161,28 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .drawer-newsletter-title{ font-size: 12px; margin-bottom: 12px; }
   .drawer-newsletter-input{ padding: 12px 14px; font-size: 15px; }
   .drawer-newsletter-button{ padding: 12px 20px; font-size: 15px; }
+  
+  /* Mobile video fixes */
+  .hero-card video {
+    width: 100% !important;
+    height: auto !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+  
+  .hero-card {
+    overflow: hidden !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
 }
 
 /* =========================
