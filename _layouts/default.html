@@ -375,8 +375,22 @@
       function reloadVideo() {
         var video = document.getElementById('themeVideo');
         if (video) {
+          console.log('Reloading video...');
           video.load();
           video.play();
+        }
+      }
+      
+      function debugVideoSources() {
+        var video = document.getElementById('themeVideo');
+        if (video) {
+          var lightSource = video.querySelector('.light-video');
+          var darkSource = video.querySelector('.dark-video');
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          
+          console.log('Theme is dark:', isDark);
+          console.log('Light source display:', lightSource ? getComputedStyle(lightSource).display : 'not found');
+          console.log('Dark source display:', darkSource ? getComputedStyle(darkSource).display : 'not found');
         }
       }
       
@@ -384,7 +398,11 @@
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-            reloadVideo();
+            console.log('Theme changed to:', document.documentElement.getAttribute('data-theme'));
+            setTimeout(function() {
+              debugVideoSources();
+              reloadVideo();
+            }, 100);
           }
         });
       });
@@ -392,6 +410,11 @@
       observer.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ['data-theme']
+      });
+      
+      // Debug on load
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(debugVideoSources, 500);
       });
     })();
 

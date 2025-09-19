@@ -62,27 +62,44 @@ img, video {
 
 /* Theme-specific video sources - using same logic as other theme elements */
 .theme-video .light-video {
-  display: block;
+  display: block !important;
 }
 
 .theme-video .dark-video {
-  display: none;
+  display: none !important;
 }
 
 html[data-theme="dark"] .theme-video .light-video {
-  display: none;
+  display: none !important;
 }
 
 html[data-theme="dark"] .theme-video .dark-video {
-  display: block;
+  display: block !important;
 }
 
 html[data-theme="light"] .theme-video .light-video {
-  display: block;
+  display: block !important;
 }
 
 html[data-theme="light"] .theme-video .dark-video {
-  display: none;
+  display: none !important;
+}
+
+/* Additional specificity for video sources */
+#themeVideo .light-video {
+  display: block !important;
+}
+
+#themeVideo .dark-video {
+  display: none !important;
+}
+
+html[data-theme="dark"] #themeVideo .light-video {
+  display: none !important;
+}
+
+html[data-theme="dark"] #themeVideo .dark-video {
+  display: block !important;
 }
 
 [data-theme="dark"] .section video {
