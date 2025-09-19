@@ -10,6 +10,6 @@ header:
   - { text: "COMMUNITY",   href: "https://t.me/nearweek" }
 
 footer:
-   - { text: "NEWSLETTER", href: "https://x.com/NEARWEEK/articles" }
+  - { text: "NEWSLETTER", href: "https://x.com/NEARWEEK/articles" }
   - { text: "BLOG",        href: "https://nearweek.medium.com/" }
   - { text: "COMMUNITY",   href: "https://t.me/nearweek" }
