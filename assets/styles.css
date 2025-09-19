@@ -370,8 +370,9 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   align-items: center;
   justify-content: center;
   height: 600px;
-  perspective: 1000px;
+  perspective: 1200px;
   margin-top: 80px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
 }
 
 .merch-track {
@@ -393,9 +394,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   border-radius: 0;
   overflow: visible;
   box-shadow: none;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-style: preserve-3d;
   cursor: pointer;
+  will-change: transform, opacity;
 }
 
 /* Center item (active) */
@@ -405,24 +407,33 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   opacity: 1;
   width: 400px;
   height: 550px;
+  filter: brightness(1) contrast(1.05);
 }
 
-/* Left item - opens outward */
+/* Left item - opens outward with enhanced depth */
 .merch-item[data-index]:not(.active) {
-  transform: translateX(-250px) translateZ(-50px) rotateY(-30deg) scale(0.7);
+  transform: translateX(-280px) translateZ(-80px) rotateY(-35deg) scale(0.65);
   z-index: 2;
-  opacity: 0.5;
+  opacity: 0.4;
+  filter: brightness(0.8) contrast(0.9) blur(1px);
 }
 
-/* Right item - opens outward */
+/* Right item - opens outward with enhanced depth */
 .merch-item[data-index]:not(.active) + .merch-item:not(.active) {
-  transform: translateX(250px) translateZ(-50px) rotateY(30deg) scale(0.7);
+  transform: translateX(280px) translateZ(-80px) rotateY(35deg) scale(0.65);
   z-index: 2;
-  opacity: 0.5;
+  opacity: 0.4;
+  filter: brightness(0.8) contrast(0.9) blur(1px);
 }
 
 .merch-item:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-12px) scale(1.03);
+  filter: brightness(1.1) contrast(1.1);
+}
+
+.merch-item.active:hover {
+  transform: translateY(-12px) scale(1.05);
+  filter: brightness(1.15) contrast(1.1);
 }
 
 .merch-image {
@@ -430,6 +441,10 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   height: 300px;
   overflow: hidden;
   background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .merch-item.active .merch-image {
@@ -437,10 +452,19 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 .merch-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15));
+}
+
+.merch-item:hover .merch-image img {
+  transform: scale(1.05);
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.25));
 }
 
 .merch-content {
@@ -544,26 +568,34 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  background: var(--card);
-  border: 1px solid var(--border);
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   color: var(--text);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  opacity: 0.8;
 }
 
 .merch-nav:hover {
-  background: var(--text);
-  color: var(--bg);
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text);
+  transform: translateY(-50%) scale(1.15);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.merch-nav:active {
+  transform: translateY(-50%) scale(1.05);
 }
 
 .merch-prev {

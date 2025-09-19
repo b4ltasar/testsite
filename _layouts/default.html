@@ -187,21 +187,25 @@
               item.style.transform = 'translateZ(0px) scale(1)';
               item.style.zIndex = '3';
               item.style.opacity = '1';
+              item.style.filter = 'brightness(1) contrast(1.05)';
             } else if (relativeIndex === 1) {
-              // Right item - opens outward
-              item.style.transform = 'translateX(250px) translateZ(-50px) rotateY(30deg) scale(0.7)';
+              // Right item - opens outward with enhanced depth
+              item.style.transform = 'translateX(280px) translateZ(-80px) rotateY(35deg) scale(0.65)';
               item.style.zIndex = '2';
-              item.style.opacity = '0.5';
+              item.style.opacity = '0.4';
+              item.style.filter = 'brightness(0.8) contrast(0.9) blur(1px)';
             } else if (relativeIndex === totalItems - 1) {
-              // Left item - opens outward
-              item.style.transform = 'translateX(-250px) translateZ(-50px) rotateY(-30deg) scale(0.7)';
+              // Left item - opens outward with enhanced depth
+              item.style.transform = 'translateX(-280px) translateZ(-80px) rotateY(-35deg) scale(0.65)';
               item.style.zIndex = '2';
-              item.style.opacity = '0.5';
+              item.style.opacity = '0.4';
+              item.style.filter = 'brightness(0.8) contrast(0.9) blur(1px)';
             } else {
               // Hidden items
               item.style.transform = 'translateZ(-200px) scale(0.6)';
               item.style.zIndex = '1';
               item.style.opacity = '0.3';
+              item.style.filter = 'brightness(0.7) contrast(0.8) blur(2px)';
             }
           });
         }
@@ -237,18 +241,38 @@
           }
         });
         
-        // Auto-rotate
-        var autoRotate = setInterval(nextSlide, 4000);
+        // Auto-rotate with smooth easing
+        var autoRotate = setInterval(nextSlide, 5000);
+        
+        // Add subtle parallax effect on mouse move
+        var carousel = document.querySelector('.merch-carousel');
+        if (carousel) {
+          carousel.addEventListener('mousemove', function(e) {
+            var rect = carousel.getBoundingClientRect();
+            var centerX = rect.left + rect.width / 2;
+            var centerY = rect.top + rect.height / 2;
+            var mouseX = e.clientX - centerX;
+            var mouseY = e.clientY - centerY;
+            
+            var rotateX = (mouseY / centerY) * 5;
+            var rotateY = (mouseX / centerX) * 5;
+            
+            track.style.transform = 'perspective(1200px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)';
+          });
+          
+          carousel.addEventListener('mouseleave', function() {
+            track.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
+          });
+        }
         
         // Pause auto-rotate on hover
-        var carousel = document.querySelector('.merch-carousel');
         if (carousel) {
           carousel.addEventListener('mouseenter', function() {
             clearInterval(autoRotate);
           });
           
           carousel.addEventListener('mouseleave', function() {
-            autoRotate = setInterval(nextSlide, 4000);
+            autoRotate = setInterval(nextSlide, 5000);
           });
         }
         
