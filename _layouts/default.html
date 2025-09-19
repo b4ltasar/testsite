@@ -170,65 +170,72 @@
           // Check if mobile
           var isMobile = window.innerWidth <= 768;
           
-          // Temporarily disable transitions to prevent glitch
-          items.forEach(function(item) {
-            item.style.transition = 'none';
-          });
-          
-          // Position items in 3D space first to prevent glitch
-          items.forEach(function(item, index) {
-            var relativeIndex = (index - currentIndex + totalItems) % totalItems;
-            
-            if (relativeIndex === 0) {
-              // Center item (active)
-              item.style.transform = 'translateZ(0px) scale(1)';
-              item.style.zIndex = '3';
-              item.style.opacity = '1';
-            } else if (relativeIndex === 1) {
-              // Right item - opens outward
-              if (isMobile) {
-                item.style.transform = 'translateX(180px) translateZ(-50px) rotateY(20deg) scale(0.75)';
-                item.style.opacity = '0.7';
-              } else {
-                item.style.transform = 'translateX(300px) translateZ(-100px) rotateY(25deg) scale(0.7)';
-                item.style.opacity = '0.6';
-              }
-              item.style.zIndex = '2';
-            } else if (relativeIndex === totalItems - 1) {
-              // Left item - opens outward
-              if (isMobile) {
-                item.style.transform = 'translateX(-180px) translateZ(-50px) rotateY(-20deg) scale(0.75)';
-                item.style.opacity = '0.7';
-              } else {
-                item.style.transform = 'translateX(-300px) translateZ(-100px) rotateY(-25deg) scale(0.7)';
-                item.style.opacity = '0.6';
-              }
-              item.style.zIndex = '2';
-            } else {
-              // Hidden items
-              item.style.transform = 'translateZ(-200px) scale(0.6)';
-              item.style.zIndex = '1';
-              item.style.opacity = '0.3';
-            }
-          });
-          
-          // Remove active class from all items
-          items.forEach(function(item) {
-            item.classList.remove('active');
-          });
-          
-          // Set active item after positioning
-          var activeItem = items[currentIndex];
-          if (activeItem) {
-            activeItem.classList.add('active');
+          // Add a small delay to prevent rapid updates
+          if (updateCarousel.timeout) {
+            clearTimeout(updateCarousel.timeout);
           }
           
-          // Re-enable transitions after a brief moment with stable easing
-          setTimeout(function() {
+          updateCarousel.timeout = setTimeout(function() {
+            // Temporarily disable transitions to prevent glitch
             items.forEach(function(item) {
-              item.style.transition = 'transform 0.8s ease-out, opacity 0.6s ease-out';
+              item.style.transition = 'none';
             });
-          }, 100);
+            
+            // Position items in 3D space first to prevent glitch
+            items.forEach(function(item, index) {
+              var relativeIndex = (index - currentIndex + totalItems) % totalItems;
+              
+              if (relativeIndex === 0) {
+                // Center item (active)
+                item.style.transform = 'translateZ(0px) scale(1)';
+                item.style.zIndex = '3';
+                item.style.opacity = '1';
+              } else if (relativeIndex === 1) {
+                // Right item - opens outward
+                if (isMobile) {
+                  item.style.transform = 'translateX(180px) translateZ(-50px) rotateY(20deg) scale(0.75)';
+                  item.style.opacity = '0.7';
+                } else {
+                  item.style.transform = 'translateX(300px) translateZ(-100px) rotateY(25deg) scale(0.7)';
+                  item.style.opacity = '0.6';
+                }
+                item.style.zIndex = '2';
+              } else if (relativeIndex === totalItems - 1) {
+                // Left item - opens outward
+                if (isMobile) {
+                  item.style.transform = 'translateX(-180px) translateZ(-50px) rotateY(-20deg) scale(0.75)';
+                  item.style.opacity = '0.7';
+                } else {
+                  item.style.transform = 'translateX(-300px) translateZ(-100px) rotateY(-25deg) scale(0.7)';
+                  item.style.opacity = '0.6';
+                }
+                item.style.zIndex = '2';
+              } else {
+                // Hidden items
+                item.style.transform = 'translateZ(-200px) scale(0.6)';
+                item.style.zIndex = '1';
+                item.style.opacity = '0.3';
+              }
+            });
+            
+            // Remove active class from all items
+            items.forEach(function(item) {
+              item.classList.remove('active');
+            });
+            
+            // Set active item after positioning
+            var activeItem = items[currentIndex];
+            if (activeItem) {
+              activeItem.classList.add('active');
+            }
+            
+            // Re-enable transitions after a longer delay
+            setTimeout(function() {
+              items.forEach(function(item) {
+                item.style.transition = 'transform 0.6s ease-out, opacity 0.4s ease-out';
+              });
+            }, 150);
+          }, 50);
         }
         
         function nextSlide() {
