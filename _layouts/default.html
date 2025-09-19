@@ -229,18 +229,17 @@
               activeItem.classList.add('active');
             }
             
-            // Hide content on backmost items (z-index 1), show on others
-            items.forEach(function(item) {
-              var zIndex = item.style.zIndex;
-              var content = item.querySelector('.merch-content');
-              if (content) {
-                if (zIndex === '1') {
-                  content.style.display = 'none';
-                } else {
-                  content.style.display = 'flex';
-                }
-              }
-            });
+                 // Hide content on all non-active items, show only on active
+                 items.forEach(function(item, index) {
+                   var content = item.querySelector('.merch-content');
+                   if (content) {
+                     if (index === currentIndex) {
+                       content.style.display = 'flex';
+                     } else {
+                       content.style.display = 'none';
+                     }
+                   }
+                 });
             
             // Re-enable transitions after a longer delay
             setTimeout(function() {
@@ -409,22 +408,26 @@
         
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         
+        // Force hide both sources first
+        lightSource.style.display = 'none';
+        darkSource.style.display = 'none';
+        
+        // Then show the correct one
         if (isDark) {
-          lightSource.style.display = 'none';
           darkSource.style.display = 'block';
-          video.load(); // Reload video to use new source
         } else {
           lightSource.style.display = 'block';
-          darkSource.style.display = 'none';
-          video.load(); // Reload video to use new source
         }
+        
+        // Reload video to use new source
+        video.load();
       }
       
       // Watch for theme changes
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-            updateThemeVideo();
+            setTimeout(updateThemeVideo, 100); // Small delay to ensure theme is applied
           }
         });
       });
@@ -435,7 +438,9 @@
       });
       
       // Initialize on load
-      document.addEventListener('DOMContentLoaded', updateThemeVideo);
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(updateThemeVideo, 200); // Delay to ensure DOM is ready
+      });
     })();
 
     // Newsletter form handling
