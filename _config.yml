@@ -1,7 +1,7 @@
 title: NEARWEEK
 description: Exploring where AI meets crypto
 url: https://b4ltasar.github.io
-baseurl: /testsite
+baseurl: ""
 
 markdown: kramdown
 timezone: Europe/Copenhagen
