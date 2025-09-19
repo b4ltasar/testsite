@@ -280,6 +280,34 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .cards-track{ animation: cards-marquee 30s linear infinite; }
 }
 /* Enable horizontal scrolling on mobile */
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* Tablet carousel adjustments */
+  .carousel-container {
+    padding: 0 20px;
+  }
+  
+  .carousel-track {
+    height: 500px;
+  }
+  
+  .carousel-item {
+    width: 300px;
+  }
+  
+  .carousel-item.prev {
+    transform: translateX(-180px) translateZ(-100px) rotateY(35deg);
+  }
+  
+  .carousel-item.next {
+    transform: translateX(180px) translateZ(-100px) rotateY(-35deg);
+  }
+  
+  .feature-content {
+    margin-top: 20px;
+    min-width: 280px;
+  }
+}
+
 @media (max-width: 768px) {
   .cards-marquee{ overflow-x: auto; overflow-y: hidden; }
   .cards-track{ animation: none; }
@@ -309,23 +337,23 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   /* Carousel mobile styles */
   .carousel-container {
     max-width: 100%;
-    padding: 0 10px;
+    padding: 0 15px;
   }
   
   .carousel-track {
-    height: 400px;
+    height: 450px;
   }
   
   .carousel-item {
-    width: 280px;
+    width: 260px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-160px) translateZ(-100px) rotateY(45deg);
+    transform: translateX(-140px) translateZ(-80px) rotateY(40deg);
   }
   
   .carousel-item.next {
-    transform: translateX(160px) translateZ(-100px) rotateY(-45deg);
+    transform: translateX(140px) translateZ(-80px) rotateY(-40deg);
   }
   
   .carousel-nav {
@@ -347,7 +375,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     bottom: auto;
     left: auto;
     transform: none;
-    margin-top: 16px;
+    margin-top: 24px;
     min-width: 260px;
     padding: 0;
     background: transparent;
