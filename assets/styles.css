@@ -230,17 +230,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 /* =========================
-   Cards marquee
-   ========================= */
-.cards-marquee{ position:relative; overflow-x: auto; overflow-y: hidden; padding:8px 0; touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: thin; }
-.cards-marquee::-webkit-scrollbar { height: 6px; }
-.cards-marquee::-webkit-scrollbar-track { background: var(--border); border-radius: 3px; }
-.cards-marquee::-webkit-scrollbar-thumb { background: var(--text); border-radius: 3px; }
-.cards-marquee::-webkit-scrollbar-thumb:hover { background: var(--muted); }
-.cards-track{ display:flex; gap:16px; width:max-content; padding:10px 0; animation:cards-marquee 40s linear infinite; will-change:transform; }
-.cards-marquee:hover .cards-track{ animation-play-state:paused; }
-.cards-track.paused{ animation-play-state:paused; }
-
 /* Enable automatic scrolling on mobile/tablet */
 @media (max-width: 1024px) {
   .cards-marquee{ overflow-x: hidden; }
