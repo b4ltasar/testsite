@@ -23,6 +23,11 @@ exclude:
   - node_modules
   - vendor
 
+# Sass settings
+sass:
+  style: expanded
+  sass_dir: assets/css
+
 # Include directories
 include:
   - images
