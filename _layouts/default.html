@@ -391,19 +391,17 @@
         console.log('Light source src:', lightSource.src);
         console.log('Dark source src:', darkSource.src);
         
-        // Directly manipulate the source elements
+        // Actually remove and re-add source elements to force video switching
         if (isDark) {
-          // Dark mode - show dark video, hide light video
-          lightSource.style.display = 'none';
-          darkSource.style.display = 'block';
-          console.log('Showing dark video, hiding light video');
-          console.log('Dark source display after:', getComputedStyle(darkSource).display);
+          // Dark mode - remove light source, add dark source
+          console.log('Removing light source, adding dark source');
+          lightSource.remove();
+          video.appendChild(darkSource);
         } else {
-          // Light mode - show light video, hide dark video
-          lightSource.style.display = 'block';
-          darkSource.style.display = 'none';
-          console.log('Showing light video, hiding dark video');
-          console.log('Light source display after:', getComputedStyle(lightSource).display);
+          // Light mode - remove dark source, add light source
+          console.log('Removing dark source, adding light source');
+          darkSource.remove();
+          video.appendChild(lightSource);
         }
         
         // Reload video to pick up new source
