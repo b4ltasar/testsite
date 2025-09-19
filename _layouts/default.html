@@ -62,39 +62,20 @@
       --accent: {{ site.data.theme.dark.accent }};
     }
     
-    /* Debug carousel visibility - FORCE VISIBLE */
-    .cards-marquee {
-      background: #f8f9fa !important;
-      border: 2px solid #e9ecef !important;
-      margin: 20px 0 !important;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      height: auto !important;
-      min-height: 200px !important;
-    }
-    .cards-track {
-      display: flex !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    .mcard {
-      background: #ffffff !important;
-      border: 2px solid #dee2e6 !important;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-    
-    /* Remove video stroke */
-    .hero-card {
+    /* Fix video stroke - only for merchandise video */
+    .section .hero-card {
       border: none !important;
       background: transparent !important;
       box-shadow: none !important;
     }
-    .hero-card video {
+    .section .hero-card video {
       border: none !important;
       outline: none !important;
+    }
+    
+    /* Ensure carousel is visible */
+    .cards-marquee {
+      display: block !important;
     }
   </style>
 
