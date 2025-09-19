@@ -188,15 +188,15 @@
               item.style.zIndex = '3';
               item.style.opacity = '1';
             } else if (relativeIndex === 1) {
-              // Right item
-              item.style.transform = 'translateX(200px) translateZ(-100px) rotateY(-45deg) scale(0.8)';
+              // Right item - opens outward
+              item.style.transform = 'translateX(250px) translateZ(-50px) rotateY(30deg) scale(0.7)';
               item.style.zIndex = '2';
-              item.style.opacity = '0.6';
+              item.style.opacity = '0.5';
             } else if (relativeIndex === totalItems - 1) {
-              // Left item
-              item.style.transform = 'translateX(-200px) translateZ(-100px) rotateY(45deg) scale(0.8)';
+              // Left item - opens outward
+              item.style.transform = 'translateX(-250px) translateZ(-50px) rotateY(-30deg) scale(0.7)';
               item.style.zIndex = '2';
-              item.style.opacity = '0.6';
+              item.style.opacity = '0.5';
             } else {
               // Hidden items
               item.style.transform = 'translateZ(-200px) scale(0.6)';
