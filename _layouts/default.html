@@ -374,14 +374,22 @@
     (function(){
       function switchVideoSource() {
         var video = document.getElementById('themeVideo');
-        if (!video) return;
+        if (!video) {
+          console.log('Video element not found!');
+          return;
+        }
         
         var lightSource = video.querySelector('.light-video');
         var darkSource = video.querySelector('.dark-video');
-        if (!lightSource || !darkSource) return;
+        if (!lightSource || !darkSource) {
+          console.log('Video sources not found! Light:', !!lightSource, 'Dark:', !!darkSource);
+          return;
+        }
         
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         console.log('Switching video - Theme is dark:', isDark);
+        console.log('Light source src:', lightSource.src);
+        console.log('Dark source src:', darkSource.src);
         
         // Directly manipulate the source elements
         if (isDark) {
@@ -389,16 +397,24 @@
           lightSource.style.display = 'none';
           darkSource.style.display = 'block';
           console.log('Showing dark video, hiding light video');
+          console.log('Dark source display after:', getComputedStyle(darkSource).display);
         } else {
           // Light mode - show light video, hide dark video
           lightSource.style.display = 'block';
           darkSource.style.display = 'none';
           console.log('Showing light video, hiding dark video');
+          console.log('Light source display after:', getComputedStyle(lightSource).display);
         }
         
         // Reload video to pick up new source
+        console.log('Reloading video...');
         video.load();
         video.play();
+        
+        // Check what source is actually being used
+        setTimeout(function() {
+          console.log('Video currentSrc after reload:', video.currentSrc);
+        }, 1000);
       }
       
       // Watch for theme changes
