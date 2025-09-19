@@ -553,14 +553,38 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   text-align: center;
 }
 
-/* Hide content on all non-active items */
+/* Hide ALL content on non-active items - only show images */
 .merch-item:not(.active) .merch-content {
+  display: none !important;
+}
+
+.merch-item:not(.active) .merch-title {
+  display: none !important;
+}
+
+.merch-item:not(.active) .merch-description {
+  display: none !important;
+}
+
+.merch-item:not(.active) .merch-button {
   display: none !important;
 }
 
 /* Show content only on active item */
 .merch-item.active .merch-content {
   display: flex !important;
+}
+
+.merch-item.active .merch-title {
+  display: block !important;
+}
+
+.merch-item.active .merch-description {
+  display: block !important;
+}
+
+.merch-item.active .merch-button {
+  display: inline-flex !important;
 }
 
 .merch-button {
