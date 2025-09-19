@@ -370,69 +370,7 @@
       });
     })();
 
-    // Theme video switching
-    (function(){
-      function updateThemeVideo() {
-        var video = document.getElementById('themeVideo');
-        if (!video) {
-          console.log('Theme video not found');
-          return;
-        }
-        
-        var lightSource = video.querySelector('.light-video');
-        var darkSource = video.querySelector('.dark-video');
-        
-        if (!lightSource || !darkSource) {
-          console.log('Video sources not found');
-          return;
-        }
-        
-        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        console.log('Theme is dark:', isDark);
-        
-        // Force hide both sources first with !important
-        lightSource.style.setProperty('display', 'none', 'important');
-        darkSource.style.setProperty('display', 'none', 'important');
-        
-        // Then show the correct one with !important
-        if (isDark) {
-          darkSource.style.setProperty('display', 'block', 'important');
-          console.log('Showing dark video');
-        } else {
-          lightSource.style.setProperty('display', 'block', 'important');
-          console.log('Showing light video');
-        }
-        
-        // Reload video to use new source
-        video.load();
-      }
-      
-      // Watch for theme changes
-      var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-            setTimeout(updateThemeVideo, 100); // Small delay to ensure theme is applied
-          }
-        });
-      });
-      
-      observer.observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ['data-theme']
-      });
-      
-      // Initialize on load
-      document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(updateThemeVideo, 100); // Shorter delay
-        // Also run immediately after a short delay
-        setTimeout(updateThemeVideo, 500);
-      });
-      
-      // Also run on window load as backup
-      window.addEventListener('load', function() {
-        setTimeout(updateThemeVideo, 100);
-      });
-    })();
+    // Video theme switching is now handled by CSS only - same as other theme elements
 
     // Newsletter form handling
     (function(){
