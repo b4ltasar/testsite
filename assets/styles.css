@@ -305,6 +305,11 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .feature-content {
     margin-top: 20px;
     min-width: 280px;
+    padding: 14px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.25);
   }
   
   .carousel-nav {
@@ -382,7 +387,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     right: -10px;
   }
   
-  /* Mobile feature content - remove background */
+  /* Mobile feature content - consistent readable box */
   .feature-content {
     position: relative;
     bottom: auto;
@@ -390,10 +395,11 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     transform: none;
     margin-top: 24px;
     min-width: 260px;
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    padding: 12px 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
     backdrop-filter: none;
   }
   
@@ -702,17 +708,17 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .feature-content {
   position: absolute;
-  bottom: -20px;
+  bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
-  background: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0;
-  box-shadow: none;
-  backdrop-filter: none;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
   z-index: 10;
-  min-width: 300px;
+  min-width: 280px;
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -805,13 +811,14 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   line-height: 1.2;
 }
 
-/* Fix white text on white mug */
+/* Universal text styling for all merchandise - always readable */
 .carousel-item .feature-title {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
-  padding: 4px 8px;
-  border-radius: 4px;
-  display: inline-block;
+  color: var(--text);
+  text-shadow: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  display: block;
 }
 .feature-description{ 
   color: var(--muted); 
@@ -821,13 +828,14 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   font-weight: 400;
 }
 
-/* Fix description visibility on white mug */
+/* Universal description styling for all merchandise */
 .carousel-item .feature-description {
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
-  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
-  padding: 3px 6px;
-  border-radius: 3px;
-  display: inline-block;
+  color: var(--muted);
+  text-shadow: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  display: block;
 }
 .feature-button{ 
   display: inline-flex; 
