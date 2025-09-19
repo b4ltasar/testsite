@@ -415,7 +415,7 @@
         }, 1000);
       }
       
-      // Watch for theme changes
+      // Watch for theme changes with multiple methods
       var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
           if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
@@ -428,6 +428,26 @@
       observer.observe(document.documentElement, {
         attributes: true,
         attributeFilter: ['data-theme']
+      });
+      
+      // Also listen directly to theme toggle clicks
+      document.addEventListener('DOMContentLoaded', function() {
+        var themeDot = document.getElementById('theme-dot');
+        var themeDotDrawer = document.getElementById('theme-dot-drawer');
+        
+        if (themeDot) {
+          themeDot.addEventListener('click', function() {
+            console.log('Theme dot clicked');
+            setTimeout(switchVideoSource, 200);
+          });
+        }
+        
+        if (themeDotDrawer) {
+          themeDotDrawer.addEventListener('click', function() {
+            console.log('Theme dot drawer clicked');
+            setTimeout(switchVideoSource, 200);
+          });
+        }
       });
       
       // Initialize on load
