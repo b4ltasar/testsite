@@ -288,19 +288,19 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   }
   
   .carousel-track {
-    height: 400px;
+    height: 500px;
   }
   
   .carousel-item {
-    width: 250px;
+    width: 280px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-150px) translateZ(-80px) rotateY(20deg);
+    transform: translateX(-200px) translateZ(-100px) rotateY(30deg);
   }
   
   .carousel-item.next {
-    transform: translateX(150px) translateZ(-80px) rotateY(-20deg);
+    transform: translateX(200px) translateZ(-100px) rotateY(-30deg);
   }
   
   .carousel-nav {
@@ -309,11 +309,11 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   }
   
   .carousel-prev {
-    left: -20px;
+    left: -10px;
   }
   
   .carousel-next {
-    right: -20px;
+    right: -10px;
   }
 }
 @keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
@@ -542,22 +542,24 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 1000px;
+  perspective: 1200px;
   transform-style: preserve-3d;
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 600px;
+  overflow: hidden;
 }
 
 .carousel-item {
   position: absolute;
-  width: 300px;
+  width: 350px;
   text-align: center;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  opacity: 0.4;
-  scale: 0.8;
+  opacity: 0;
+  scale: 0.7;
   z-index: 1;
+  pointer-events: none;
 }
 
 .carousel-item.active {
@@ -565,16 +567,32 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   scale: 1;
   z-index: 10;
   transform: translateZ(0);
+  pointer-events: auto;
 }
 
 .carousel-item.prev {
-  transform: translateX(-200px) translateZ(-100px) rotateY(15deg);
-  opacity: 0.3;
+  transform: translateX(-280px) translateZ(-150px) rotateY(25deg);
+  opacity: 0.4;
+  scale: 0.8;
 }
 
 .carousel-item.next {
-  transform: translateX(200px) translateZ(-100px) rotateY(-15deg);
-  opacity: 0.3;
+  transform: translateX(280px) translateZ(-150px) rotateY(-25deg);
+  opacity: 0.4;
+  scale: 0.8;
+}
+
+/* Hide content for non-active items */
+.carousel-item:not(.active) .feature-content {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.carousel-item.active .feature-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.5s ease 0.2s;
 }
 
 .carousel-nav {
@@ -688,22 +706,24 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   text-align: center; 
   max-width: 700px; 
   margin: 0 auto; 
-  padding: 0 20px;
+  padding: 0;
+  width: 100%;
 }
 .newsletter-title{ 
-  font-size: clamp(24px, 4vw, 36px); 
+  font-size: clamp(28px, 5vw, 42px); 
   font-weight: 800; 
-  margin-bottom: 16px; 
+  margin-bottom: 20px; 
   color: var(--text);
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.2;
 }
 .newsletter-subtitle {
-  font-size: 16px;
+  font-size: 18px;
   color: var(--muted);
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   font-weight: 400;
+  line-height: 1.4;
 }
 .newsletter-form{ 
   display: flex; 

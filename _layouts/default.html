@@ -229,13 +229,21 @@
         function updateCarousel() {
           items.forEach((item, index) => {
             item.classList.remove('active', 'prev', 'next');
+            item.style.display = 'none';
+            
+            // Only show 3 items at once: previous, current, next
+            const prevIndex = (currentIndex - 1 + totalItems) % totalItems;
+            const nextIndex = (currentIndex + 1) % totalItems;
             
             if (index === currentIndex) {
               item.classList.add('active');
-            } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
+              item.style.display = 'block';
+            } else if (index === prevIndex) {
               item.classList.add('prev');
-            } else if (index === (currentIndex + 1) % totalItems) {
+              item.style.display = 'block';
+            } else if (index === nextIndex) {
               item.classList.add('next');
+              item.style.display = 'block';
             }
           });
         }
