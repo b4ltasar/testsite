@@ -1076,6 +1076,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Safety
    ========================= */
-.hero-card{ background: var(--card); border:1px solid var(--border); }
+.hero-card{ background: transparent; border: none; }
 /* Remove frame when needed */
 .no-frame{ border:0 !important; background:transparent !important; box-shadow:none !important; }
