@@ -71,6 +71,15 @@ img, video {
   -moz-filter: none !important;
   -ms-filter: none !important;
   -o-filter: none !important;
+  -webkit-mask: none !important;
+  mask: none !important;
+  clip-path: none !important;
+  -webkit-clip-path: none !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -o-transform: none !important;
 }
 .stack > * + * { margin-top: 12px; }
 
@@ -1159,8 +1168,21 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   pointer-events: none;
 }
 
+.hero-card::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: white;
+  z-index: -1;
+  pointer-events: none;
+}
+
 /* Dark mode video background */
-[data-theme="dark"] .hero-card::before {
+[data-theme="dark"] .hero-card::before,
+[data-theme="dark"] .hero-card::after {
   background: var(--bg);
 }
 
