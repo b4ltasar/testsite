@@ -43,20 +43,30 @@
   
   <style>
     :root{
-      --bg: {{ site.data.theme.light.bg }};
-      --text: {{ site.data.theme.light.text }};
-      --muted: {{ site.data.theme.light.muted }};
-      --card: {{ site.data.theme.light.card }};
-      --border: {{ site.data.theme.light.border }};
-      --accent: {{ site.data.theme.light.accent }};
+      --bg: #ffffff;
+      --text: #0a0a0a;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --border: rgba(0,0,0,0.12);
+      --accent: #0ea5e9;
     }
     html.dark{
-      --bg: {{ site.data.theme.dark.bg }};
-      --text: {{ site.data.theme.dark.text }};
-      --muted: {{ site.data.theme.dark.muted }};
-      --card: {{ site.data.theme.dark.card }};
-      --border: {{ site.data.theme.dark.border }};
-      --accent: {{ site.data.theme.dark.accent }};
+      --bg: #000000;
+      --text: #f5f7fb;
+      --muted: #9ca3af;
+      --card: #12141a;
+      --border: rgba(255,255,255,0.12);
+      --accent: #22d3ee;
+    }
+    
+    /* Force override for testing */
+    body {
+      background: #ffffff !important;
+      color: #0a0a0a !important;
+    }
+    .header {
+      background: #ffffff !important;
+      border-bottom: 1px solid rgba(0,0,0,0.12) !important;
     }
   </style>
   
