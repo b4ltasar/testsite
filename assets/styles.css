@@ -283,50 +283,51 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 @media (max-width: 1024px) and (min-width: 769px) {
   /* Tablet carousel adjustments */
   .carousel-container {
-    padding: 0 35px;
+    padding: 0 30px;
   }
   
   .carousel-track {
-    height: 400px;
+    height: 350px;
   }
   
   .carousel-item {
-    width: 250px;
+    width: 200px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-140px) translateZ(-70px) rotateY(25deg);
+    transform: translateX(-110px) translateZ(-55px) rotateY(25deg);
   }
   
   .carousel-item.next {
-    transform: translateX(140px) translateZ(-70px) rotateY(-25deg);
+    transform: translateX(110px) translateZ(-55px) rotateY(-25deg);
   }
   
   .feature-content {
-    margin-top: 18px;
-    min-width: 250px;
+    margin-top: 16px;
+    min-width: 200px;
     padding: 0;
     background: transparent;
     border: none;
     border-radius: 0;
     box-shadow: none;
+    text-align: center;
   }
   
   .feature-image {
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
   
   .carousel-nav {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
   
   .carousel-prev {
-    left: -15px;
+    left: -10px;
   }
   
   .carousel-next {
-    right: -15px;
+    right: -10px;
   }
 }
 
@@ -359,36 +360,36 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   /* Carousel mobile styles */
   .carousel-container {
     max-width: 100%;
-    padding: 0 30px;
+    padding: 0 20px;
   }
   
   .carousel-track {
-    height: 350px;
+    height: 280px;
   }
   
   .carousel-item {
-    width: 200px;
+    width: 150px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-100px) translateZ(-50px) rotateY(30deg);
+    transform: translateX(-70px) translateZ(-35px) rotateY(30deg);
   }
   
   .carousel-item.next {
-    transform: translateX(100px) translateZ(-50px) rotateY(-30deg);
+    transform: translateX(70px) translateZ(-35px) rotateY(-30deg);
   }
   
   .carousel-nav {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
   
   .carousel-prev {
-    left: -10px;
+    left: -5px;
   }
   
   .carousel-next {
-    right: -10px;
+    right: -5px;
   }
   
   /* Mobile feature content - clean separation */
@@ -397,18 +398,19 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     bottom: auto;
     left: auto;
     transform: none;
-    margin-top: 16px;
-    min-width: 200px;
+    margin-top: 12px;
+    min-width: 150px;
     padding: 0;
     background: transparent;
     border: none;
     border-radius: 0;
     box-shadow: none;
     backdrop-filter: none;
+    text-align: center;
   }
   
   .feature-image {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   
   .feature-description {
