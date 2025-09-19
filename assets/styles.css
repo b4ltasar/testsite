@@ -1179,7 +1179,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   }
 }
 
-  
+@media (max-width: 768px) {
   .newsletter-section{
     padding: 40px 0 !important;
     margin: 16px auto !important;
@@ -1203,12 +1203,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .newsletter-input, .newsletter-button{ 
     width: 100%; 
   }
-  
-  /* Mobile drawer newsletter improvements */
-  .drawer-newsletter{ padding: 20px 24px; }
-  .drawer-newsletter-title{ font-size: 13px; margin-bottom: 14px; }
-  .drawer-newsletter-input{ padding: 14px 16px; font-size: 16px; }
-  .drawer-newsletter-button{ padding: 14px 24px; font-size: 16px; }
 }
 
 @media (max-width: 480px){
@@ -1216,6 +1210,12 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .drawer-newsletter-title{ font-size: 12px; margin-bottom: 12px; }
   .drawer-newsletter-input{ padding: 12px 14px; font-size: 15px; }
   .drawer-newsletter-button{ padding: 12px 20px; font-size: 15px; }
+  
+  /* Mobile drawer newsletter improvements */
+  .drawer-newsletter{ padding: 20px 24px; }
+  .drawer-newsletter-title{ font-size: 13px; margin-bottom: 14px; }
+  .drawer-newsletter-input{ padding: 14px 16px; font-size: 16px; }
+  .drawer-newsletter-button{ padding: 14px 24px; font-size: 16px; }
   
   /* Mobile video fixes */
   .hero-card video {
