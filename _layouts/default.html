@@ -379,11 +379,23 @@
           return;
         }
         
+        // Always get fresh references to sources
         var lightSource = video.querySelector('.light-video');
         var darkSource = video.querySelector('.dark-video');
-        if (!lightSource || !darkSource) {
-          console.log('Video sources not found! Light:', !!lightSource, 'Dark:', !!darkSource);
-          return;
+        
+        // If sources are missing, recreate them
+        if (!lightSource) {
+          lightSource = document.createElement('source');
+          lightSource.src = '{{ "/images/webpageloop2.mp4" | relative_url }}';
+          lightSource.type = 'video/mp4';
+          lightSource.className = 'light-video';
+        }
+        
+        if (!darkSource) {
+          darkSource = document.createElement('source');
+          darkSource.src = '{{ "/images/webpageloop2black.mp4" | relative_url }}';
+          darkSource.type = 'video/mp4';
+          darkSource.className = 'dark-video';
         }
         
         var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
