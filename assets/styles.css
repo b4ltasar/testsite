@@ -71,10 +71,10 @@ img, video {
   -moz-filter: none !important;
   -ms-filter: none !important;
   -o-filter: none !important;
-  -webkit-mask: none !important;
-  mask: none !important;
-  clip-path: none !important;
-  -webkit-clip-path: none !important;
+  -webkit-mask: linear-gradient(white, white) !important;
+  mask: linear-gradient(white, white) !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
   transform: none !important;
   -webkit-transform: none !important;
   -moz-transform: none !important;
