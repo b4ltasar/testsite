@@ -25,7 +25,7 @@ exclude:
 
 # Sass settings
 sass:
-  style: expanded
+  style: compressed
   sass_dir: assets/css
 
 # Include directories
