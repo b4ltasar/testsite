@@ -38,7 +38,7 @@ img, video { display: block; max-width: 100%; }
 @media (min-width: 1920px) {
   .container { width: min(1800px, 80vw); }
 }
-.section { padding: 0; margin: 0; }
+.section { padding: 0; margin: 0; border: none; outline: none; box-shadow: none; }
 .stack > * + * { margin-top: 12px; }
 
 /* =========================
@@ -223,6 +223,9 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 .hero-card video, .hero-card img{
   width:100%; height:auto; object-fit:contain;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 @media (max-width: 900px){
   .hero-grid{ 
