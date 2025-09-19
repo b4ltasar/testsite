@@ -1,0 +1,15 @@
+items:
+  - title: "CONTRIBUTE"
+    text: "Submit to the NEARWEEK Bot"
+    image: "/images/favicon.png"
+    link:  "https://x.com/nearweekbot"
+
+  - title: "NEARCON 2026"
+    text: "Announcing NEARCON 2026: The Internet Wants to Think"
+    image: "/images/nearcon2026.webp"
+    link:  "https://www.near.org/blog/announcing-nearcon-2026-the-internet-wants-to-think"
+
+  - title: "NEAR LEGION"
+    text: "Pledge Your Allegiance - Join The Legion!"
+    image: "/images/initiatelegion.png"
+    link:  "https://nearlegion.com/"
