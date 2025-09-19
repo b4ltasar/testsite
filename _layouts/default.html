@@ -243,13 +243,24 @@
           setTimeout(updateCarousel, 10);
         }
         
+        function nextSlideManual() {
+          onManualInteraction();
+          nextSlide();
+        }
+        
+        function prevSlideManual() {
+          onManualInteraction();
+          prevSlide();
+        }
+        
         // Event listeners
-        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlideManual);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlideManual);
         
         // Click on items to make them active
         items.forEach(function(item, index) {
           item.addEventListener('click', function() {
+            onManualInteraction();
             currentIndex = index;
             updateCarousel();
           });
@@ -285,10 +296,10 @@
           if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
             if (diffX > 0) {
               // Swiped left - next slide
-              nextSlide();
+              nextSlideManual();
             } else {
               // Swiped right - previous slide
-              prevSlide();
+              prevSlideManual();
             }
           }
         }, { passive: true });
@@ -296,14 +307,45 @@
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
           if (e.key === 'ArrowLeft') {
-            prevSlide();
+            prevSlideManual();
           } else if (e.key === 'ArrowRight') {
-            nextSlide();
+            nextSlideManual();
           }
         });
         
-        // Auto-rotate
-        var autoRotate = setInterval(nextSlide, 5000);
+        // Auto-rotate with smart pause logic
+        var autoRotate = null;
+        var autoRotateDelay = 5000;
+        var lastManualInteraction = 0;
+        var minPauseAfterManual = 3000; // 3 seconds pause after manual interaction
+        
+        function startAutoRotate() {
+          if (autoRotate) clearInterval(autoRotate);
+          autoRotate = setInterval(function() {
+            var now = Date.now();
+            // Only auto-rotate if enough time has passed since last manual interaction
+            if (now - lastManualInteraction > minPauseAfterManual) {
+              nextSlide();
+            }
+          }, autoRotateDelay);
+        }
+        
+        function stopAutoRotate() {
+          if (autoRotate) {
+            clearInterval(autoRotate);
+            autoRotate = null;
+          }
+        }
+        
+        function onManualInteraction() {
+          lastManualInteraction = Date.now();
+          stopAutoRotate();
+          // Restart auto-rotate after a delay
+          setTimeout(startAutoRotate, minPauseAfterManual);
+        }
+        
+        // Start auto-rotate initially
+        startAutoRotate();
         
         // Update positioning on resize
         window.addEventListener('resize', function() {
@@ -314,11 +356,11 @@
         var carousel = document.querySelector('.merch-carousel');
         if (carousel) {
           carousel.addEventListener('mouseenter', function() {
-            clearInterval(autoRotate);
+            stopAutoRotate();
           });
-          
+
           carousel.addEventListener('mouseleave', function() {
-            autoRotate = setInterval(nextSlide, 5000);
+            startAutoRotate();
           });
         }
         
