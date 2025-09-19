@@ -232,7 +232,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .hero-grid{
   display:grid; grid-template-columns: 1.1fr .9fr;
-  gap:32px; align-items:center; padding:40px 0 24px;
+  gap:32px; align-items:center; padding:40px 0 40px;
 }
 .hero-grid .stack {
   display: flex;
