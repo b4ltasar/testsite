@@ -1211,12 +1211,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   .drawer-newsletter-input{ padding: 12px 14px; font-size: 15px; }
   .drawer-newsletter-button{ padding: 12px 20px; font-size: 15px; }
   
-  /* Mobile drawer newsletter improvements */
-  .drawer-newsletter{ padding: 20px 24px; }
-  .drawer-newsletter-title{ font-size: 13px; margin-bottom: 14px; }
-  .drawer-newsletter-input{ padding: 14px 16px; font-size: 16px; }
-  .drawer-newsletter-button{ padding: 14px 24px; font-size: 16px; }
-  
   /* Mobile video fixes */
   .hero-card video {
     width: 100% !important;
