@@ -306,6 +306,19 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     margin-top: 20px;
     min-width: 280px;
   }
+  
+  .carousel-nav {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .carousel-prev {
+    left: -15px;
+  }
+  
+  .carousel-next {
+    right: -15px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -362,11 +375,11 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   }
   
   .carousel-prev {
-    left: 5px;
+    left: -10px;
   }
   
   .carousel-next {
-    right: 5px;
+    right: -10px;
   }
   
   /* Mobile feature content - remove background */
@@ -721,8 +734,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--card);
-  border: 2px solid var(--border);
+  background: transparent;
+  border: none;
   border-radius: 50%;
   width: 48px;
   height: 48px;
@@ -733,20 +746,22 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   transition: all 0.3s ease;
   z-index: 20;
   color: var(--text);
+  opacity: 0.7;
 }
 
 .carousel-nav:hover {
-  background: var(--text);
-  color: var(--bg);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text);
   transform: translateY(-50%) scale(1.1);
+  opacity: 1;
 }
 
 .carousel-prev {
-  left: -60px;
+  left: -30px;
 }
 
 .carousel-next {
-  right: -60px;
+  right: -30px;
 }
 
 .feature-item{ 
