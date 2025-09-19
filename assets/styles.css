@@ -371,19 +371,19 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   }
   
   .carousel-track {
-    height: 150px;
+    height: 120px;
   }
   
   .carousel-item {
-    width: 50px;
+    width: 35px;
   }
   
   .carousel-item.prev {
-    transform: translateX(-25px) translateZ(-12px) rotateY(30deg);
+    transform: translateX(-18px) translateZ(-9px) rotateY(30deg);
   }
   
   .carousel-item.next {
-    transform: translateX(25px) translateZ(-12px) rotateY(-30deg);
+    transform: translateX(18px) translateZ(-9px) rotateY(-30deg);
   }
   
   .carousel-nav {
@@ -406,7 +406,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
     left: 50%;
     transform: translateX(-50%);
     margin-top: 4px;
-    min-width: 50px;
+    min-width: 35px;
+    max-width: 200px;
     padding: 0;
     background: transparent;
     border: none;
@@ -426,15 +427,21 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   }
   
   .feature-description {
-    font-size: 9px;
+    font-size: 8px;
     line-height: 1.1;
     margin-bottom: 6px;
     word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
   
   .feature-title {
-    font-size: 12px;
+    font-size: 10px;
     margin-bottom: 3px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 }
 @keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
