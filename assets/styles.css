@@ -364,16 +364,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 /* =========================
    Merchandise 3D Carousel
    ========================= */
-.feature-header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-.feature-subtitle {
-  color: var(--muted);
-  margin: 8px 0 0;
-  font-size: 18px;
-}
-
 .merch-carousel {
   position: relative;
   display: flex;
@@ -397,11 +387,11 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   position: absolute;
   width: 280px;
   height: 400px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
   cursor: pointer;
@@ -432,7 +422,6 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 .merch-item:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
 }
 
 .merch-image {
@@ -454,16 +443,18 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 }
 
 .merch-content {
-  padding: 20px;
+  padding: 20px 0;
   height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
+  text-align: center;
 }
 
 .merch-item.active .merch-content {
   height: 170px;
-  padding: 24px;
+  padding: 24px 0;
 }
 
 .merch-title {
@@ -471,6 +462,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   font-size: 18px;
   margin: 0 0 8px;
   color: var(--text);
+  text-align: center;
 }
 
 .merch-item.active .merch-title {
@@ -483,6 +475,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   margin: 0 0 16px;
   line-height: 1.5;
   flex-grow: 1;
+  text-align: center;
 }
 
 /* Hide description on non-active items */
@@ -500,7 +493,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
-  width: 100%;
+  width: auto;
+  min-width: 120px;
 }
 
 .merch-button:hover:not(:disabled) {
