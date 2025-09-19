@@ -456,6 +456,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   transform: translateX(-300px) translateZ(-100px) rotateY(-25deg) scale(0.7);
   z-index: 2;
   opacity: 0.6;
+  background: white;
+  border-radius: 8px;
 }
 
 /* Right item - opens outward */
@@ -463,6 +465,8 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   transform: translateX(300px) translateZ(-100px) rotateY(25deg) scale(0.7);
   z-index: 2;
   opacity: 0.6;
+  background: white;
+  border-radius: 8px;
 }
 
 .merch-item:hover {
@@ -536,11 +540,14 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   text-align: center;
 }
 
-/* Hide description, title, and button on non-active items */
-.merch-item:not(.active) .merch-description,
-.merch-item:not(.active) .merch-title,
-.merch-item:not(.active) .merch-button {
-  display: none;
+/* Hide all content on non-active items */
+.merch-item:not(.active) .merch-content {
+  display: none !important;
+}
+
+/* Ensure only active item shows content */
+.merch-item.active .merch-content {
+  display: flex !important;
 }
 
 .merch-button {
@@ -1145,6 +1152,12 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
 
 /* Dark mode video background */
 [data-theme="dark"] .hero-card::before {
+  background: var(--bg);
+}
+
+/* Dark mode merch background items */
+[data-theme="dark"] .merch-item[data-index]:not(.active),
+[data-theme="dark"] .merch-item[data-index]:not(.active) + .merch-item:not(.active) {
   background: var(--bg);
 }
 /* Remove frame when needed */
