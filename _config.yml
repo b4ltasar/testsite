@@ -1,7 +1,7 @@
 title: NEARWEEK
 description: Exploring where AI meets crypto
 url: https://b4ltasar.github.io
-baseurl: ""
+baseurl: /testsite
 # Force rebuild
 
 markdown: kramdown
@@ -10,10 +10,10 @@ timezone: Europe/Copenhagen
 # Content validation
 validate_content: true
 
-# Plugins
-plugins:
-  - jekyll-feed
-  - jekyll-sitemap
+# Plugins (commented out to avoid GitHub Actions errors)
+# plugins:
+#   - jekyll-feed
+#   - jekyll-sitemap
 
 # Build settings
 exclude:
