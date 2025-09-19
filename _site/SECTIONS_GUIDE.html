@@ -118,15 +118,10 @@
       </div>
       <div class="drawer-newsletter">
         <h3 class="drawer-newsletter-title">SUBSCRIBE TO NEARWEEK</h3>
-        <div class="drawer-newsletter-form">
-          <form id="drawer-mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" action="https://nearweek.us1.list-manage.com/subscribe/post?u=ed13caf5cf7d37689d81ef60b&amp;id=86d4e11a12&amp;f_id=003e00e2f0" method="post" target="_blank" novalidate>
-            <input type="email" value="" name="EMAIL" class="drawer-newsletter-input" id="drawer-mce-EMAIL" placeholder="Enter your email" required>
-            <div style="position: absolute; left: -5000px;" aria-hidden="true">
-              <input type="text" name="b_ed13caf5cf7d37689d81ef60b_86d4e11a12" tabindex="-1" value="">
-            </div>
-            <button type="submit" name="subscribe" id="drawer-mc-embedded-subscribe" class="drawer-newsletter-button">Sign Up</button>
-          </form>
-        </div>
+        <form class="drawer-newsletter-form">
+          <input type="email" class="drawer-newsletter-input" placeholder="Enter your email" required>
+          <button type="submit" class="drawer-newsletter-button">Sign Up</button>
+        </form>
       </div>
       <div class="drawer-social">
         <a href="https://linkedin.com/company/nearweek" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -381,65 +376,32 @@
       });
     })();
 
-    // Newsletter subscription success handling
+    // Newsletter form handling
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
-        // Handle desktop newsletter form
-        const desktopForm = document.getElementById('mc-embedded-subscribe-form');
-        const desktopButton = document.getElementById('mc-embedded-subscribe');
+        const forms = document.querySelectorAll('.newsletter-form, .drawer-newsletter-form');
         
-        // Handle drawer newsletter form
-        const drawerForm = document.getElementById('drawer-mc-embedded-subscribe-form');
-        const drawerButton = document.getElementById('drawer-mc-embedded-subscribe');
-
-        function handleSubscriptionSuccess(button) {
-          // Change button text and add checkmark
-          button.innerHTML = '✓ Subscribed';
-          button.style.background = '#22c55e'; // Green color for success
-          button.disabled = true;
-          
-          // Optional: Reset after 3 seconds
-          setTimeout(() => {
-            button.innerHTML = 'Sign Up';
-            button.style.background = '';
-            button.disabled = false;
-          }, 3000);
-        }
-
-        // Handle form submission
-        if (desktopForm) {
-          desktopForm.addEventListener('submit', function(e) {
-            // Prevent default form submission to handle it with JavaScript
+        forms.forEach(form => {
+          form.addEventListener('submit', function(e) {
             e.preventDefault();
+            const button = form.querySelector('button[type="submit"]');
+            const email = form.querySelector('input[type="email"]').value;
             
-            // Get email value
-            const email = document.getElementById('mce-EMAIL').value;
             if (email) {
-              // Simulate successful subscription
-              handleSubscriptionSuccess(desktopButton);
+              // Show success state
+              button.innerHTML = '✓ Subscribed';
+              button.style.background = '#22c55e';
+              button.disabled = true;
               
-              // You can add actual API call here if needed
-              // For now, we'll just show the success state
+              // Reset after 3 seconds
+              setTimeout(() => {
+                button.innerHTML = 'Sign Up';
+                button.style.background = '';
+                button.disabled = false;
+              }, 3000);
             }
           });
-        }
-
-        if (drawerForm) {
-          drawerForm.addEventListener('submit', function(e) {
-            // Prevent default form submission to handle it with JavaScript
-            e.preventDefault();
-            
-            // Get email value
-            const email = document.getElementById('drawer-mce-EMAIL').value;
-            if (email) {
-              // Simulate successful subscription
-              handleSubscriptionSuccess(drawerButton);
-              
-              // You can add actual API call here if needed
-              // For now, we'll just show the success state
-            }
-          });
-        }
+        });
       });
     })();
 

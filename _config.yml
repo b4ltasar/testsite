@@ -23,6 +23,6 @@ exclude:
   - node_modules
   - vendor
 
-# Include API directory for Vercel
+# Include directories
 include:
-  - api
+  - images
