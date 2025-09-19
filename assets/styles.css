@@ -264,15 +264,21 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   
   .newsletter-form {
     flex-direction: column;
-    gap: 12px;
-    padding: 0 16px;
+    gap: 16px;
+    padding: 8px;
+    max-width: 100%;
   }
   
   .newsletter-button {
-    padding: 14px 20px;
+    padding: 16px 24px;
     font-size: 14px;
     min-width: auto;
     width: 100%;
+  }
+  
+  .newsletter-subtitle {
+    font-size: 14px;
+    margin-bottom: 32px;
   }
 }
 @keyframes cards-marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
@@ -562,60 +568,78 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
    Trenches Section
    ========================= */
 .newsletter-section{ 
-  padding: 60px 0; 
+  padding: 80px 0; 
   background: var(--card); 
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  position: relative;
 }
 .newsletter-content{ 
   text-align: center; 
-  max-width: 600px; 
-  margin: 0 auto; 
-}
-.newsletter-title{ 
-  font-size: 28px; 
-  font-weight: 700; 
-  margin-bottom: 32px; 
-  color: var(--text);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.newsletter-form{ 
-  display: flex; 
-  gap: 16px; 
-  max-width: 500px; 
+  max-width: 700px; 
   margin: 0 auto; 
   padding: 0 20px;
 }
+.newsletter-title{ 
+  font-size: clamp(24px, 4vw, 36px); 
+  font-weight: 800; 
+  margin-bottom: 16px; 
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+.newsletter-subtitle {
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+.newsletter-form{ 
+  display: flex; 
+  gap: 24px; 
+  max-width: 600px; 
+  margin: 0 auto; 
+  padding: 0;
+  background: var(--bg);
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
 .newsletter-input{ 
   flex: 1; 
-  padding: 16px 20px; 
-  border: 2px solid var(--border); 
+  padding: 18px 24px; 
+  border: none; 
   border-radius: 12px; 
-  background: var(--bg); 
+  background: transparent; 
   color: var(--text);
   font-size: 16px;
   transition: all .3s ease;
 }
 .newsletter-input:focus{ 
   outline: none; 
-  border-color: var(--text); 
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.05);
   transform: translateY(-1px);
 }
+.newsletter-input::placeholder {
+  color: var(--muted);
+  font-weight: 400;
+}
 .newsletter-button{ 
-  padding: 16px 24px; 
+  padding: 18px 32px; 
   background: var(--text); 
   color: var(--bg); 
   border: none; 
   border-radius: 12px; 
-  font-weight: 600; 
-  font-size: 14px;
+  font-weight: 700; 
+  font-size: 16px;
   cursor: pointer;
-  transition: background .2s ease;
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  min-width: 120px;
+  min-width: 140px;
   flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .newsletter-button:hover{ 
   background: var(--muted); 
