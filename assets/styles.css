@@ -804,12 +804,30 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   letter-spacing: 0.5px;
   line-height: 1.2;
 }
+
+/* Fix white text on white mug */
+.carousel-item .feature-title {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
 .feature-description{ 
   color: var(--muted); 
   margin-bottom: 16px; 
   line-height: 1.4; 
   font-size: 15px;
   font-weight: 400;
+}
+
+/* Fix description visibility on white mug */
+.carousel-item .feature-description {
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  padding: 3px 6px;
+  border-radius: 3px;
+  display: inline-block;
 }
 .feature-button{ 
   display: inline-flex; 
