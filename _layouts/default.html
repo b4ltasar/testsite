@@ -170,6 +170,11 @@
           // Check if mobile
           var isMobile = window.innerWidth <= 768;
           
+          // Temporarily disable transitions to prevent glitch
+          items.forEach(function(item) {
+            item.style.transition = 'none';
+          });
+          
           // Position items in 3D space first to prevent glitch
           items.forEach(function(item, index) {
             var relativeIndex = (index - currentIndex + totalItems) % totalItems;
@@ -217,16 +222,25 @@
           if (activeItem) {
             activeItem.classList.add('active');
           }
+          
+          // Re-enable transitions after a brief moment
+          setTimeout(function() {
+            items.forEach(function(item) {
+              item.style.transition = '';
+            });
+          }, 50);
         }
         
         function nextSlide() {
           currentIndex = (currentIndex + 1) % totalItems;
-          updateCarousel();
+          // Small delay to prevent glitch
+          setTimeout(updateCarousel, 10);
         }
-        
+
         function prevSlide() {
           currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-          updateCarousel();
+          // Small delay to prevent glitch
+          setTimeout(updateCarousel, 10);
         }
         
         // Event listeners
