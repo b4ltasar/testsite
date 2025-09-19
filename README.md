@@ -2,7 +2,7 @@
 
 A modern, responsive website built with Jekyll for the NEARWEEK community. Features dark/light theme switching, interactive 3D carousel, and optimized performance.
 
-## 🚀 Features
+## Features
 
 - **Modern Design**: Clean, professional aesthetic with smooth animations
 - **Theme Switching**: Dark/light mode with persistent user preference
@@ -11,7 +11,7 @@ A modern, responsive website built with Jekyll for the NEARWEEK community. Featu
 - **Performance Optimized**: Fast loading with lazy loading and efficient CSS
 - **Content Management**: Easy content updates via YAML data files
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Jekyll**: Static site generator
 - **GitHub Pages**: Hosting and deployment
@@ -19,7 +19,7 @@ A modern, responsive website built with Jekyll for the NEARWEEK community. Featu
 - **Vanilla JavaScript**: No external dependencies
 - **Semantic HTML**: Accessible and SEO-friendly
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 testsite/
@@ -41,7 +41,7 @@ testsite/
 └── index.html           # Homepage
 ```
 
-## 🎨 Theme System
+## Theme System
 
 The website uses a sophisticated theme system with CSS custom properties:
 
@@ -62,7 +62,7 @@ The website uses a sophisticated theme system with CSS custom properties:
 }
 ```
 
-## 🎯 Key Components
+## Key Components
 
 ### 1. Hero Section
 - Large video background with theme switching
@@ -85,7 +85,7 @@ The website uses a sophisticated theme system with CSS custom properties:
 - Responsive card design
 - Hover effects and transitions
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Ruby 2.7+ (for Jekyll)
@@ -116,7 +116,7 @@ bundle exec jekyll serve --livereload
 bundle exec jekyll build
 ```
 
-## 📝 Content Management
+## Content Management
 
 ### Adding New Cards
 Edit `_data/cards.yml`:
@@ -142,7 +142,7 @@ items:
 ### Adding Blog Posts
 Create new files in `_posts/` with Jekyll front matter.
 
-## 🎨 Customization
+## Customization
 
 ### Colors
 Update CSS custom properties in `assets/styles.css`:
@@ -158,13 +158,13 @@ Modify font families in the CSS variables section.
 ### Layout
 Adjust spacing and sizing using the CSS custom properties system.
 
-## 📱 Responsive Breakpoints
+## Responsive Breakpoints
 
 - **Mobile**: < 768px
 - **Tablet**: 768px - 1024px
 - **Desktop**: > 1024px
 
-## 🔧 JavaScript Features
+## JavaScript Features
 
 ### Theme Switching
 - Automatic detection of system preference
@@ -182,7 +182,7 @@ Adjust spacing and sizing using the CSS custom properties system.
 - Efficient event listeners
 - Debounced resize handlers
 
-## 🚀 Deployment
+## Deployment
 
 The site is automatically deployed to GitHub Pages on every push to the `main` branch.
 
@@ -197,7 +197,7 @@ git commit -m "Deploy updates"
 git push origin main
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -213,11 +213,11 @@ git push origin main
    - Clear browser cache
    - Check file paths in `_layouts/default.html`
 
-## 📄 License
+## License
 
 This project is proprietary to NEARWEEK.
 
-## 🤝 Contributing
+## Contributing
 
 For internal development, please:
 1. Create a feature branch
@@ -225,10 +225,10 @@ For internal development, please:
 3. Test thoroughly
 4. Submit a pull request
 
-## 📞 Support
+## Support
 
 For technical issues, contact the development team.
 
 ---
 
-**Built with ❤️ for the NEARWEEK community**
+**Built for the NEARWEEK community**
