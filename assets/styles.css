@@ -62,19 +62,36 @@ img, video {
 
 /* Theme-specific video sources */
 .theme-video .light-video {
-  display: block;
+  display: block !important;
 }
 
 .theme-video .dark-video {
-  display: none;
+  display: none !important;
 }
 
 [data-theme="dark"] .theme-video .light-video {
-  display: none;
+  display: none !important;
 }
 
 [data-theme="dark"] .theme-video .dark-video {
-  display: block;
+  display: block !important;
+}
+
+/* Force video source switching */
+#themeVideo .light-video {
+  display: block !important;
+}
+
+#themeVideo .dark-video {
+  display: none !important;
+}
+
+[data-theme="dark"] #themeVideo .light-video {
+  display: none !important;
+}
+
+[data-theme="dark"] #themeVideo .dark-video {
+  display: block !important;
 }
 
 [data-theme="dark"] .section video {
