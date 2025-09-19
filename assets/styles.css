@@ -429,7 +429,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   transform: none; 
 }
 .feature-image{
-  margin-bottom: 4px;
+  margin-bottom: -8px;
 }
 .feature-content{
   margin-top: 0px;
@@ -579,6 +579,7 @@ html[data-theme="dark"]  .drawer-panel{ background:#111; }
   text-align: center; 
   margin-top: 24px; 
   order: 3;
+  grid-column: 1 / -1;
 }
 .footer .nav a:hover{ transform: scale(1.2); }
 .social-icons{ display: flex; gap: 16px; }
