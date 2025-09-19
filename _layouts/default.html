@@ -154,56 +154,56 @@
       });
     })();
 
-    // 3D Carousel functionality
+    // Merchandise 3D Carousel functionality
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
-        var carousel = document.getElementById('carousel3D');
-        if(!carousel) return;
+        var track = document.getElementById('merchTrack');
+        if(!track) return;
         
-        var prevBtn = document.getElementById('carousel3DPrev');
-        var nextBtn = document.getElementById('carousel3DNext');
-        var indicators = document.querySelectorAll('.carousel-3d-indicator');
-        var items = carousel.querySelectorAll('.carousel-3d-item');
+        var prevBtn = document.getElementById('merchPrev');
+        var nextBtn = document.getElementById('merchNext');
+        var items = track.querySelectorAll('.merch-item');
         var currentIndex = 0;
         var totalItems = items.length;
         
         function updateCarousel() {
-          // Update 3D transforms for each item
+          // Remove active class from all items
+          items.forEach(function(item) {
+            item.classList.remove('active');
+          });
+          
+          // Set active item
+          var activeItem = items[currentIndex];
+          if (activeItem) {
+            activeItem.classList.add('active');
+          }
+          
+          // Position items in 3D space
           items.forEach(function(item, index) {
-            var dataIndex = parseInt(item.getAttribute('data-index'));
-            var newIndex = (dataIndex - currentIndex + totalItems) % totalItems;
+            var relativeIndex = (index - currentIndex + totalItems) % totalItems;
             
-            if (newIndex === 0) {
-              item.style.transform = 'translateZ(0px) rotateY(0deg)';
+            if (relativeIndex === 0) {
+              // Center item (active)
+              item.style.transform = 'translateZ(0px) scale(1)';
               item.style.zIndex = '3';
               item.style.opacity = '1';
-            } else if (newIndex === 1) {
-              item.style.transform = 'translateZ(-200px) rotateY(60deg)';
+            } else if (relativeIndex === 1) {
+              // Right item
+              item.style.transform = 'translateX(200px) translateZ(-100px) rotateY(-45deg) scale(0.8)';
               item.style.zIndex = '2';
-              item.style.opacity = '0.7';
-            } else if (newIndex === 2) {
-              item.style.transform = 'translateZ(-400px) rotateY(120deg)';
+              item.style.opacity = '0.6';
+            } else if (relativeIndex === totalItems - 1) {
+              // Left item
+              item.style.transform = 'translateX(-200px) translateZ(-100px) rotateY(45deg) scale(0.8)';
+              item.style.zIndex = '2';
+              item.style.opacity = '0.6';
+            } else {
+              // Hidden items
+              item.style.transform = 'translateZ(-200px) scale(0.6)';
               item.style.zIndex = '1';
-              item.style.opacity = '0.4';
-            } else {
-              item.style.transform = 'translateZ(-600px) rotateY(180deg)';
-              item.style.zIndex = '0';
-              item.style.opacity = '0.1';
+              item.style.opacity = '0.3';
             }
           });
-          
-          // Update indicators
-          indicators.forEach(function(indicator, index) {
-            if (index === currentIndex) {
-              indicator.classList.add('active');
-            } else {
-              indicator.classList.remove('active');
-            }
-          });
-          
-          // Update button states
-          if (prevBtn) prevBtn.disabled = false;
-          if (nextBtn) nextBtn.disabled = false;
         }
         
         function nextSlide() {
@@ -216,19 +216,15 @@
           updateCarousel();
         }
         
-        function goToSlide(index) {
-          currentIndex = index;
-          updateCarousel();
-        }
-        
         // Event listeners
         if (nextBtn) nextBtn.addEventListener('click', nextSlide);
         if (prevBtn) prevBtn.addEventListener('click', prevSlide);
         
-        // Indicator click handlers
-        indicators.forEach(function(indicator, index) {
-          indicator.addEventListener('click', function() {
-            goToSlide(index);
+        // Click on items to make them active
+        items.forEach(function(item, index) {
+          item.addEventListener('click', function() {
+            currentIndex = index;
+            updateCarousel();
           });
         });
         
@@ -241,18 +237,18 @@
           }
         });
         
-        // Auto-rotate (optional)
-        var autoRotate = setInterval(nextSlide, 5000);
+        // Auto-rotate
+        var autoRotate = setInterval(nextSlide, 4000);
         
         // Pause auto-rotate on hover
-        var carouselContainer = document.querySelector('.carousel-3d-container');
-        if (carouselContainer) {
-          carouselContainer.addEventListener('mouseenter', function() {
+        var carousel = document.querySelector('.merch-carousel');
+        if (carousel) {
+          carousel.addEventListener('mouseenter', function() {
             clearInterval(autoRotate);
           });
           
-          carouselContainer.addEventListener('mouseleave', function() {
-            autoRotate = setInterval(nextSlide, 5000);
+          carousel.addEventListener('mouseleave', function() {
+            autoRotate = setInterval(nextSlide, 4000);
           });
         }
         

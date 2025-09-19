@@ -5,46 +5,35 @@
       <p class="feature-subtitle">Exclusive NEARWEEK merchandise coming soon</p>
     </div>
     
-    <div class="carousel-3d-container">
-      <div class="carousel-3d-wrapper">
-        <div class="carousel-3d-track" id="carousel3D">
-          {% for item in site.data.feature.items %}
-            <div class="carousel-3d-item" data-index="{{ forloop.index0 }}">
-              <div class="carousel-3d-card">
-                <div class="carousel-3d-image">
-                  <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
-                </div>
-                <div class="carousel-3d-content">
-                  <h3 class="carousel-3d-title">{{ item.title }}</h3>
-                  <p class="carousel-3d-description">{{ item.description }}</p>
-                  <button class="carousel-3d-button" {% if item.link == '' %}disabled{% endif %}>
-                    {{ item.button_text | default: 'Learn More' }}
-                  </button>
-                </div>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
+    <div class="merch-carousel">
+      <button class="merch-nav merch-prev" id="merchPrev" aria-label="Previous">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18L9 12L15 6"/>
+        </svg>
+      </button>
       
-      <div class="carousel-3d-controls">
-        <button class="carousel-3d-btn carousel-3d-prev" id="carousel3DPrev" aria-label="Previous">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-          </svg>
-        </button>
-        <button class="carousel-3d-btn carousel-3d-next" id="carousel3DNext" aria-label="Next">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
-          </svg>
-        </button>
-      </div>
-      
-      <div class="carousel-3d-indicators">
+      <div class="merch-track" id="merchTrack">
         {% for item in site.data.feature.items %}
-          <button class="carousel-3d-indicator" data-index="{{ forloop.index0 }}" aria-label="Go to slide {{ forloop.index }}"></button>
+          <div class="merch-item {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}">
+            <div class="merch-image">
+              <img src="{{ item.image | relative_url }}" alt="{{ item.title }}" loading="lazy">
+            </div>
+            <div class="merch-content">
+              <h3 class="merch-title">{{ item.title }}</h3>
+              <p class="merch-description">{{ item.description }}</p>
+              <button class="merch-button" {% if item.link == '' %}disabled{% endif %}>
+                {{ item.button_text | default: 'Learn More' }}
+              </button>
+            </div>
+          </div>
         {% endfor %}
       </div>
+      
+      <button class="merch-nav merch-next" id="merchNext" aria-label="Next">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18L15 12L9 6"/>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
