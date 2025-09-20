@@ -135,7 +135,7 @@
       });
     })();
 
-    // Marquee touch pause/resume
+    // Marquee touch pause/resume + mobile vertical scroll fix
     (function(){
       document.addEventListener('DOMContentLoaded', function(){
         var marquee = document.getElementById('cardsMarquee');
@@ -148,10 +148,48 @@
         function resume(){ track.classList.remove('paused'); }
 
         if(isTouch){
-          marquee.addEventListener('touchstart', pause, {passive:true});
-          marquee.addEventListener('touchend', resume, {passive:true});
-          marquee.addEventListener('touchcancel', resume, {passive:true});
+          var startY = 0;
+          var startX = 0;
+          var isVerticalScroll = false;
+
+          marquee.addEventListener('touchstart', function(e) {
+            startY = e.touches[0].clientY;
+            startX = e.touches[0].clientX;
+            isVerticalScroll = false;
+            pause();
+          }, {passive: true});
+
+          marquee.addEventListener('touchmove', function(e) {
+            var currentY = e.touches[0].clientY;
+            var currentX = e.touches[0].clientX;
+            var diffY = Math.abs(currentY - startY);
+            var diffX = Math.abs(currentX - startX);
+            
+            // If vertical movement is greater than horizontal, allow vertical scroll
+            if (diffY > diffX && diffY > 8) {
+              isVerticalScroll = true;
+              resume();
+              // Allow vertical scroll by not preventing default
+              return;
+            }
+            
+            // If horizontal movement, prevent default to allow horizontal scroll
+            if (diffX > diffY && diffX > 8) {
+              e.preventDefault();
+            }
+          }, {passive: false});
+
+          marquee.addEventListener('touchend', function(e) {
+            isVerticalScroll = false;
+            resume();
+          }, {passive: true});
+
+          marquee.addEventListener('touchcancel', function(e) {
+            isVerticalScroll = false;
+            resume();
+          }, {passive: true});
         }
+        
         // Also pause when user focuses links via keyboard
         marquee.addEventListener('focusin', pause);
         marquee.addEventListener('focusout', resume);
