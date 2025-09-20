@@ -151,41 +151,46 @@
           var startY = 0;
           var startX = 0;
           var isVerticalScroll = false;
+          var touchStarted = false;
 
           marquee.addEventListener('touchstart', function(e) {
             startY = e.touches[0].clientY;
             startX = e.touches[0].clientX;
             isVerticalScroll = false;
+            touchStarted = true;
             pause();
           }, {passive: true});
 
           marquee.addEventListener('touchmove', function(e) {
-            if (!isVerticalScroll) {
-              var currentY = e.touches[0].clientY;
-              var currentX = e.touches[0].clientX;
-              var diffY = Math.abs(currentY - startY);
-              var diffX = Math.abs(currentX - startX);
-              
-              // If vertical movement is greater than horizontal, allow vertical scroll
-              if (diffY > diffX && diffY > 10) {
-                isVerticalScroll = true;
-                resume(); // Resume animation
-                return; // Allow default vertical scroll behavior
-              }
+            if (!touchStarted) return;
+            
+            var currentY = e.touches[0].clientY;
+            var currentX = e.touches[0].clientX;
+            var diffY = Math.abs(currentY - startY);
+            var diffX = Math.abs(currentX - startX);
+            
+            // If vertical movement is greater than horizontal, allow vertical scroll
+            if (diffY > diffX && diffY > 5) {
+              isVerticalScroll = true;
+              resume();
+              // Don't prevent default - allow vertical scroll
+              return;
             }
             
-            // If we're not in vertical scroll mode, prevent default to allow horizontal scroll
-            if (!isVerticalScroll) {
+            // If we're doing horizontal movement, prevent default to allow horizontal scroll
+            if (diffX > diffY && diffX > 5) {
               e.preventDefault();
             }
           }, {passive: false});
 
           marquee.addEventListener('touchend', function(e) {
+            touchStarted = false;
             isVerticalScroll = false;
             resume();
           }, {passive: true});
 
           marquee.addEventListener('touchcancel', function(e) {
+            touchStarted = false;
             isVerticalScroll = false;
             resume();
           }, {passive: true});
